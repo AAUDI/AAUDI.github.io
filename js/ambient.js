@@ -2,10 +2,11 @@
    free for use), levelled in advance to a quiet -30 LUFS with soft ends so the
    2-minute loop is seamless (source kept in tools/audio-source/).
 
-   Off by default. The speaker button in the header fades it in over 4 s and
-   out again; the choice is remembered, and on a later visit it resumes at the
-   first click or key press (browsers never start sound on their own). It
-   pauses in hidden tabs and when a YouTube video is played. */
+   On by default: browsers never start sound on their own, so it starts at
+   the visitor's first click, tap or key press (and at once where a browser
+   allows it). The speaker button in the header turns it off and on, with
+   fades; a visitor who turns it off stays off on later visits. It pauses in
+   hidden tabs and when a YouTube video is played. */
 (function () {
   'use strict';
 
@@ -28,6 +29,8 @@
   themeBtn.parentNode.insertBefore(btn, themeBtn);
 
   var audio = null, ctx = null, gain = null, on = false, fadeTimer = 0;
+  // Waiting to start at the first gesture (the default unless the visitor chose off).
+  var armed = false;
 
   function setup() {
     audio = new Audio(TRACK);
@@ -68,11 +71,13 @@
   function play() { var p = audio.play(); if (p && p.catch) p.catch(function () {}); }
 
   function sync() {
-    btn.setAttribute('aria-pressed', String(on));
-    btn.setAttribute('aria-label', on ? 'Turn the ambient music off' : 'Play ambient music');
+    var shown = on || armed;
+    btn.setAttribute('aria-pressed', String(shown));
+    btn.setAttribute('aria-label', shown ? 'Turn the ambient music off' : 'Play ambient music');
   }
 
   function start() {
+    armed = false;
     if (!audio) setup();
     if (ctx && ctx.state === 'suspended') ctx.resume();
     on = true;
@@ -91,21 +96,26 @@
   function remember(v) { try { localStorage.setItem(KEY, v ? 'on' : 'off'); } catch (e) {} }
 
   btn.addEventListener('click', function () {
-    if (on) { stop(); remember(false); } else { start(); remember(true); }
+    if (on || armed) { armed = false; stop(); remember(false); } else { start(); remember(true); }
   });
 
-  // Remembered "on": resume at the first gesture anywhere but on the button itself.
-  var wanted = false;
-  try { wanted = localStorage.getItem(KEY) === 'on'; } catch (e) {}
-  if (wanted) {
+  // On unless the visitor turned it off: start at the first gesture anywhere but on the button.
+  var pref = null;
+  try { pref = localStorage.getItem(KEY); } catch (e) {}
+  if (pref !== 'off') {
+    armed = true;
     var resume = function (e) {
       if (e.target && e.target.closest && e.target.closest('.sound-toggle')) return;
       document.removeEventListener('pointerdown', resume, true);
       document.removeEventListener('keydown', resume, true);
-      if (!on) start();
+      if (armed) start();
     };
     document.addEventListener('pointerdown', resume, true);
     document.addEventListener('keydown', resume, true);
+    // Some browsers allow sound straight away (for example on a site the visitor uses often).
+    setup();
+    var p = audio.play();
+    if (p && p.then) p.then(function () { if (armed) start(); }).catch(function () { if (!on) audio.pause(); });
   }
 
   // Quiet in background tabs; give way to a YouTube video.

@@ -678,45 +678,6 @@
       </div>
     </section>
 
-    <!-- 07 · The thermal case: live viewfinder ------------------------------>
-    <section class="section see" id="see" aria-labelledby="seeTitle">
-      <div class="container">
-        <p class="label"><span class="label-n">07</span>Thermal imaging</p>
-        <div class="section-head">
-          <h2 class="section-title reveal wipe" id="seeTitle">It starts with the <em>pixel</em>.</h2>
-          <p class="section-lede reveal">A thermal camera does not see heat. It sees a noisy, 16-bit guess at it, and everything after that is software. Three steps I have spent years on, shown on real footage: cleaning the image, fitting 16 bits into 8 without losing the scene, and finding what matters in it.</p>
-        </div>
-        <div class="thermal-grid" data-stagger>
-          <figure class="thermal-fig reveal">
-            <div class="thermal-media">
-              <div class="compare" data-before="Noisy" data-after="Denoised" data-auto role="img" aria-label="Thermal image of a person in front of a hedge, grainy on one side of a moving divider and clean on the other">
-                <img class="cmp-a" src="assets/img/projects/ldn-person-noisy.jpg" alt="" loading="lazy">
-                <img class="cmp-b" src="assets/img/projects/ldn-person-clean.jpg" alt="" loading="lazy">
-                <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the denoised image">
-              </div>
-            </div>
-            <figcaption><b>Denoise</b>The AI denoiser that runs inside the camera, at Lynred. Drag the divider. <a href="projects.html#p14">The project</a></figcaption>
-          </figure>
-          <figure class="thermal-fig reveal">
-            <div class="thermal-media">
-              <div class="compare" data-before="Linear" data-after="Tone-mapped" data-auto role="img" aria-label="Thermal image of a residential street, flat on one side of a moving divider and detailed on the other">
-                <img class="cmp-a" src="assets/img/projects/hdr-linear.jpg" alt="" loading="lazy">
-                <img class="cmp-b" src="assets/img/projects/hdr-tonemapped.jpg" alt="" loading="lazy">
-                <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the tone-mapped image">
-              </div>
-            </div>
-            <figcaption><b>Tone map</b>16-bit sensor data on an 8-bit screen, with detail kept in the coldest and hottest parts. <a href="projects.html#p6">The project</a></figcaption>
-          </figure>
-          <figure class="thermal-fig reveal">
-            <div class="thermal-media">
-              <video src="assets/video/hero/wg-buck.mp4" poster="assets/img/projects/wg-buck-poster.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="Video: handheld thermal footage of a buck at dusk, boxed and tracked"></video>
-            </div>
-            <figcaption><b>Detect</b>A buck at dusk on handheld LWIR footage, detected and tracked frame by frame. <a href="projects.html#p4">The project</a></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
     <!-- 08 · Contact --------------------------------------------------------->
     <section class="section contact" id="contact" aria-labelledby="contactTitle">
       <div class="container">
