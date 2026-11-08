@@ -1867,3 +1867,10 @@ em {
 .yt-note { position: absolute; right: 12px; top: 12px; padding: 3px 8px; border-radius: 4px; background: rgba(11, 15, 19, 0.8); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.06em; color: rgba(232, 237, 242, 0.88); }
 .slides .slide .yt-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
 .slides.is-playing .slide-cap, .slides.is-playing .media-tag { display: none; }
+
+/* ---------- Ambient music button (js/ambient.js) ---------- */
+.sound-toggle .icon-sound-on { display: none; }
+.sound-toggle[aria-pressed="true"] .icon-sound-on { display: block; }
+.sound-toggle[aria-pressed="true"] .icon-sound-off { display: none; }
+.sound-toggle[aria-pressed="false"] { color: var(--fg-muted); }
+.sound-toggle[aria-pressed="true"] { border-color: color-mix(in srgb, var(--fg) 45%, transparent); }
