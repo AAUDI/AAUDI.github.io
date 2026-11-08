@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=1794136484">
-  <link rel="stylesheet" href="styles-variants.css?v=1794136484">
+  <link rel="stylesheet" href="styles.css?v=1794137399">
+  <link rel="stylesheet" href="styles-variants.css?v=1794137399">
 
   <script>
     // Restore the visitor's light/dark choice before first paint, so there is no flash.
@@ -135,7 +135,6 @@
               <figure class="slide" data-kind="video" data-short="Benchmark · DTB70 Car6, frozen lake" data-cap="The evaluation tool on DTB70 Car6, a public drone benchmark: yellow is the tracker, white is the ground truth. The readout prints the live frame rate (29.6 fps), the IoU per frame and the success rate so far; sequence AUC 0.73."><video src="assets/video/fpv-dtb70-car6.mp4" poster="assets/img/projects/fpv-dtb70-car6-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a car driving on a frozen lake seen from a drone, a yellow tracking box around it and evaluation text at the top"></video></figure>
               <figure class="slide" data-kind="video" data-short="UAV123 · a boat a few pixels wide" data-cap="The hard regime: a boat a few pixels wide beside a lighthouse, tracked from one operator box with the detector switched off. 480 of 481 frames held at 30 fps."><video src="assets/video/fpv-uav123-boat.mp4" poster="assets/img/projects/fpv-uav123-boat-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: aerial view of a bay with a lighthouse and marina, a tiny magenta tracking box on a boat"></video></figure>
               <figure class="slide" data-kind="video" data-fit="contain" data-short="UAV123 · tracking another drone" data-cap="Tracking a flying drone against sky and beach from a single box, detector off: 132 of 133 frames held at 30 fps."><video src="assets/video/fpv-uav123-uav.mp4" poster="assets/img/projects/fpv-uav123-uav-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a beach seen from a low camera, a small magenta tracking box on a drone in the sky"></video></figure>
-              <figure class="slide" data-kind="video" data-short="Run · UAV123 car9" data-cap="A run of the tracker on the UAV123 car9 sequence (public aerial benchmark), recorded from the evaluation tool: the box holds through turns, shadows and the car shrinking and growing as the drone moves. The hybrid tracker re-anchors on key frames."><video src="assets/video/fpv-car9.mp4" poster="assets/img/projects/fpv-car9-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: aerial view of a palm-lined road, a green tracking box following a small car"></video></figure>
               <span class="media-tag" aria-hidden="true">02 · Track</span>
               <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
               <div class="slide-cap" aria-hidden="true"></div>
@@ -147,7 +146,6 @@
                 <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Benchmark · DTB70 Car6, frozen lake"><img src="assets/img/projects/fpv-dtb70-car6-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Benchmark · DTB70 Car6, frozen lake</span></button></li>
                 <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: UAV123 · a boat a few pixels wide"><img src="assets/img/projects/fpv-uav123-boat-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · a boat a few pixels wide</span></button></li>
                 <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: UAV123 · tracking another drone"><img src="assets/img/projects/fpv-uav123-uav-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · tracking another drone</span></button></li>
-                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: Run · UAV123 car9"><img src="assets/img/projects/fpv-car9-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Run · UAV123 car9</span></button></li>
               </ul>
             </div>
             <div class="project-body">
@@ -235,9 +233,7 @@
               <figure class="slide" data-kind="compare" data-short="Slider · native vs 2× on device" data-cap="Drag the divider between the native 256×320 frame (shown upscaled) and the 2× output of the network, 512×640: cyclists, kerbs and the bike rack sharpen without halos. Both panels from the project’s result figure."><div class="compare" data-before="Native" data-after="2× on device" data-auto role="img" aria-label="Thermal street scene with cyclists, soft on one side of a divider and sharp on the other"><img class="cmp-a" src="assets/img/projects/sr-native.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/sr-enhanced.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
               <figure class="slide" data-kind="img" data-fit="contain" data-full="assets/img/projects/sr-pair.jpg" data-short="Result · 256×320 → 512×640" data-cap="Result figure: the native 256×320 thermal frame on the left and the 2× output (512×640) on the right. Cyclists, kerbs and the bike rack sharpen without halos."><img src="assets/img/projects/sr-pair.jpg" alt="Thermal street scene with cyclists, shown at native resolution and super-resolved" loading="lazy"></figure>
               <figure class="slide" data-kind="img" data-full="assets/img/projects/sr-gimbal-2.jpg" data-short="Roof mount · front" data-cap="Same mount from the front: the gimbal sits on a cross-bar above the windscreen, where the processor beside it runs the super-resolution."><img src="assets/img/projects/sr-gimbal-2.jpg" alt="Front view of a car with a gimbal camera mounted on a roof bar" loading="lazy"></figure>
-              <figure class="slide" data-kind="canvas" data-cap=""><canvas class="preview-canvas" data-preview="sr3d" role="img" aria-label="3D animation: a car with a roof gimbal drives down a street while the gimbal pans; the inset shows the gimbal camera in thermal colours, native resolution on one side of a moving divider and the 2× version on the other."></canvas></figure>
               <span class="media-tag" aria-hidden="true">05 · Sharpen</span>
-              <button class="media-replay" type="button" data-replay="sr3d" hidden>Replay</button>
               <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
               <div class="slide-cap" aria-hidden="true"></div>
             </div>
@@ -248,7 +244,6 @@
                 <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Slider · native vs 2× on device"><img src="assets/img/projects/sr-enhanced-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Slider · native vs 2× on device</span></button></li>
                 <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Result · 256×320 → 512×640"><img src="assets/img/projects/sr-pair-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Result · 256×320 → 512×640</span></button></li>
                 <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: Roof mount · front"><img src="assets/img/projects/sr-gimbal-2-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Roof mount · front</span></button></li>
-                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: 3D view · gimbal sweep, thermal inset"><canvas class="shot-canvas" data-preview-still="sr3d" data-still="0.5" aria-hidden="true"></canvas><span class="shot-badge" aria-hidden="true">3D</span><span class="shot-cap">3D view · gimbal sweep, thermal inset</span></button></li>
               </ul>
             </div>
             <div class="project-body">
@@ -585,13 +580,13 @@
     <button class="lb-btn lb-next" type="button" aria-label="Next image">›</button>
   </dialog>
 
-  <script src="js/main.js?v=1794136484"></script>
-  <script src="js/titles.js?v=1794136484"></script>
-  <script src="js/ambient.js?v=1794136484"></script>
-  <script src="js/work.js?v=1794136484"></script>
-  <script src="js/sims.js?v=1794136484"></script>
-  <script src="js/previews.js?v=1794136484"></script>
-  <script src="js/slides.js?v=1794136484"></script>
-  <script src="js/compare.js?v=1794136484"></script>
+  <script src="js/main.js?v=1794137399"></script>
+  <script src="js/titles.js?v=1794137399"></script>
+  <script src="js/ambient.js?v=1794137399"></script>
+  <script src="js/work.js?v=1794137399"></script>
+  <script src="js/sims.js?v=1794137399"></script>
+  <script src="js/previews.js?v=1794137399"></script>
+  <script src="js/slides.js?v=1794137399"></script>
+  <script src="js/compare.js?v=1794137399"></script>
 </body>
 </html>
