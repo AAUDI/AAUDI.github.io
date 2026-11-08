@@ -1874,12 +1874,3 @@ em {
 .sound-toggle[aria-pressed="true"] .icon-sound-off { display: none; }
 .sound-toggle[aria-pressed="false"] { color: var(--fg-muted); }
 .sound-toggle[aria-pressed="true"] { border-color: color-mix(in srgb, var(--fg) 45%, transparent); }
-/* Corner card for the YouTube music player: visible whenever it plays, as YouTube requires. */
-.music-card { position: fixed; right: 16px; bottom: 16px; z-index: 80; width: 372px; max-width: calc(100vw - 32px); padding: 8px; border-radius: 14px; border: 1px solid var(--line-strong); background: var(--bg-raise); box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7); }
-.music-card[hidden] { display: none; }
-.mc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 2px 8px 6px; font-family: var(--f-body); font-size: 12.5px; color: var(--fg-muted); }
-.mc-title { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mc-close { flex: none; width: 26px; height: 26px; border: 0; border-radius: 6px; background: transparent; color: var(--fg-muted); font-size: 18px; line-height: 1; cursor: pointer; }
-.mc-close:hover { color: var(--fg); background: color-mix(in srgb, var(--fg) 8%, transparent); }
-.mc-frame { position: relative; aspect-ratio: 16 / 9; min-height: 200px; border-radius: 8px; overflow: hidden; background: #000000; }
-.mc-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }

@@ -66,6 +66,8 @@
     camEl.textContent = 'CAM ' + pad(idx + 1) + ' · ' + d.cam;
     titleEl.textContent = d.title;
     still.src = d.still;
+    // A blurred copy of the same picture fills the frame around the whole, uncropped clip.
+    main.style.setProperty('--hw-bg', 'url("' + d.still + '")');
     wall.style.setProperty('--mk', d.mk);
     if (shownIdx !== idx) swapWord(d.word, d.mk);
     shownIdx = idx;

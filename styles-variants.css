@@ -1920,3 +1920,6 @@ html[data-look="senior"] .hero-sub { text-align: left; -webkit-hyphens: manual; 
 html[data-look="senior"] .menu-toggle { font-family: var(--f-body); letter-spacing: 0; text-transform: none; }
 /* Senior: the progress line runs only while the clip is actually playing. */
 html[data-look="senior"] .hero-wall:not(.is-live):not(.is-held) .hw-grid button[aria-pressed="true"]::after { animation: none; transform: scaleX(0); }
+/* Senior hero: every clip shown whole (no crop), on a blurred copy of itself. */
+html[data-look="senior"] .hw-main::before { content: ""; position: absolute; inset: -48px; z-index: 0; background: var(--hw-bg, #000) center / cover no-repeat; filter: blur(30px) brightness(0.42) saturate(1.1); }
+html[data-look="senior"] .hw-main :is(img, video) { z-index: 1; object-fit: contain; }
