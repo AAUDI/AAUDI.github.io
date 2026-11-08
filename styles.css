@@ -1886,9 +1886,9 @@ em {
 .logos-track { display: flex; align-items: center; width: max-content; animation: logos-scroll 60s linear infinite; }
 .logos-strip:hover .logos-track { animation-play-state: paused; }
 .logos-list { display: flex; align-items: center; gap: clamp(40px, 5vw, 72px); margin: 0; padding: 0 clamp(20px, 2.5vw, 36px); list-style: none; }
-.logos-list li { flex: none; display: flex; align-items: center; height: 56px; }
-/* Same visual weight for every logo: a set height, scaled per logo with --s; one colour, the text colour. */
-.logos-list img { display: block; height: calc(30px * var(--s, 1)); width: auto; max-width: 190px; object-fit: contain;
+.logos-list li { flex: none; display: flex; align-items: center; height: 64px; }
+/* Same visual weight for every logo: each has its own height (--h, set from its proportions); one colour, the text colour. */
+.logos-list img { display: block; height: var(--h, 30px); width: auto; max-width: 200px; object-fit: contain;
   filter: brightness(0) invert(1); opacity: 0.6; transition: opacity .25s; }
 :root[data-theme="light"] .logos-list img { filter: brightness(0); opacity: 0.55; }
 .logos-list li:hover img { opacity: 1; }
@@ -1899,4 +1899,4 @@ em {
   .logos-list[aria-hidden="true"] { display: none; }
   .logos-strip { -webkit-mask-image: none; mask-image: none; }
 }
-@media (max-width: 640px) { .logos-list li { height: 44px; } .logos-list img { height: calc(24px * var(--s, 1)); } }
+@media (max-width: 640px) { .logos-list li { height: 52px; } .logos-list img { height: calc(var(--h, 30px) * 0.8); } }
