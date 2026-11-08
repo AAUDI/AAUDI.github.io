@@ -1874,3 +1874,18 @@ em {
 .sound-toggle[aria-pressed="true"] .icon-sound-off { display: none; }
 .sound-toggle[aria-pressed="false"] { color: var(--fg-muted); }
 .sound-toggle[aria-pressed="true"] { border-color: color-mix(in srgb, var(--fg) 45%, transparent); }
+
+/* ---------- Thermal imaging: three real examples (denoise, tone map, detect) ---------- */
+.thermal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 8px; }
+.thermal-fig { margin: 0; min-width: 0; }
+.thermal-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg); background: var(--screen); box-shadow: 0 0 0 1px var(--line); }
+.thermal-media > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.thermal-media .compare { position: absolute; inset: 0; aspect-ratio: auto; }
+.thermal-fig figcaption { margin-top: 14px; font-size: 14.5px; line-height: 1.55; color: var(--fg-muted); }
+.thermal-fig figcaption b { display: block; margin-bottom: 4px; font-family: var(--f-display); font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--fg); }
+.thermal-fig figcaption a { color: var(--fg); border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
+.thermal-fig figcaption a::after { content: " \2192"; }
+.thermal-fig figcaption a:hover { border-bottom-color: var(--fg); }
+@media (max-width: 1000px) { .thermal-grid { grid-template-columns: 1fr; gap: 28px; } }
+/* Experience: a plain list now that the flight path is gone. */
+.timeline-wrap { min-width: 0; }
