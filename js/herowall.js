@@ -35,8 +35,7 @@
   // A clip's turn only starts once it plays, so a slow connection never skips a project.
   var pendingPlay = false, MAXWAIT = 15000;
 
-  // The film-strip and mosaic hero designs (js/herovariants.js) replace the cycling frame.
-  function on() { return root.getAttribute('data-hero') === 'wall' && !/^(strip|mosaic)$/.test(root.getAttribute('data-herov') || ''); }
+  function on() { return root.getAttribute('data-hero') === 'wall'; }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 
   function swapWord(text, mk) {
@@ -67,8 +66,8 @@
     camEl.textContent = 'CAM ' + pad(idx + 1) + ' · ' + d.cam;
     titleEl.textContent = d.title;
     still.src = d.still;
-    // A blurred copy of the same picture fills the frame around the whole, uncropped clip.
-    main.style.setProperty('--hw-bg', 'url("' + d.still + '")');
+    // Light crop: each clip fills the frame from its focus point (data-pos, default the centre).
+    main.style.setProperty('--hw-pos', d.pos || '50% 50%');
     wall.style.setProperty('--mk', d.mk);
     if (shownIdx !== idx) swapWord(d.word, d.mk);
     shownIdx = idx;

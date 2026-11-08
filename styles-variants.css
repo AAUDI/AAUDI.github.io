@@ -1920,46 +1920,24 @@ html[data-look="senior"] .hero-sub { text-align: left; -webkit-hyphens: manual; 
 html[data-look="senior"] .menu-toggle { font-family: var(--f-body); letter-spacing: 0; text-transform: none; }
 /* Senior: the progress line runs only while the clip is actually playing. */
 html[data-look="senior"] .hero-wall:not(.is-live):not(.is-held) .hw-grid button[aria-pressed="true"]::after { animation: none; transform: scaleX(0); }
-/* Senior hero: every clip shown whole (no crop), on a blurred copy of itself. */
-html[data-look="senior"] .hw-main::before { content: ""; position: absolute; inset: -48px; z-index: 0; background: var(--hw-bg, #000) center / cover no-repeat; filter: blur(30px) brightness(0.42) saturate(1.1); }
-html[data-look="senior"] .hw-main :is(img, video) { z-index: 1; object-fit: contain; }
 
-/* ======================= Hero design test links (index.html?hero=…) ======================= */
-/* Strip and mosaic replace the frame and the tabs. */
-html:is([data-herov="strip"], [data-herov="mosaic"]) .hero-wall > :is(.hw-main, .hw-grid) { display: none; }
-.hv-item { position: relative; display: block; overflow: hidden; border-radius: 12px; background: var(--screen); box-shadow: 0 0 0 1px var(--line); }
-.hv-item img, .hv-item video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.hv-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 11px; background: linear-gradient(transparent, rgba(0, 0, 0, 0.66)); color: #ffffff; font-family: var(--f-body); font-size: 13.5px; font-weight: 500; letter-spacing: 0; }
-.hv-item:hover .hv-cap { text-decoration: underline; text-underline-offset: 3px; }
-
-/* Film strip: one row at the same height, each clip in its true shape, drifting slowly. */
-.hv-strip { width: 100vw; margin-left: calc(50% - 50vw); overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
-.hv-track { display: flex; gap: 14px; width: max-content; animation: hv-drift 90s linear infinite; }
-.hv-strip:hover .hv-track { animation-play-state: paused; }
-.hv-strip .hv-item { flex: none; height: clamp(190px, 25vw, 330px); aspect-ratio: var(--a); }
-@keyframes hv-drift { to { transform: translateX(calc(-50% - 7px)); } }
-@media (prefers-reduced-motion: reduce) { .hv-track { animation: none; } .hv-strip { overflow-x: auto; } }
-
-/* Mosaic: justified rows; in a row every tile has the same height and a width set by its clip. */
-.hv-mosaic { display: grid; gap: 12px; }
-.hv-row { display: flex; align-items: flex-start; gap: 12px; }
-.hv-row .hv-item { flex: var(--a) 1 0; aspect-ratio: var(--a); min-width: 0; }
-@media (max-width: 640px) { .hv-row { flex-direction: column; } .hv-row .hv-item { flex: none; width: 100%; } }
-
-/* Split: text on the left, a 4:3 frame with the project names on the right. */
-html[data-herov="split"] .hw-main { aspect-ratio: 4 / 3; }
-@media (min-width: 1001px) {
-  html[data-herov="split"] .hero { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); grid-template-areas: "name wall" "sub wall" "role wall" "cta wall" "stats stats"; grid-template-rows: auto auto auto 1fr auto; align-items: start; }
-  html[data-herov="split"] .wordmark { font-size: clamp(3rem, 5.2vw, 5rem); }
-  html[data-herov="split"] .hero-role { margin: 30px 0 18px; }
-  html[data-herov="split"] .hero-wall { margin-top: 0; }
-}
-
-/* Wide: the frame keeps only the clips that are already wide, filling it edge to edge. */
-html[data-herov="wide"] .hw-grid li:is(:nth-child(2), :nth-child(3), :nth-child(9)) { display: none; }
-html[data-herov="wide"] .hw-main { aspect-ratio: 2 / 1; }
-html[data-herov="wide"] .hw-main::before { display: none; }
-html[data-herov="wide"] .hw-main :is(img, video) { object-fit: cover; }
 /* The roles line under the name stays left-aligned (it is a list, not a paragraph). */
 html[data-look="senior"] main .hero-sub { text-align: left; -webkit-hyphens: manual; hyphens: manual; }
+/* Senior hero: a 16:9 frame (the shape of most clips) with a light crop from each clip's focus point.
+   Its width is capped so the frame and the project names fit on a laptop screen. */
+html[data-look="senior"] .hero-wall { width: min(100%, calc((100svh - 360px) * 16 / 9)); min-width: min(100%, 640px); justify-self: center; }
+html[data-look="senior"] .hw-main { aspect-ratio: 16 / 9; }
+html[data-look="senior"] .hw-main :is(img, video) { object-fit: cover; object-position: var(--hw-pos, 50% 50%); }
+@media (max-width: 1000px) { html[data-look="senior"] .hw-main { aspect-ratio: 16 / 9; } html[data-look="senior"] .hero-wall { width: 100%; min-width: 0; } }
+/* Senior hero on desktop: the frame on the left, the project names as a vertical list on the right. */
+@media (min-width: 1001px) {
+  html[data-look="senior"] .hero-wall { width: 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) 210px; column-gap: 28px; align-items: stretch; }
+  html[data-look="senior"] .hw-grid { display: flex; flex-direction: column; justify-content: center; gap: 0; margin-top: 0; padding-left: 0; border-top: 0; border-left: 1px solid var(--line); overflow: visible; }
+  html[data-look="senior"] .hw-grid li { flex: none; }
+  html[data-look="senior"] .hw-grid button { padding: 11px 0 11px 20px; white-space: normal; }
+  html[data-look="senior"] .hw-grid button::after { left: -1px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; transform: scaleY(0); transform-origin: center top; }
+  html[data-look="senior"] .hw-grid button[aria-pressed="true"]::after { animation-name: hw-progress-y; }
+  html[data-look="senior"] .hero-wall.is-held .hw-grid button[aria-pressed="true"]::after { transform: scaleY(1); }
+  html[data-look="senior"] .hero-wall:not(.is-live):not(.is-held) .hw-grid button[aria-pressed="true"]::after { transform: scaleY(0); }
+}
+@keyframes hw-progress-y { to { transform: scaleY(1); } }

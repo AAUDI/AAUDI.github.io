@@ -29,7 +29,6 @@
       var root = document.documentElement;
       root.classList.add('js');
       try { var t = localStorage.getItem('site-theme'); if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t); } catch (e) {}
-      try { var hv = new URLSearchParams(location.search).get('hero'); if (/^(strip|mosaic|split|wide)$/.test(hv)) root.setAttribute('data-herov', hv); } catch (e) {}
     })();
   </script>
 
@@ -96,8 +95,8 @@
         </a>
         <ol class="hw-grid" id="hwGrid">
             <li><button type="button" data-word="drones" data-ar="2.025" data-short="FPV drone tracking" data-href="projects.html#p2" data-cam="UAV · RGB · 30 fps" data-title="Real-time tracking on an FPV drone" data-video="assets/video/hero/fpv-flight.mp4" data-still="assets/img/projects/fpv-flight-poster.jpg" data-mk="#ffd23f" aria-label="Show: Real-time tracking on an FPV drone"><img src="assets/img/projects/fpv-flight-thumb.jpg" alt="" loading="lazy"><span>UAV</span></button></li>
-            <li><button type="button" data-word="wildlife at night" data-ar="1.25" data-short="Thermal detection" data-href="projects.html#p4" data-cam="LWIR · 640×512 · YOLO + BoT-SORT" data-title="A thermal detector, camera to alert" data-video="assets/video/hero/wg-buck.mp4" data-still="assets/img/projects/wg-buck-poster.jpg" data-mk="#ff9ec4" aria-label="Show: A thermal detector, camera to alert"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy"><span>LWIR</span></button></li>
-            <li><button type="button" data-word="airport runways" data-ar="1.331" data-short="Airport debris unit" data-href="projects.html#p1" data-cam="Cameras · IMU · GNSS · edge SoC" data-title="The Mobile Detection Unit at Oreyeon" data-still="assets/img/projects/mdu-ride-enters.jpg" data-mk="#7ee0f5" aria-label="Show: The Mobile Detection Unit at Oreyeon"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy"><span>MDU</span></button></li>
+            <li><button type="button" data-word="wildlife at night" data-pos="50% 0%" data-ar="1.25" data-short="Thermal detection" data-href="projects.html#p4" data-cam="LWIR · 640×512 · YOLO + BoT-SORT" data-title="A thermal detector, camera to alert" data-video="assets/video/hero/wg-buck.mp4" data-still="assets/img/projects/wg-buck-poster.jpg" data-mk="#ff9ec4" aria-label="Show: A thermal detector, camera to alert"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy"><span>LWIR</span></button></li>
+            <li><button type="button" data-word="airport runways" data-pos="50% 0%" data-ar="1.331" data-short="Airport debris unit" data-href="projects.html#p1" data-cam="Cameras · IMU · GNSS · edge SoC" data-title="The Mobile Detection Unit at Oreyeon" data-still="assets/img/projects/mdu-ride-enters.jpg" data-mk="#7ee0f5" aria-label="Show: The Mobile Detection Unit at Oreyeon"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy"><span>MDU</span></button></li>
             <li><button type="button" data-word="robot arms" data-ar="1.745" data-short="Bin picking" data-href="projects.html#p7" data-cam="RGB-D · FoundationPose · cuRobo" data-title="Bin picking and assembly without fixtures" data-video="assets/video/hero/bin-sim-assembly.mp4" data-still="assets/img/projects/bin-sim-assembly-poster.jpg" data-mk="#b7f36b" aria-label="Show: Bin picking and assembly without fixtures"><img src="assets/img/projects/bin-sim-assembly-poster.jpg" alt="" loading="lazy"><span>RGB-D</span></button></li>
             <li><button type="button" data-word="3D cameras" data-ar="1.767" data-short="ToF 3D camera" data-href="projects.html#p8" data-cam="ToF · 320×240 · C++" data-title="Perception inside a 3D time-of-flight camera" data-video="assets/video/hero/tof-demo.mp4" data-still="assets/img/projects/tof-demo-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Perception inside a 3D time-of-flight camera"><img src="assets/img/projects/tof-demo-thumb.jpg" alt="" loading="lazy"><span>ToF</span></button></li>
             <li><button type="button" data-word="dairy barns" data-ar="1.778" data-short="Feed-bunk monitoring" data-href="projects.html#p10" data-cam="RGB · night · PyTorch" data-title="Feed-bunk monitoring from fixed cameras" data-video="assets/video/hero/barn-pushup-night.mp4" data-still="assets/img/projects/barn-pushup-night-poster.jpg" data-mk="#ffb27a" aria-label="Show: Feed-bunk monitoring from fixed cameras"><img src="assets/img/projects/barn-pushup-night-thumb.jpg" alt="" loading="lazy"><span>BARN</span></button></li>
@@ -143,7 +142,7 @@
           <li><b>Now</b><span>Senior lead embedded CV engineer · Oreyeon</span></li>
           <li><b data-count="12" data-suffix=" yrs">12 yrs</b><span>University lecturer · USJ, LAU, ESIEE, ESIEA</span></li>
           <li><b>Ph.D.</b><span>Embedded computer vision · IGN, 2017</span></li>
-          <li><b data-count="14">14</b><span>Projects shown · 10 freelance, no client names</span></li>
+          <li><b data-count="14">14</b><span>Projects shown · 10 of them freelance</span></li>
           <li class="hero-fig"><span>Fig. 0 · Drawn live in your browser, no video. The inset is the gimbal camera's own view.</span></li>
         </ul>
       </div>
@@ -157,7 +156,7 @@
           <h2 class="section-title reveal wipe" id="workTitle">Selected <em>projects</em>.</h2>
           <a class="link-arrow reveal" href="projects.html">Full write-ups <span aria-hidden="true">→</span></a>
         </div>
-        <p class="section-lede reveal">All fourteen. Client work is shown without client names; the photos, clips and results come from the projects themselves. Every card opens the full write-up: what it does, my part, one fact you can check.</p>
+        <p class="section-lede reveal">All fourteen. The write-ups do not say which client each project was for; the photos, clips and results come from the projects themselves. Every card opens the full write-up: what it does, my part, one fact you can check.</p>
       </div>
 
       <div class="container">
@@ -731,7 +730,6 @@
   <script src="js/previews.js"></script>
   <script src="js/hero3d.js"></script>
   <script src="js/herowall.js"></script>
-  <script src="js/herovariants.js"></script>
   <script src="js/motifs.js"></script>
   <script src="js/compare.js"></script>
   <script src="js/rotate.js"></script>
