@@ -1883,7 +1883,7 @@ em {
 .logos-label { margin: 0 0 18px; font-family: var(--f-body); font-size: 14px; font-weight: 500; color: var(--fg-muted); text-align: center; }
 .logos-strip { position: relative; overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.logos-track { display: flex; align-items: center; width: max-content; animation: logos-scroll 60s linear infinite; }
+.logos-track { display: flex; align-items: center; width: max-content; animation: logos-scroll 30s linear infinite; }
 .logos-strip:hover .logos-track { animation-play-state: paused; }
 .logos-list { display: flex; align-items: center; gap: clamp(40px, 5vw, 72px); margin: 0; padding: 0 clamp(20px, 2.5vw, 36px); list-style: none; }
 .logos-list li { flex: none; display: flex; align-items: center; height: 64px; }
