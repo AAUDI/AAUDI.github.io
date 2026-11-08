@@ -419,13 +419,13 @@
           var iw = D.uav.width, ih = D.uav.height, z = 1 + 0.32 * smooth(t / 2.2);
           var sw0 = Math.min(iw, ih * view.w / view.h), sh0 = sw0 * view.h / view.w, sw = sw0 / z, sh = sh0 / z;
           var mixF = smooth((z - 1) / 0.32);
-          var ccx = lerp(iw / 2, iw * 0.37, mixF), ccy = lerp(ih / 2, ih * 0.7, mixF);
+          var ccx = lerp(iw / 2, iw * 0.375, mixF), ccy = lerp(ih / 2, ih * 0.6, mixF);
           var sx = clamp(ccx - sw / 2, 0, iw - sw), sy = clamp(ccy - sh / 2, 0, ih - sh);
           ctx.drawImage(D.uav, sx, sy, sw, sh, view.x, view.y, view.w, view.h);
           var ca = seg(t, 0.7, 1.3) * (1 - seg(t, 2.0, 2.3));
           if (ca > 0) {
-            var bx0 = view.x + (iw * 0.27 - sx) / sw * view.w, by0 = view.y + (ih * 0.7 - sy) / sh * view.h;
-            var bx1 = view.x + (iw * 0.46 - sx) / sw * view.w, by1 = view.y + (ih * 0.85 - sy) / sh * view.h;
+            var bx0 = view.x + (iw * 0.33 - sx) / sw * view.w, by0 = view.y + (ih * 0.455 - sy) / sh * view.h;
+            var bx1 = view.x + (iw * 0.424 - sx) / sw * view.w, by1 = view.y + (ih * 0.758 - sy) / sh * view.h;
             ctx.globalAlpha = ca;
             R.hudRect(ctx, bx0, by0, bx1 - bx0, by1 - by0, dpr, LIME);
             chip(ctx, 'IGN camera', bx0, by0 - 24 * dpr, dpr, { size: 9, h: 18, color: LIME });
