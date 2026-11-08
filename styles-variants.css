@@ -1918,3 +1918,5 @@ html[data-look="senior"] .portrait figcaption, html[data-look="senior"] .portrai
 html[data-look="senior"] :is(.stage, .stage-n, .vf-status) { font-family: var(--f-body); letter-spacing: 0; }
 html[data-look="senior"] .hero-sub { text-align: left; -webkit-hyphens: manual; hyphens: manual; }
 html[data-look="senior"] .menu-toggle { font-family: var(--f-body); letter-spacing: 0; text-transform: none; }
+/* Senior: the progress line runs only while the clip is actually playing. */
+html[data-look="senior"] .hero-wall:not(.is-live):not(.is-held) .hw-grid button[aria-pressed="true"]::after { animation: none; transform: scaleX(0); }

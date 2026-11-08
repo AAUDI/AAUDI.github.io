@@ -32,6 +32,8 @@
     return from;
   }
   var idx = 0, timer = 0, visible = true, holdUntil = 0, t0 = performance.now(), shownIdx = -1;
+  // A clip's turn only starts once it plays, so a slow connection never skips a project.
+  var pendingPlay = false, MAXWAIT = 15000;
 
   function on() { return root.getAttribute('data-hero') === 'wall'; }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -69,6 +71,8 @@
     shownIdx = idx;
     video.classList.remove('is-on');
     video.pause();
+    pendingPlay = !!(d.video && !reduce);
+    wall.classList.toggle('is-live', !pendingPlay);
     if (d.video && !reduce) {
       if (video.getAttribute('src') !== d.video) video.src = d.video;
       try { video.currentTime = 0; } catch (e) {}
@@ -79,7 +83,11 @@
       video.load();
     }
   }
-  video.addEventListener('playing', function () { video.classList.add('is-on'); });
+  video.addEventListener('playing', function () {
+    video.classList.add('is-on');
+    wall.classList.add('is-live');
+    if (pendingPlay) { pendingPlay = false; schedule(); }
+  });
 
   function schedule() {
     clearTimeout(timer);
@@ -87,7 +95,7 @@
     timer = setTimeout(function () {
       if (performance.now() >= holdUntil) show(step(idx, 1));
       schedule();
-    }, dwell());
+    }, pendingPlay ? MAXWAIT : dwell());
   }
 
   tiles.forEach(function (b, k) {
