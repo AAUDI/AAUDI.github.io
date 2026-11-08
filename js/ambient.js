@@ -1,6 +1,11 @@
-/* Ambient music: an original, slow pipe-organ piece in A minor with a long
-   cathedral reverb, in the spirit of a space-film score. Synthesised live with
-   the Web Audio API, so there is no audio file and nothing to license.
+/* Ambient music, three sources in order of preference:
+   1. YT_ID: a YouTube video played through YouTube's own player (the rights
+      stay with YouTube and the channel). YouTube requires the player to be
+      visible while it plays, so it sits in a small card in the corner, shown
+      only while the music is on, at a low volume.
+   2. TRACK: a recorded file the site may use (prepared quiet in advance).
+   3. Otherwise an original, slow pipe-organ piece synthesised live with the
+      Web Audio API (no file, nothing to license).
 
    Off by default. The speaker button in the header turns it on at a low level
    (fades in over 4 s) and off again; the choice is remembered, and on a later
@@ -14,7 +19,12 @@
   if (!AC || !themeBtn) return;
 
   var KEY = 'site-sound';
-  var LEVEL = 0.45;          // master level: quiet background (about -31 dBFS average)
+  var YT_ID = 'ExbO5PmYSEs'; // "INTERSTELLAR: Main Theme | EPIC SCI-FI VERSION", 2Hooks Music (embedding allowed)
+  var YT_TITLE = 'Interstellar, Main Theme (epic version) · 2Hooks Music';
+  var YT_VOLUME = 15;        // out of 100: quiet background
+  var TRACK = '';          // recorded track, e.g. 'assets/audio/ambient.mp3'; empty = synthesised organ
+  var TRACK_LEVEL = 1;       // the file itself is already quiet
+  var LEVEL = 0.45;          // organ master level: quiet background (about -31 dBFS average)
   var DUR = 9;               // seconds per chord
   // Chords as MIDI notes, root first: Am9 Fadd9 Cadd9 G6/9 Am(add9) F Dm7 E.
   var CHORDS = [
@@ -32,8 +42,76 @@
     '<svg class="icon-sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
   themeBtn.parentNode.insertBefore(btn, themeBtn);
 
-  var ctx = null, master = null, bus = null, wave = null;
-  var on = false, timer = 0, nextT = 0, step = 0;
+  var ctx = null, master = null, bus = null, wave = null, audio = null;
+  var on = false, timer = 0, nextT = 0, step = 0, fadeTimer = 0;
+
+  // ---- YouTube player in a small corner card ----
+  var ytCard = null, ytPlayer = null, ytReady = false, ytWaiting = null, ytFade = 0;
+
+  function loadYT(cb) {
+    if (window.YT && window.YT.Player) { cb(); return; }
+    if (!ytWaiting) {
+      ytWaiting = [];
+      var prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function () {
+        if (prev) prev();
+        ytWaiting.forEach(function (f) { f(); });
+      };
+      var s = document.createElement('script');
+      s.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(s);
+    }
+    ytWaiting.push(cb);
+  }
+
+  function ytVolume(to, sec, done) {
+    clearInterval(ytFade);
+    if (!ytReady) { if (done) done(); return; }
+    var from = ytPlayer.getVolume ? ytPlayer.getVolume() : 0, t0 = Date.now();
+    ytFade = setInterval(function () {
+      var k = Math.min(1, (Date.now() - t0) / (sec * 1000));
+      ytPlayer.setVolume(Math.round(from + (to - from) * k));
+      if (k >= 1) { clearInterval(ytFade); if (done) done(); }
+    }, 100);
+  }
+
+  function ytStart() {
+    if (!ytCard) {
+      ytCard = document.createElement('aside');
+      ytCard.className = 'music-card';
+      ytCard.setAttribute('aria-label', 'Background music');
+      ytCard.innerHTML = '<div class="mc-head"><span class="mc-title"></span>' +
+        '<button type="button" class="mc-close" aria-label="Stop the music">&times;</button></div>' +
+        '<div class="mc-frame"><div id="musicPlayer"></div></div>';
+      ytCard.querySelector('.mc-title').textContent = YT_TITLE;
+      ytCard.querySelector('.mc-close').addEventListener('click', function () { stop(); remember(false); });
+      document.body.appendChild(ytCard);
+      loadYT(function () {
+        ytPlayer = new window.YT.Player('musicPlayer', {
+          host: 'https://www.youtube-nocookie.com',
+          videoId: YT_ID,
+          playerVars: { autoplay: 1, loop: 1, playlist: YT_ID, rel: 0, playsinline: 1 },
+          events: {
+            onReady: function (e) {
+              ytReady = true;
+              e.target.setVolume(0);
+              if (on) { e.target.playVideo(); ytVolume(YT_VOLUME, 3); } else e.target.pauseVideo();
+            }
+          }
+        });
+      });
+    }
+    ytCard.hidden = false;
+    if (ytReady) { ytPlayer.playVideo(); ytVolume(YT_VOLUME, 3); }
+  }
+
+  function ytStop() {
+    ytVolume(0, 1.2, function () {
+      if (on) return;
+      if (ytReady) ytPlayer.pauseVideo();
+      if (ytCard) ytCard.hidden = true;   // never a hidden player that plays
+    });
+  }
 
   function hz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
 
@@ -50,6 +128,15 @@
     ctx = new AC();
     master = ctx.createGain();
     master.gain.value = 0;
+    if (TRACK) {
+      audio = new Audio(TRACK);
+      audio.loop = true;
+      audio.preload = 'none';
+      // Through Web Audio so the fades also work on iPhones (which ignore audio.volume).
+      try { ctx.createMediaElementSource(audio).connect(master); master.connect(ctx.destination); }
+      catch (e) { master = null; audio.volume = 0; }
+      return;
+    }
     var comp = ctx.createDynamicsCompressor();
     comp.threshold.value = -24; comp.ratio.value = 3; comp.attack.value = 0.05; comp.release.value = 0.6;
     // Soft top end that breathes slowly.
@@ -105,10 +192,37 @@
     btn.setAttribute('aria-label', on ? 'Turn the ambient music off' : 'Play ambient music');
   }
 
+  // Fade the recorded track: by Web Audio gain, or by the element's volume as a fallback.
+  function fadeTrack(to, sec, done) {
+    clearInterval(fadeTimer);
+    if (master) {
+      var now = ctx.currentTime;
+      master.gain.cancelScheduledValues(now);
+      master.gain.setValueAtTime(master.gain.value, now);
+      master.gain.linearRampToValueAtTime(to, now + sec);
+      if (done) fadeTimer = setTimeout(done, sec * 1000 + 100);
+      return;
+    }
+    var from = audio.volume, t0 = Date.now();
+    fadeTimer = setInterval(function () {
+      var k = Math.min(1, (Date.now() - t0) / (sec * 1000));
+      audio.volume = from + (to - from) * k;
+      if (k >= 1) { clearInterval(fadeTimer); if (done) done(); }
+    }, 50);
+  }
+
   function start() {
+    if (YT_ID) { on = true; ytStart(); sync(); return; }
     if (!ctx) setup();
     if (ctx.state === 'suspended') ctx.resume();
     on = true;
+    if (TRACK) {
+      var p = audio.play();
+      if (p && p.catch) p.catch(function () {});
+      fadeTrack(TRACK_LEVEL, 4);
+      sync();
+      return;
+    }
     var now = ctx.currentTime;
     nextT = Math.max(nextT, now + 0.1);
     master.gain.cancelScheduledValues(now);
@@ -123,7 +237,12 @@
     on = false;
     clearTimeout(timer);
     sync();
+    if (YT_ID) { ytStop(); return; }
     if (!ctx) return;
+    if (TRACK) {
+      fadeTrack(0, 1.5, function () { if (!on) audio.pause(); });
+      return;
+    }
     var now = ctx.currentTime;
     master.gain.cancelScheduledValues(now);
     master.gain.setValueAtTime(master.gain.value, now);
@@ -153,8 +272,10 @@
 
   // Quiet in background tabs; give way to a YouTube video.
   document.addEventListener('visibilitychange', function () {
+    if (YT_ID && on && ytReady) { if (document.hidden) ytPlayer.pauseVideo(); else ytPlayer.playVideo(); return; }
     if (!ctx || !on) return;
-    if (document.hidden) ctx.suspend(); else ctx.resume();
+    if (document.hidden) { ctx.suspend(); if (audio) audio.pause(); }
+    else { ctx.resume(); if (audio) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); } }
   });
   document.addEventListener('click', function (e) {
     if (on && e.target.closest && e.target.closest('.yt-facade')) stop();
