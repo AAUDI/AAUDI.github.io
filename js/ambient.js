@@ -19,10 +19,10 @@
   if (!AC || !themeBtn) return;
 
   var KEY = 'site-sound';
-  var YT_ID = 'ExbO5PmYSEs'; // "INTERSTELLAR: Main Theme | EPIC SCI-FI VERSION", 2Hooks Music (embedding allowed)
+  var YT_ID = '';            // optional YouTube video id (played in a visible corner player); empty = off
   var YT_TITLE = 'Interstellar, Main Theme (epic version) · 2Hooks Music';
   var YT_VOLUME = 15;        // out of 100: quiet background
-  var TRACK = '';          // recorded track, e.g. 'assets/audio/ambient.mp3'; empty = synthesised organ
+  var TRACK = 'assets/audio/ambient.mp3'; // "Interstellar" by QuentinGaming, Pixabay Content License (free for use); levelled to -30 LUFS with soft ends
   var TRACK_LEVEL = 1;       // the file itself is already quiet
   var LEVEL = 0.45;          // organ master level: quiet background (about -31 dBFS average)
   var DUR = 9;               // seconds per chord
