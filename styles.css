@@ -1883,7 +1883,7 @@ em {
 .logos-label { margin: 0 0 18px; font-family: var(--f-body); font-size: 14px; font-weight: 500; color: var(--fg-muted); text-align: center; }
 .logos-strip { position: relative; overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.logos-track { display: flex; align-items: center; width: max-content; animation: logos-scroll 30s linear infinite; }
+.logos-track { display: flex; align-items: center; width: max-content; animation: logos-scroll 18s linear infinite; }
 .logos-strip:hover .logos-track { animation-play-state: paused; }
 .logos-list { display: flex; align-items: center; gap: clamp(40px, 5vw, 72px); margin: 0; padding: 0 clamp(20px, 2.5vw, 36px); list-style: none; }
 .logos-list li { flex: none; display: flex; align-items: center; height: 64px; }
@@ -1900,3 +1900,21 @@ em {
   .logos-strip { -webkit-mask-image: none; mask-image: none; }
 }
 @media (max-width: 640px) { .logos-list li { height: 52px; } .logos-list img { height: calc(var(--h, 30px) * 0.8); } }
+
+/* ---------- Hero: all of a project's clips at once (js/herowall.js, wide screens) ---------- */
+.hw-multi { position: absolute; inset: 0; z-index: 1; display: grid; gap: 3px; background: var(--screen); }
+.hm-tile { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: #000000; }
+.hm-tile img, .hm-tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hm-label { position: absolute; right: 8px; top: 8px; z-index: 1; padding: 2px 8px; border-radius: 5px; background: rgba(0, 0, 0, 0.6); color: #ffffff; font-family: var(--f-body); font-size: 12px; font-weight: 500; line-height: 1.5; }
+.hw-multi.n-2 { grid-template-columns: 1fr 1fr; }
+/* Three: one large on the left, two on the right. */
+.hw-multi.n-3 { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; }
+.hw-multi.n-3 .hm-tile:first-child { grid-row: span 2; }
+/* Four: two by two, each tile 16:9 like the frame. */
+.hw-multi.n-4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+/* Five: two wide on top, three below. */
+.hw-multi.n-5 { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: 1fr 1fr; }
+.hw-multi.n-5 .hm-tile:nth-child(-n+2) { grid-column: span 3; }
+.hw-multi.n-5 .hm-tile:nth-child(n+3) { grid-column: span 2; }
+/* The main clip fades in once it plays; the grid's clips are visible from the start (poster first). */
+.hw-main .hm-tile video { opacity: 1; transition: none; }

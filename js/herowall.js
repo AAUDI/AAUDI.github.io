@@ -51,23 +51,60 @@
 
   // Each project can carry a playlist (data-media: [{v: video, s: still, p: focus, l: label}]);
   // every visit to the project shows its next item, so the same clip does not come back each time.
-  function nextMedia(t) {
+  function mediaList(t) {
     if (!t._media) {
       var d = t.dataset;
       try { t._media = JSON.parse(d.media || '[]'); } catch (e) { t._media = []; }
       if (!t._media.length) t._media = [{ v: d.video, s: d.still, p: d.pos }];
       t._next = 0;
     }
-    var m = t._media[t._next % t._media.length];
+    return t._media;
+  }
+  function nextMedia(t) {
+    var list = mediaList(t), m = list[t._next % list.length];
     t._next++;
     return m;
+  }
+
+  // On wide screens a project with several clips shows them all at once, in a grid inside the frame.
+  var multi = null, turn = 0;
+  function multiOK() { return !window.matchMedia || window.matchMedia('(min-width: 1001px)').matches; }
+  function buildMulti(list) {
+    var g = document.createElement('div');
+    g.className = 'hw-multi n-' + Math.min(list.length, 5);
+    list.slice(0, 5).forEach(function (m) {
+      var c = document.createElement('div'), el;
+      c.className = 'hm-tile';
+      if (m.v && !reduce) {
+        el = document.createElement('video');
+        el.muted = true; el.loop = true; el.playsInline = true; el.autoplay = true;
+        el.setAttribute('muted', ''); el.setAttribute('playsinline', '');
+        el.poster = m.s; el.src = m.v;
+      } else {
+        el = document.createElement('img');
+        el.src = m.s; el.alt = '';
+      }
+      el.style.objectPosition = m.p || '50% 50%';
+      c.appendChild(el);
+      if (m.l) { var lab = document.createElement('span'); lab.className = 'hm-label'; lab.textContent = m.l; c.appendChild(lab); }
+      g.appendChild(c);
+    });
+    return g;
+  }
+  function multiVideos(fn) { if (multi) Array.prototype.forEach.call(multi.querySelectorAll('video'), fn); }
+  function playAll() { multiVideos(function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }); }
+  function clearMulti() {
+    if (!multi) return;
+    multiVideos(function (v) { v.pause(); v.removeAttribute('src'); v.load(); });
+    multi.parentNode.removeChild(multi);
+    multi = null;
   }
 
   function show(i) {
     idx = (i + tiles.length) % tiles.length;
     if (!shown(tiles[idx])) idx = step(idx, 1);
     wall.classList.toggle('is-held', performance.now() < holdUntil);
-    var d = tiles[idx].dataset, m = nextMedia(tiles[idx]);
+    var d = tiles[idx].dataset, list = mediaList(tiles[idx]);
     tiles.forEach(function (t, k) { t.setAttribute('aria-pressed', String(k === idx)); });
     // Where the tiles scroll sideways (phones), bring the playing one into view.
     var grid = tiles[idx].closest('.hw-grid');
@@ -78,15 +115,34 @@
     main.href = d.href;
     main.setAttribute('aria-label', 'Open the project: ' + d.title);
     camEl.textContent = 'CAM ' + pad(idx + 1) + ' · ' + d.cam;
-    titleEl.textContent = d.title + (m.l ? ' · ' + m.l : '');
-    still.src = m.s;
-    // Light crop: each clip fills the frame from its focus point (data-pos, default the centre).
-    main.style.setProperty('--hw-pos', m.p || '50% 50%');
     wall.style.setProperty('--mk', d.mk);
     if (shownIdx !== idx) swapWord(d.word, d.mk);
     shownIdx = idx;
     video.classList.remove('is-on');
     video.pause();
+    clearMulti();
+    if (list.length > 1 && multiOK()) {
+      // Every clip and photo of the project at once; a longer turn, since there is more to watch.
+      titleEl.textContent = d.title;
+      still.style.visibility = 'hidden';
+      if (video.getAttribute('src')) { video.removeAttribute('src'); video.load(); }
+      multi = buildMulti(list);
+      video.parentNode.insertBefore(multi, video.nextSibling);
+      if (visible && !document.hidden) playAll();
+      pendingPlay = false;
+      wall.classList.add('is-live');
+      turn = Math.round(dwell() * 1.4);
+      wall.style.setProperty('--hw-dwell-s', (turn / 1000) + 's');
+      return;
+    }
+    var m = nextMedia(tiles[idx]);
+    turn = dwell();
+    wall.style.setProperty('--hw-dwell-s', (turn / 1000) + 's');
+    still.style.visibility = '';
+    titleEl.textContent = d.title + (m.l ? ' · ' + m.l : '');
+    still.src = m.s;
+    // Light crop: each clip fills the frame from its focus point (data-pos, default the centre).
+    main.style.setProperty('--hw-pos', m.p || '50% 50%');
     pendingPlay = !!(m.v && !reduce);
     wall.classList.toggle('is-live', !pendingPlay);
     if (m.v && !reduce) {
@@ -111,7 +167,7 @@
     timer = setTimeout(function () {
       if (performance.now() >= holdUntil) show(step(idx, 1));
       schedule();
-    }, pendingPlay ? MAXWAIT : dwell());
+    }, pendingPlay ? MAXWAIT : (turn || dwell()));
   }
 
   tiles.forEach(function (b, k) {
@@ -125,7 +181,8 @@
   }, 1000);
 
   function resume() {
-    if (!on()) { video.pause(); clearTimeout(timer); return; }
+    if (!on()) { video.pause(); multiVideos(function (v) { v.pause(); }); clearTimeout(timer); return; }
+    if (visible && !document.hidden) playAll(); else multiVideos(function (v) { v.pause(); });
     if (shownIdx < 0 || !shown(tiles[idx])) show(idx);
     if (visible && !document.hidden && video.getAttribute('src') && !reduce) {
       var p = video.play(); if (p && p.catch) p.catch(function () {});
