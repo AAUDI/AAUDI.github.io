@@ -35,7 +35,8 @@
   // A clip's turn only starts once it plays, so a slow connection never skips a project.
   var pendingPlay = false, MAXWAIT = 15000;
 
-  function on() { return root.getAttribute('data-hero') === 'wall'; }
+  // The film-strip and mosaic hero designs (js/herovariants.js) replace the cycling frame.
+  function on() { return root.getAttribute('data-hero') === 'wall' && !/^(strip|mosaic)$/.test(root.getAttribute('data-herov') || ''); }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 
   function swapWord(text, mk) {
