@@ -49,11 +49,25 @@
     }, 200);
   }
 
+  // Each project can carry a playlist (data-media: [{v: video, s: still, p: focus, l: label}]);
+  // every visit to the project shows its next item, so the same clip does not come back each time.
+  function nextMedia(t) {
+    if (!t._media) {
+      var d = t.dataset;
+      try { t._media = JSON.parse(d.media || '[]'); } catch (e) { t._media = []; }
+      if (!t._media.length) t._media = [{ v: d.video, s: d.still, p: d.pos }];
+      t._next = 0;
+    }
+    var m = t._media[t._next % t._media.length];
+    t._next++;
+    return m;
+  }
+
   function show(i) {
     idx = (i + tiles.length) % tiles.length;
     if (!shown(tiles[idx])) idx = step(idx, 1);
     wall.classList.toggle('is-held', performance.now() < holdUntil);
-    var d = tiles[idx].dataset;
+    var d = tiles[idx].dataset, m = nextMedia(tiles[idx]);
     tiles.forEach(function (t, k) { t.setAttribute('aria-pressed', String(k === idx)); });
     // Where the tiles scroll sideways (phones), bring the playing one into view.
     var grid = tiles[idx].closest('.hw-grid');
@@ -64,19 +78,19 @@
     main.href = d.href;
     main.setAttribute('aria-label', 'Open the project: ' + d.title);
     camEl.textContent = 'CAM ' + pad(idx + 1) + ' · ' + d.cam;
-    titleEl.textContent = d.title;
-    still.src = d.still;
+    titleEl.textContent = d.title + (m.l ? ' · ' + m.l : '');
+    still.src = m.s;
     // Light crop: each clip fills the frame from its focus point (data-pos, default the centre).
-    main.style.setProperty('--hw-pos', d.pos || '50% 50%');
+    main.style.setProperty('--hw-pos', m.p || '50% 50%');
     wall.style.setProperty('--mk', d.mk);
     if (shownIdx !== idx) swapWord(d.word, d.mk);
     shownIdx = idx;
     video.classList.remove('is-on');
     video.pause();
-    pendingPlay = !!(d.video && !reduce);
+    pendingPlay = !!(m.v && !reduce);
     wall.classList.toggle('is-live', !pendingPlay);
-    if (d.video && !reduce) {
-      if (video.getAttribute('src') !== d.video) video.src = d.video;
+    if (m.v && !reduce) {
+      if (video.getAttribute('src') !== m.v) video.src = m.v;
       try { video.currentTime = 0; } catch (e) {}
       var p = video.play();
       if (p && p.catch) p.catch(function () {});
