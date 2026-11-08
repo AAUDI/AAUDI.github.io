@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-look="senior" data-palette="senior" data-layout="2" data-font="a" data-mono="plex" data-serif="off" data-hw="auto" data-scale="m" data-corners="soft" data-bg="plain" data-hero="wall" data-plist="rows" data-justify="on">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Ahmad Audi</title>
+  <meta name="description" content="All thirteen projects by Ahmad Audi: freelance computer vision work, the Oreyeon role, the Ph.D. and the postdoc, each with what it does, my part and one fact to check.">
+  <meta name="author" content="Ahmad Audi">
+  <meta name="theme-color" content="#0b0f13">
+
+  <!-- Social preview. If the site lives somewhere other than ahmadaudi.com, update og:image and og:url. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects — Ahmad Audi">
+  <meta property="og:description" content="Computer vision systems built end to end: cameras and data, classical and deep-learning algorithms, 3D, tracking, and the application around them, from servers to edge devices.">
+  <meta property="og:image" content="https://ahmadaudi.com/assets/og-cover.png">
+  <meta property="og:url" content="https://ahmadaudi.com/projects.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-variants.css">
+
+  <script>
+    // Restore the visitor's light/dark choice before first paint, so there is no flash.
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try { var t = localStorage.getItem('site-theme'); if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t); } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ahmad Audi",
+    "jobTitle": "Senior Computer Vision & Embedded Engineer",
+    "email": "mailto:audiahmad@hotmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Grenoble", "addressCountry": "FR" },
+    "alumniOf": ["Université Sorbonne Paris Nord (Paris 13)", "Polytech Paris-UPMC", "Université de Montpellier"],
+    "knowsAbout": ["Computer vision", "Embedded systems", "FPGA", "CUDA", "Infrared imaging", "High-performance computing"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader"><span id="top"></span>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Ahmad Audi, back to top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Ahmad Audi</span>
+      </a>
+
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="index.html#papers">Papers</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- All projects ------------------------------------------------------->
+    <section class="section work page-work" id="work" aria-labelledby="workTitle">
+      <div class="container">
+        <p class="label"><span class="label-n">14</span>Projects, in full</p>
+        <div class="section-head">
+          <h1 class="section-title reveal wipe" id="workTitle">Every <em>project</em>.</h1>
+          <a class="link-arrow reveal" href="index.html#work">Back to the selection <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="section-lede reveal">Each project says what it does, what my part was, and one fact you can check. Client work is shown without client names; the photos and results come from the projects themselves. Where a photo cannot show the mechanism, a 3D view or a small simulation drawn live in your browser stands in. Click a thumbnail to switch the view; click the image to see it full size.</p>
+        <ul class="jump reveal" aria-label="Jump to a project">
+          <li><a href="#p1">01 Sense</a></li><li><a href="#p2">02 Track</a></li><li><a href="#p3">03 Batch</a></li><li><a href="#p4">04 Detect</a></li><li><a href="#p5">05 Sharpen</a></li><li><a href="#p6">06 Map</a></li><li><a href="#p7">07 Pick</a></li><li><a href="#p8">08 Measure</a></li><li><a href="#p9">09 Inspect</a></li><li><a href="#p10">10 Monitor</a></li><li><a href="#p11">11 Count</a></li><li><a href="#p12">12 Stack</a></li><li><a href="#p13">13 Reconstruct</a></li><li><a href="#p14">14 Denoise</a></li>
+        </ul>
+        <div class="projects" data-stagger>
+          <article class="project reveal" id="p1" aria-labelledby="p1Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="img" data-full="assets/img/projects/mdu-ride-enters.jpg" data-short="The MDU on a patrol vehicle, entering the runway" data-cap="Oreyeon’s Mobile Detection Unit on a patrol vehicle at the start of an inspection route: it scans the pavement while the vehicle drives its usual patrol. Photo: Oreyeon."><img src="assets/img/projects/mdu-ride-enters.jpg" alt="A grey car with a roof-mounted sensor pod driving onto a runway" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/mdu-rig.jpg" data-short="The sensor pod on its roof rack" data-cap="The unit on the vehicle’s roof rack. Photo: Oreyeon."><img src="assets/img/projects/mdu-rig.jpg" alt="A white sensor pod on a metal frame bolted to a car roof, under a blue sky" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-fit="contain" data-full="assets/img/projects/mdu-pod.jpg" data-short="Sensor pod, head-on above the windscreen" data-cap="The sensor pod seen head-on, above the windscreen of the patrol vehicle. Photo: Oreyeon."><img src="assets/img/projects/mdu-pod.jpg" alt="Front view of a car with a white sensor pod raised above the windscreen" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/mdu-madrid.jpg" data-short="Madrid · patrol vehicle, A330 taking off" data-cap="An airport patrol vehicle carrying the unit while an A330 takes off, in Spain. Photo: Oreyeon."><img src="assets/img/projects/mdu-madrid.jpg" alt="A white pickup with a roof sensor pod on an apron, an airliner taking off behind it" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/mdu-detected.jpg" data-short="What it looks for · debris a few metres ahead" data-cap="Foreign object debris on a taxiway, the kind of object the unit flags, classifies, sizes and geolocates as the vehicle passes, down to objects under 2 cm. Photo: Oreyeon."><img src="assets/img/projects/mdu-detected.jpg" alt="A small metal fragment lying on sunlit taxiway pavement" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/mdu-pavement.jpg" data-short="Pavement damage · cracks and spalling" data-cap="Cracked and spalled runway pavement, the second family of defects the unit reports. Photo: Oreyeon."><img src="assets/img/projects/mdu-pavement.jpg" alt="Close view of cracked runway concrete with a spalled hole" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/mdu-fod-retrieval.jpg" data-short="Lyon · retrieving the debris" data-cap="A ground operator retrieving debris beside a Follow Me vehicle carrying the unit, in France. Photo: Oreyeon."><img src="assets/img/projects/mdu-fod-retrieval.jpg" alt="A worker in high-visibility clothing bending beside a yellow airport vehicle" loading="lazy"></figure>
+              <span class="media-tag" aria-hidden="true">01 · Sense</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: The MDU on a patrol vehicle, entering the runway"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">The MDU on a patrol vehicle, entering the runway</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: The sensor pod on its roof rack"><img src="assets/img/projects/mdu-rig-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">The sensor pod on its roof rack</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Sensor pod, head-on above the windscreen"><img src="assets/img/projects/mdu-pod-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Sensor pod, head-on above the windscreen</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: Madrid · patrol vehicle, A330 taking off"><img src="assets/img/projects/mdu-madrid-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Madrid · patrol vehicle, A330 taking off</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: What it looks for · debris a few metres ahead"><img src="assets/img/projects/mdu-detected-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">What it looks for · debris a few metres ahead</span></button></li>
+                <li><button class="shot" type="button" data-slide="5" aria-pressed="false" aria-label="Show: Pavement damage · cracks and spalling"><img src="assets/img/projects/mdu-pavement-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Pavement damage · cracks and spalling</span></button></li>
+                <li><button class="shot" type="button" data-slide="6" aria-pressed="false" aria-label="Show: Lyon · retrieving the debris"><img src="assets/img/projects/mdu-fod-retrieval-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Lyon · retrieving the debris</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Day job · Vision R&amp;D · 2023–now</p>
+              <h3 id="p1Title">Vision R&amp;D at Oreyeon: the Mobile Detection Unit, from sensors to edge SoC</h3>
+              <p>Oreyeon’s Mobile Detection Unit rides on an airport’s own patrol vehicle and inspects the pavement as it drives: foreign object debris and pavement damage are flagged, classified, sized and geolocated as the vehicle passes, down to objects under 2&nbsp;cm, by day and by night, with no internet connection. I joined in April 2023 as senior embedded computer-vision engineer and have led the vision work since September 2024, fully remote. New algorithms are researched in Matlab and Python, then written in C/C++ and deployed on AI-ready systems-on-chip with CUDA and TensorRT. Topics so far: integrating and fusing the unit’s sensors (cameras, IMU, GPS), online camera calibration, stitching, feature matching, object detection and tracking.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Sensor integration and fusion (cameras, IMU, GPS), algorithm design and the C/C++ implementation, test environments for validation and non-regression, validation in real conditions, and since 2024 the technical lead</dd></div>
+                <div><dt>Fact to check</dt><dd>The <a href="https://www.oreyeon.com/solutions/airports/mobile-detection-unit" target="_blank" rel="noopener">Mobile Detection Unit <span aria-hidden="true">↗</span></a>: debris and pavement damage, objects under 2&nbsp;cm, geolocated, EASA and FAA compliant</dd></div>
+                <div><dt>Photos</dt><dd>Oreyeon</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Python · Matlab</li><li>C/C++</li><li>CUDA · TensorRT</li><li>Sensor fusion</li><li>Calibration</li><li>Edge SoC</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p2" aria-labelledby="p2Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="video" data-short="Test flight · live tracking" data-cap="A real test flight seen through the drone’s own FPV camera, with the tracking module running live: the green box holds a small ground target through the turn over the fields. The module’s own readout during the flight: 29.9 fps true cadence, 96 % of frames kept."><video src="assets/video/fpv-flight.mp4" poster="assets/img/projects/fpv-flight-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video from a drone camera flying over green fields and a lake, a small green tracking box on a ground target"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Benchmark · DTB70 Car6, frozen lake" data-cap="The evaluation tool on DTB70 Car6, a public drone benchmark: yellow is the tracker, white is the ground truth. The readout prints the live frame rate (29.6 fps), the IoU per frame and the success rate so far; sequence AUC 0.73."><video src="assets/video/fpv-dtb70-car6.mp4" poster="assets/img/projects/fpv-dtb70-car6-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a car driving on a frozen lake seen from a drone, a yellow tracking box around it and evaluation text at the top"></video></figure>
+              <figure class="slide" data-kind="video" data-short="UAV123 · a boat a few pixels wide" data-cap="The hard regime: a boat a few pixels wide beside a lighthouse, tracked from one operator box with the detector switched off. 480 of 481 frames held at 30 fps."><video src="assets/video/fpv-uav123-boat.mp4" poster="assets/img/projects/fpv-uav123-boat-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: aerial view of a bay with a lighthouse and marina, a tiny magenta tracking box on a boat"></video></figure>
+              <figure class="slide" data-kind="video" data-fit="contain" data-short="UAV123 · tracking another drone" data-cap="Tracking a flying drone against sky and beach from a single box, detector off: 132 of 133 frames held at 30 fps."><video src="assets/video/fpv-uav123-uav.mp4" poster="assets/img/projects/fpv-uav123-uav-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a beach seen from a low camera, a small magenta tracking box on a drone in the sky"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Run · UAV123 car9" data-cap="A run of the tracker on the UAV123 car9 sequence (public aerial benchmark), recorded from the evaluation tool: the box holds through turns, shadows and the car shrinking and growing as the drone moves. The hybrid tracker re-anchors on key frames."><video src="assets/video/fpv-car9.mp4" poster="assets/img/projects/fpv-car9-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: aerial view of a palm-lined road, a green tracking box following a small car"></video></figure>
+              <span class="media-tag" aria-hidden="true">02 · Track</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-5">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Test flight · live tracking"><img src="assets/img/projects/fpv-flight-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Test flight · live tracking</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Benchmark · DTB70 Car6, frozen lake"><img src="assets/img/projects/fpv-dtb70-car6-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Benchmark · DTB70 Car6, frozen lake</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: UAV123 · a boat a few pixels wide"><img src="assets/img/projects/fpv-uav123-boat-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · a boat a few pixels wide</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: UAV123 · tracking another drone"><img src="assets/img/projects/fpv-uav123-uav-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · tracking another drone</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: Run · UAV123 car9"><img src="assets/img/projects/fpv-car9-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Run · UAV123 car9</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Embedded AI · Drones</p>
+              <h3 id="p2Title">Real-time visual tracking on a Jetson for FPV drones</h3>
+              <p>The operator picks one target in the video and the drone keeps it locked while both move. A state-of-the-art tracking model was adapted and optimised for NVIDIA Jetson, with a live-streaming path that holds a true 30 fps with low latency between camera and screen.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Model selection and evaluation on the UAV123, UAV123L and DB70 benchmarks, the Jetson optimisation, and the 30 fps streaming architecture</dd></div>
+                <div><dt>Fact to check</dt><dd>Up to 30 fps at 1280×740 on a Jetson Orin Nano Super</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Jetson Orin</li><li>TensorRT</li><li>C++</li><li>Python</li><li>UAV123</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p3" aria-labelledby="p3Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="compare" data-short="Four RTSP cameras · night vs day" data-cap="The four office cameras the pipeline reads over RTSP, as captured for the VLM evaluation: 24 March 2026 around 23:25 in infrared and 27 March at 11:03 in daylight. Each frame was described by every model, on the Jetson."><div class="compare" data-before="Night" data-after="Day" data-auto role="img" aria-label="Four camera views of an office in a grid, infrared on one side of a divider and daylight on the other"><img class="cmp-a" src="assets/img/projects/vlm-wall-night.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/vlm-wall-day.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/vlm-cam3-1320.jpg" data-short="cam-03 · Qwen3-VL-2B reads the book title and the time" data-cap="Prompt: “Describe everything you see in detail.” Qwen3-VL-2B (67 s) reads the book title “VALUE DESIGN” and the burnt-in timestamp 2026-03-27 13:20:53. Cosmos-Reason2-2B (44 s) is less detailed; SmolVLM2-500M (3 s) invents a balcony and a plastic bag."><img src="assets/img/projects/vlm-cam3-1320.jpg" alt="Surveillance view of a meeting room with a wooden table, mesh chairs and books on a side table" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/vlm-cam2-night.jpg" data-short="cam-02 at night · BLIP sees “a bathroom with a toilet”" data-cap="The PTZ camera in infrared at 23:29:47. BLIP (0.5 s): “a photo of a bathroom with a toilet and a mirror”. Cosmos-Reason2-2B: “a black-and-white still frame from an indoor surveillance camera, displaying an office environment”. Why the small captioners were dropped."><img src="assets/img/projects/vlm-cam2-night.jpg" alt="Black-and-white infrared view of a room with a striped wall, a door and two monitors" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/vlm-cam5-enter.jpg" data-short="cam-05 · “a person enters from the bottom left at 16:24:24”" data-cap="Action recognition on 10 frames over 30 s from the kitchen camera. Qwen3-VL-2B (63 s): “A person enters the frame from the bottom left at 16:24:24, and they are seen bending down … then moves out of the frame.” The person is only seen from above."><img src="assets/img/projects/vlm-cam5-enter.jpg" alt="Top-down view of a kitchen counter; a person seen from above enters at the bottom" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/vlm-cam4-day.jpg" data-short="cam-04 · Cosmos-Reason2-2B, the model kept for scene analysis" data-cap="Open office at 11:03. Cosmos-Reason2-2B: “Modern office space with desks in a row, each equipped with a computer monitor, keyboard, and mouse … Six gray ergonomic chairs with mesh backrests.” The report recommends it for periodic scene analysis."><img src="assets/img/projects/vlm-cam4-day.jpg" alt="High-angle view of an open office with rows of desks, monitors and mesh chairs" loading="lazy"></figure>
+              <span class="media-tag" aria-hidden="true">03 · Batch</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-5">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Four RTSP cameras · night vs day"><img src="assets/img/projects/vlm-wall-day-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Four RTSP cameras · night vs day</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: cam-03 · Qwen3-VL-2B reads the book title and the time"><img src="assets/img/projects/vlm-cam3-1320-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">cam-03 · Qwen3-VL-2B reads the book title and the time</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: cam-02 at night · BLIP sees “a bathroom with a toilet”"><img src="assets/img/projects/vlm-cam2-night-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">cam-02 at night · BLIP sees “a bathroom with a toilet”</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: cam-05 · “a person enters from the bottom left at 16:24:24”"><img src="assets/img/projects/vlm-cam5-enter-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">cam-05 · “a person enters from the bottom left at 16:24:24”</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: cam-04 · Cosmos-Reason2-2B, the model kept for scene analysis"><img src="assets/img/projects/vlm-cam4-day-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">cam-04 · Cosmos-Reason2-2B, the model kept for scene analysis</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Video analytics · Jetson</p>
+              <h3 id="p3Title">A multi-camera pipeline on DeepStream 7, now with a local vision-language model</h3>
+              <p>One generic pipeline takes RTSP cameras, batches them on the GPU of a Jetson Orin Nano Super, runs a TensorRT detector and emits events. Cameras can be added or removed and the model swapped while it runs; rolling recording, snapshots and a debug view sit beside the inference without slowing it. In 2026 the pipeline gained a scene-analysis stage: selected frames go to a small vision-language model served locally by llama.cpp, which answers short questions about the scene. Nine models were tried inside the 8&nbsp;GB budget; six would not even load until the switch to memory-mapped GGUF weights. The evaluation also showed the limits honestly: these models describe what they see, not why, and a staged theft on a kitchen camera read as ordinary work to all five models tested.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Architecture and implementation of the pipeline and its Python interface, the test suite and the feature-impact benchmark; then the VLM integration and its evaluation: memory, latency, prompt design, concurrency</dd></div>
+                <div><dt>Fact to check</dt><dd>4 streams: 87 detections/s at 25&nbsp;% CPU and 873&nbsp;MB RSS, recording under 9&nbsp;% of throughput. A yes/no question answers in 0.3&nbsp;s (SmolVLM2-500M) to 3&nbsp;s (Cosmos-Reason2-2B); a full description takes 50 to 60&nbsp;s</dd></div>
+                <div><dt>Model choice</dt><dd>SmolVLM2 for alerts (four cameras in parallel in about 3&nbsp;s), Cosmos-Reason2-2B for periodic scene analysis, Qwen3-VL-2B for detailed reports</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>DeepStream 7</li><li>GStreamer</li><li>TensorRT</li><li>llama.cpp</li><li>VLM</li><li>Python</li><li>RTSP</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p4" aria-labelledby="p4Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="video" data-short="Detection + tracking · a buck at dusk" data-cap="Handheld LWIR footage from the field at 8 pm on 27 August 2026, in the Ironbow palette, with a YOLO11 detector (generic COCO weights, any animal class) and BoT-SORT running on every frame: the buck keeps ID 1 while the camera moves, and the doe that walks in gets her own track."><video src="assets/video/wg-buck.mp4" poster="assets/img/projects/wg-buck-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: thermal footage of a buck with antlers standing in a field, in false colour"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Detection + tracking · two deer overlapping" data-cap="The same evening: a doe close to the camera with a buck standing behind her. Each deer gets its own box; during a fast pan the detector misses both for a third of a second and the doe comes back under a new ID, the kind of gap a dedicated thermal model is meant to close."><video src="assets/video/wg-doe.mp4" poster="assets/img/projects/wg-doe-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: thermal footage of a doe in the foreground and a buck behind her"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Hard case · the detector misses, the tracker holds" data-cap="8:30 pm: a deer half hidden in tall grass, too small for the generic detector to find. A CSRT tracker started on the deer in the first frame holds it through the clip, re-centred on the warmest blob nearby every few frames."><video src="assets/video/wg-brush.mp4" poster="assets/img/projects/wg-brush-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: thermal footage of a small deer partly hidden in tall grass"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Hard case · a buck at the brush edge, tracked" data-cap="8:30 pm: a buck walking along the edge of the brush, far from the camera. Same set-up: the detector finds nothing, the CSRT tracker keeps the box on the buck."><video src="assets/video/wg-edge.mp4" poster="assets/img/projects/wg-edge-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: thermal footage of a buck at the edge of brush and trees"></video></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/thermal-rig.jpg" data-short="Bench · LWIR core + Jetson" data-cap="The bench setup: the LWIR camera core on the left, the NVIDIA Jetson Orin Nano on the right, joined by the acquisition pipeline that feeds the detector."><img src="assets/img/projects/thermal-rig.jpg" alt="A small thermal camera module and a Jetson Orin Nano developer board on a wooden desk" loading="lazy"></figure>
+              <span class="media-tag" aria-hidden="true">04 · Detect</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-5">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Detection + tracking · a buck at dusk"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Detection + tracking · a buck at dusk</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Detection + tracking · two deer overlapping"><img src="assets/img/projects/wg-doe-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Detection + tracking · two deer overlapping</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Hard case · the detector misses, the tracker holds"><img src="assets/img/projects/wg-brush-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Hard case · the detector misses, the tracker holds</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: Hard case · a buck at the brush edge, tracked"><img src="assets/img/projects/wg-edge-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Hard case · a buck at the brush edge, tracked</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: Bench · LWIR core + Jetson"><img src="assets/img/projects/thermal-rig-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Bench · LWIR core + Jetson</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Thermal · Embedded AI</p>
+              <h3 id="p4Title">A thermal object detector, from camera choice to live alerts</h3>
+              <p>A real-time detector for outdoor thermal video, built from nothing: choosing the LWIR camera for the range, field of view, resolution and sensitivity required; the camera-to-processor acquisition pipeline; data collection and labelling guidelines; a custom YOLO model; and a multithreaded C++ inference pipeline with boxes and alert logic. The clips are handheld LWIR recordings from the field at dusk. On the close ones, a generic YOLO11 detector with BoT-SORT boxes and tracks the deer through the camera motion; on the hard cases, deer half hidden in tall grass or small at the edge of the brush, it finds nothing, which is why the project trains its own model, and a CSRT tracker started on the deer holds it instead.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>The whole chain, from the requirements to the embedded deployment</dd></div>
+                <div><dt>Status</dt><dd>Model trained on the collected set; live outdoor testing on an NVIDIA Jetson in progress</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>LWIR</li><li>YOLO</li><li>C++ multithreading</li><li>Jetson</li><li>Labelling</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p5" aria-labelledby="p5Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="img" data-full="assets/img/projects/sr-gimbal-1.jpg" data-short="Roof mount · side" data-cap="The gimbal camera on its roof bracket during fitting, seen from the side."><img src="assets/img/projects/sr-gimbal-1.jpg" alt="A black gimbal camera on a steel bracket bolted to a car roof in a workshop" loading="lazy"></figure>
+              <figure class="slide" data-kind="compare" data-short="Slider · native vs 2× on device" data-cap="Drag the divider between the native 256×320 frame (shown upscaled) and the 2× output of the network, 512×640: cyclists, kerbs and the bike rack sharpen without halos. Both panels from the project’s result figure."><div class="compare" data-before="Native" data-after="2× on device" data-auto role="img" aria-label="Thermal street scene with cyclists, soft on one side of a divider and sharp on the other"><img class="cmp-a" src="assets/img/projects/sr-native.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/sr-enhanced.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <figure class="slide" data-kind="img" data-fit="contain" data-full="assets/img/projects/sr-pair.jpg" data-short="Result · 256×320 → 512×640" data-cap="Result figure: the native 256×320 thermal frame on the left and the 2× output (512×640) on the right. Cyclists, kerbs and the bike rack sharpen without halos."><img src="assets/img/projects/sr-pair.jpg" alt="Thermal street scene with cyclists, shown at native resolution and super-resolved" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/sr-gimbal-2.jpg" data-short="Roof mount · front" data-cap="Same mount from the front: the gimbal sits on a cross-bar above the windscreen, where the processor beside it runs the super-resolution."><img src="assets/img/projects/sr-gimbal-2.jpg" alt="Front view of a car with a gimbal camera mounted on a roof bar" loading="lazy"></figure>
+              <figure class="slide" data-kind="canvas" data-cap=""><canvas class="preview-canvas" data-preview="sr3d" role="img" aria-label="3D animation: a car with a roof gimbal drives down a street while the gimbal pans; the inset shows the gimbal camera in thermal colours, native resolution on one side of a moving divider and the 2× version on the other."></canvas></figure>
+              <span class="media-tag" aria-hidden="true">05 · Sharpen</span>
+              <button class="media-replay" type="button" data-replay="sr3d" hidden>Replay</button>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-5">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Roof mount · side"><img src="assets/img/projects/sr-gimbal-1-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Roof mount · side</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Slider · native vs 2× on device"><img src="assets/img/projects/sr-enhanced-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Slider · native vs 2× on device</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Result · 256×320 → 512×640"><img src="assets/img/projects/sr-pair-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Result · 256×320 → 512×640</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: Roof mount · front"><img src="assets/img/projects/sr-gimbal-2-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Roof mount · front</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: 3D view · gimbal sweep, thermal inset"><canvas class="shot-canvas" data-preview-still="sr3d" data-still="0.5" aria-hidden="true"></canvas><span class="shot-badge" aria-hidden="true">3D</span><span class="shot-cap">3D view · gimbal sweep, thermal inset</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Thermal · Deep learning</p>
+              <h3 id="p5Title">On-device super-resolution for a vehicle-mounted thermal gimbal</h3>
+              <p>A gimbal camera on a car roof sees far, but the thermal sensor's pixels are coarse. A lightweight super-resolution network doubles the resolution of every frame on the processor next to the sensor, so the sharper image is available where it is needed, without sending video elsewhere.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>The super-resolution model and its on-device deployment</dd></div>
+                <div><dt>Fact to check</dt><dd>2× upscale, 256×320 → 512×640 per frame, on the device</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Super-resolution</li><li>PyTorch</li><li>Edge inference</li><li>LWIR</li><li>Gimbal</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p6" aria-labelledby="p6Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="compare" data-short="Slider · linear vs tone-mapped" data-cap="The same 16-bit thermal frame of a street: drag the divider between a plain linear mapping and the tone-mapped 8-bit output. Roof tiles, the hedge, the cars’ wheel arches and the road texture come back."><div class="compare" data-before="Linear" data-after="Tone-mapped" data-auto role="img" aria-label="Thermal image of a residential street, flat on one side of a divider and detailed on the other"><img class="cmp-a" src="assets/img/projects/hdr-linear.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/hdr-tonemapped.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <figure class="slide" data-kind="img" data-fit="contain" data-full="assets/img/projects/hdr-pair.jpg" data-short="Real frame · linear vs tone-mapped" data-cap="The same 16-bit thermal frame of a street: a plain linear mapping on the left, the tone-mapped 8-bit output on the right. Roof tiles, the hedge, the cars’ wheel arches and the road texture all come back."><img src="assets/img/projects/hdr-pair.jpg" alt="Side-by-side thermal image of a residential street, flat on the left and detailed on the right" loading="lazy"></figure>
+              <span class="media-tag" aria-hidden="true">06 · Map</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-2">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Slider · linear vs tone-mapped"><img src="assets/img/projects/hdr-tonemapped-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Slider · linear vs tone-mapped</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Real frame · linear vs tone-mapped"><img src="assets/img/projects/hdr-pair-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Real frame · linear vs tone-mapped</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Thermal · Image quality</p>
+              <h3 id="p6Title">HDR tone mapping for thermal video</h3>
+              <p>Thermal sensors produce 16-bit data; displays and most detectors take 8. A single hot object makes a linear mapping flatten everything else. This tone-mapping stage compresses the range locally, so sky, buildings and the hot engine all stay readable, while the image keeps a natural look rather than an over-processed one.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Algorithm design and the image-quality tuning on the client's footage</dd></div>
+                <div><dt>Fact to check</dt><dd>16-bit → 8-bit, detail preserved in both the coldest and hottest regions of the same frame</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Tone mapping</li><li>Python</li><li>C++</li><li>LWIR</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p7" aria-labelledby="p7Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="video" data-short="Closed loop · cover, clip, clip" data-cap="The closed loop in Isaac Sim: a UR10e assembles the enclosure (cover, then the two clips) with every target coming from perception only. Right: the camera image and the six perception stages for the current pick: RGB, depth, segmentation, pose, centroid and the fitted mesh. Bottom: the grasp and place points and the placement shift."><video src="assets/video/bin-sim-assembly.mp4" poster="assets/img/projects/bin-sim-assembly-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a simulated robot arm assembling parts on a table next to six small perception views"></video></figure>
+              <span class="media-tag" aria-hidden="true">07 · Pick</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Robotics · 3D vision</p>
+              <h3 id="p7Title">Vision-guided bin picking and assembly, without fixtures</h3>
+              <p>A robot picks sheet-metal parts from a bin and assembles an enclosure (body, cover, two clips) from camera input alone. The closed loop runs in Isaac Sim with a UR10e: a depth-only pick proposal, a four-channel YOLO segmentation on RGB-D, a depth shape fit that identifies the part, FoundationPose with the fitted mesh, tracking of what is already assembled, and cuRobo for the motion. Ground truth is used only to grade. The pipeline was then put through 17 appearance perturbations (low light, glare, haze, blur, sensor noise, white-balance drift and more): pick targets stayed sub-millimetre, the place side flipped by 180° on the symmetric cover in 11 cases until an anchoring rule fixed all of them, and perturbation-augmented training hardened the segmentation.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>The perception pipeline (segmentation, shape fit, pose, grasp points), the symmetry handling and the pick-order logic</dd></div>
+                <div><dt>Status</dt><dd>Works in simulation under all 17 perturbations, with a ZED&nbsp;2 depth-noise model in the loop; now moving to real scenes</dd></div>
+                <div><dt>Fact to check</dt><dd>Place flips 11/17 → 0 with anchoring; pose error 0.4 to 3&nbsp;mm over 9 picks × 18 conditions</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Isaac Sim</li><li>YOLO RGB-D</li><li>FoundationPose</li><li>cuRobo</li><li>6-DoF pose</li><li>Python</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p8" aria-labelledby="p8Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="video" data-short="Trade fair · live pick demo" data-cap="The trade-fair demo in November 2024: the 3D camera above the cell locates the blue parts on the moving tray and the robot picks them, cycle after cycle. Exhibitor branding in the background is blurred."><video src="assets/video/tof-demo.mp4" poster="assets/img/projects/tof-demo-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a demo cell with a blue industrial 3D camera above a small robot arm picking blue parts from a tray"></video></figure>
+              <figure class="slide" data-kind="embed" data-short="Product video · distance zones on the depth image" data-cap="The maker’s product video of the multiple-distance-measurement use case: zones are drawn on the camera’s depth image in the app, and the camera measures the distance in each one. Plays from YouTube, only when clicked."><button class="yt-facade" type="button" data-yt="JaSkm3bzHmI" aria-label="Play the product video on YouTube: multiple distance measurements with zones drawn on the depth image"><img src="https://i.ytimg.com/vi/JaSkm3bzHmI/maxresdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span><span class="yt-note" aria-hidden="true">plays from YouTube</span></button></figure>
+              <span class="media-tag" aria-hidden="true">08 · Measure</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-2">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Trade fair · live pick demo"><img src="assets/img/projects/tof-demo-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Trade fair · live pick demo</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Product video · distance zones on the depth image"><img src="https://i.ytimg.com/vi/JaSkm3bzHmI/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="shot-badge" aria-hidden="true">YouTube</span><span class="shot-cap">Product video · distance zones on the depth image</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Industrial · C++</p>
+              <h3 id="p8Title">Perception pipeline for an industrial 3D time-of-flight camera</h3>
+              <p>A smart camera that measures objects on a production line in 3D and gives a pass/fail answer by itself. The sensor is a 320&nbsp;×&nbsp;240 time-of-flight imager (850&nbsp;nm laser illumination, 0.3 to 7.5&nbsp;m, 37°&nbsp;×&nbsp;28° field of view, up to 20&nbsp;fps) and everything runs inside the camera: from the raw depth and amplitude images to a filtered point cloud, a taught background, segmentation of the objects in user-drawn regions, object statistics (length, width, height, orientation), contour alignment and pose. The embedded functions ship as three use cases, distance measurement in up to 64 regions, completeness checks of compartmentalised packaging and object sizing to about ±5&nbsp;mm, configured without code and exposed over IO-Link, digital outputs and a REST API. Two years of C++ on that pipeline, up to a product launched in November 2025.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Image-processing and computer-vision pipeline in C++ over two years: depth and amplitude handling, point clouds, segmentation and mask refinement, auto-thresholding, contour alignment scoring, object statistics</dd></div>
+                <div><dt>Fact to check</dt><dd>Public datasheet: 320&nbsp;×&nbsp;240 ToF, 300 to 7500&nbsp;mm, ±5&nbsp;mm, three embedded use cases (distance, completeness, sizing), REST API; demonstrated at a trade fair in November 2024, launched November 2025</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>C++</li><li>3D ToF</li><li>Point clouds</li><li>Segmentation</li><li>IO-Link</li><li>REST API</li><li>Embedded</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p9" aria-labelledby="p9Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="compare" data-short="Snapshot · raw frame vs detections" data-cap="A crop of the inspection software’s own snapshot, two of the line cameras: drag the divider between the raw frame and the detections. The one-pixel black-spot algorithm counts 54 spots on the second camera and none on the third."><div class="compare" data-before="Raw" data-after="Detections" data-auto role="img" aria-label="Two side-by-side line-camera views of a fabric web, with small cyan circles marking detected spots on one of them"><img class="cmp-a" src="assets/img/projects/fabric-raw-cmp.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/fabric-detect-cmp.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <figure class="slide" data-kind="img" data-fit="contain" data-full="assets/img/projects/fabric-detect.jpg" data-short="Snapshot · all four cameras" data-cap="The full snapshot across the four line cameras, with the algorithm, its two parameters and the timestamp in the corner. The blue lines are the web edges."><img src="assets/img/projects/fabric-detect.jpg" alt="Four side-by-side grey line-camera views of a fabric web with a dark info box in the top-left corner" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/fabric-camera.jpg" data-short="Line camera on the rail" data-cap="One of the line cameras on the inspection rail above the web."><img src="assets/img/projects/fabric-camera.jpg" alt="An industrial camera clamped under a perforated steel rail" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/fabric-web.jpg" data-short="The web · texture, not defects" data-cap="The material on the line: a textured non-woven web with faint marbling, the surface the detector has to read without mistaking texture for defects."><img src="assets/img/projects/fabric-web.jpg" alt="A wide white textured fabric web unrolling in front of a dark machine frame" loading="lazy"></figure>
+              <span class="media-tag" aria-hidden="true">09 · Inspect</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-4">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Snapshot · raw frame vs detections"><img src="assets/img/projects/fabric-detect-cmp-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Snapshot · raw frame vs detections</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Snapshot · all four cameras"><img src="assets/img/projects/fabric-detect-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Snapshot · all four cameras</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Line camera on the rail"><img src="assets/img/projects/fabric-camera-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Line camera on the rail</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: The web · texture, not defects"><img src="assets/img/projects/fabric-web-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">The web · texture, not defects</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Industrial · Deep learning</p>
+              <h3 id="p9Title">Defect detection on textured surfaces for a production line</h3>
+              <p>Wrinkles, yellowed areas, black spots and other irregularities on moving fabric. Classical image processing and statistics worked at first, but texture variability across materials, lighting and production settings made the parameters hard to maintain. The system moved to deep-learning detection and classification with real-time size estimation, running on edge hardware.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>The classical pipeline, then the deep-learning models and their edge deployment</dd></div>
+                <div><dt>Fact to check</dt><dd>Several texture types handled without per-material tuning; defect size estimated in real time</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>OpenCV</li><li>PyTorch</li><li>C++</li><li>Edge</li><li>Industrial cameras</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p10" aria-labelledby="p10Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="video" data-short="Feed push-up · night, camera 1" data-cap="A feed push-up event at night on camera 1, 126 frames over four minutes played as a time-lapse: the push-up vehicle is boxed in the alley, the movement test at the top flips to DETECTED while it drives, and the bunk label changes from high to low feed as the ration is pushed back. Annotated frames from the project’s event analysis."><video src="assets/video/barn-pushup-night.mp4" poster="assets/img/projects/barn-pushup-night-poster.jpg" muted loop playsinline preload="metadata" aria-label="Time-lapse inside a dairy barn at night: cows at the feed fence, a small vehicle boxed in the alley, labels at the top"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Feed push-up · day, camera 2" data-cap="The same event type in daylight on camera 2, 56 frames over three minutes: the vehicle enters from the far door, the movement test confirms the push-up, and the feed-quantity polygon follows the bunk."><video src="assets/video/barn-pushup-day.mp4" poster="assets/img/projects/barn-pushup-day-poster.jpg" muted loop playsinline preload="metadata" aria-label="Time-lapse inside a bright dairy barn: cows along the fence, a boxed vehicle at the far door"></video></figure>
+              <figure class="slide" data-kind="video" data-short="Feed delivery · empty to high" data-cap="A feed-quantity transition: the bunk labelled empty at 07:10, then high at 09:43 with the tractor boxed in the alley. Every cow at the fence carries a Cow Eating box; the transition frame is held longer."><video src="assets/video/barn-transition.mp4" poster="assets/img/projects/barn-transition-poster.jpg" muted loop playsinline preload="metadata" aria-label="Time-lapse of a barn alley: empty feed lane, then a full feed lane with a tractor at the far end"></video></figure>
+              <span class="media-tag" aria-hidden="true">10 · Monitor</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Feed push-up · night, camera 1"><img src="assets/img/projects/barn-pushup-night-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Feed push-up · night, camera 1</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Feed push-up · day, camera 2"><img src="assets/img/projects/barn-pushup-day-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Feed push-up · day, camera 2</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Feed delivery · empty to high"><img src="assets/img/projects/barn-transition-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Feed delivery · empty to high</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Agriculture · PyTorch</p>
+              <h3 id="p10Title">Feed-bunk monitoring in dairy barns from fixed cameras</h3>
+              <p>A proof of concept for a dairy-tech client: from fixed barn cameras, segment the feed bunk and classify it as full, low or empty; detect and count the cows feeding; and recognise feed delivery and feed push-up by the two tractors. A time-series view per camera smooths the status between deliveries, so each transition happens once.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Annotation guidelines, the PyTorch segmentation, classification and detection models, training, metrics, and the report</dd></div>
+                <div><dt>Fact to check</dt><dd>Delivered as a repository with model, code and metrics, evaluated across three camera angles for generalisation</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>PyTorch</li><li>Segmentation</li><li>Faster R-CNN</li><li>CVAT</li><li>Time series</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p11" aria-labelledby="p11Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="video" data-fit="contain" data-short="Live feed · IDs and the counting line" data-cap="The live view on a shopping-mall camera, recorded while the C++ pipeline ran: every person carries a track ID, and the green line is where they are counted in or out. Only the video feed is shown; the surrounding tooling is cropped away."><video src="assets/video/count-feed.mp4" poster="assets/img/projects/count-feed-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: overhead view of a mall concourse, numbered boxes follow the people and a green counting line crosses the floor"></video></figure>
+              <span class="media-tag" aria-hidden="true">11 · Count</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Freelance · Retail · C++</p>
+              <h3 id="p11Title">Real-time people counting on a CPU</h3>
+              <p>Counts people in stores, malls and open areas in real time. YOLOv5 detection and ByteTrack tracking, written in C++ on the NCNN library, so it runs on ordinary CPUs and small boards with no GPU. Tracking means each person is counted once, even when a detection is briefly weak.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>The whole pipeline in C++: detection, tracking, counting logic and the live display</dd></div>
+                <div><dt>Fact to check</dt><dd>YOLOv5 + ByteTrack in C++ on NCNN, CPU only</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>YOLOv5</li><li>ByteTrack</li><li>NCNN</li><li>C++</li><li>CPU</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p12" aria-labelledby="p12Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="canvas" data-cap=""><canvas class="preview-canvas" data-preview="stackcam" role="img" aria-label="Animation: the IGN camera under its UAV; ten short exposures at 30 fps while the gyros log the motion; FAST corners found in the FPGA, the first one per block of a 10 by 10 grid; each corner predicted in image 10 from the gyros and matched by ZNCC on the two ARM cores; least squares for the rotation, outliers dropped; every image resampled into image 1 line by line in the FPGA and stacked; then the plain average against the stack."></canvas></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/phd-uav.jpg" data-short="The test UAV · Copter 1B (Wikhydro)" data-cap="The UAV of the test surveys: a Copter 1B helicopter from Wikhydro with the IGN camera mounted underneath, looking down. Photo from Audi et al., Sensors 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-uav.jpg" alt="A small helicopter drone on grass with a camera mounted under its frame" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/phd-camera.jpg" data-short="The IGN camera" data-cap="The ultra-light IGN photogrammetric camera that runs the algorithm: a 20 MP CMOS sensor, a six-axis IMU and a Xilinx Zynq 7030 inside. Photo from Audi et al., Sensors 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-camera.jpg" alt="A small silver camera with a lens, held in a hand" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-fit="contain" data-full="assets/img/projects/phd-stacked-pair.jpg" data-short="Result · averaged vs stacked" data-cap="The result on a real survey: ten short exposures simply averaged (left) smear the road marking; the same ten aligned with the gyroscopes and stacked inside the camera (right) give one sharp, low-noise image. Figure from Audi et al., Sensors 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-stacked-pair.jpg" alt="Two aerial crops of a road marking: blurred on the left, sharp on the right" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/phd-sensor-soc.jpg" data-short="Sensor, IMU and SoC" data-cap="The 20 MP CMV20000 CMOS sensor with the six-axis IMU centred behind it, and the SoC/FPGA board it feeds. Figure from Audi et al., ISPRS Archives 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-sensor-soc.jpg" alt="Rendering of a large image sensor module next to a circuit board with a Zynq chip" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/phd-board.jpg" data-short="Inside the camera · Zynq 7030 board" data-cap="The camera opened: the IGN board with the Xilinx Zynq 7030 system-on-chip (two ARM cores plus the FPGA fabric) that runs the stacking. Figure from Audi et al., ISPRS Archives 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-board.jpg" alt="An open camera body showing a green circuit board with a Zynq chip, held in a hand" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/phd-search-areas.jpg" data-short="IMU-predicted search areas" data-cap="What the gyroscopes buy: for each feature found in the first image, the IMU predicts where it lands in the tenth, so matching only searches an 11×11 window (red); the green points are the matches. Figure from Audi et al., Sensors 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-search-areas.jpg" alt="Aerial image with hundreds of small red search boxes and green matched points, with an inset zoom" loading="lazy"></figure>
+              <figure class="slide" data-kind="img" data-full="assets/img/projects/phd-imu-prediction.jpg" data-short="Feature tracks predicted by the IMU" data-cap="The positions of the first-image features predicted by the IMU across all ten images: the tracks follow the camera’s motion, which is why the matching search can be so small. Figure from Audi et al., Sensors 2017 (CC BY 4.0)."><img src="assets/img/projects/phd-imu-prediction.jpg" alt="Aerial image covered in short yellow tracks showing predicted feature motion" loading="lazy"></figure>
+              <span class="media-tag" aria-hidden="true">12 · Stack</span>
+              <button class="media-replay" type="button" data-replay="stackcam" hidden>Replay</button>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: How it works · camera, FPGA, IMU, algorithm"><canvas class="shot-canvas" data-preview-still="stackcam" data-still="0.5" aria-hidden="true"></canvas><span class="shot-badge" aria-hidden="true">LIVE</span><span class="shot-cap">How it works · camera, FPGA, IMU, algorithm</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: The test UAV · Copter 1B (Wikhydro)"><img src="assets/img/projects/phd-uav-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">The test UAV · Copter 1B (Wikhydro)</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: The IGN camera"><img src="assets/img/projects/phd-camera-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">The IGN camera</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: Result · averaged vs stacked"><img src="assets/img/projects/phd-stacked-pair-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Result · averaged vs stacked</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: Sensor, IMU and SoC"><img src="assets/img/projects/phd-sensor-soc-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Sensor, IMU and SoC</span></button></li>
+                <li><button class="shot" type="button" data-slide="5" aria-pressed="false" aria-label="Show: Inside the camera · Zynq 7030 board"><img src="assets/img/projects/phd-board-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Inside the camera · Zynq 7030 board</span></button></li>
+                <li><button class="shot" type="button" data-slide="6" aria-pressed="false" aria-label="Show: IMU-predicted search areas"><img src="assets/img/projects/phd-search-areas-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">IMU-predicted search areas</span></button></li>
+                <li><button class="shot" type="button" data-slide="7" aria-pressed="false" aria-label="Show: Feature tracks predicted by the IMU"><img src="assets/img/projects/phd-imu-prediction-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-cap">Feature tracks predicted by the IMU</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Embedded vision · FPGA · Ph.D.</p>
+              <h3 id="p12Title">IMU-aided image stacking in a drone camera</h3>
+              <p>A drone camera that needs a long exposure takes ten short ones at 30 fps instead. FAST corners are found in the first frame, one per block of a 10 × 10 grid; the gyroscopes predict where each one lands in the others, so ZNCC matching only searches an 11 × 11 window; least squares gives the rotation (or a homography) between frames, with outliers dropped; every frame is resampled into the first one’s geometry, exactly at block corners and bilinearly inside, and stacked into one sharp, low-noise image, inside the camera. The surveys were flown on a Copter 1B helicopter UAV from Wikhydro.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Algorithm, FPGA design in VHDL and HLS, and the ARM software, on a Xilinx Zynq 7030 behind a 20 MP CMOS sensor</dd></div>
+                <div><dt>Fact to check</dt><dd>Feature detection 1.64 s → 0.02 s and resampling 36.9 s → 0.41 s once moved into the FPGA. <a href="https://doi.org/10.3390/s17071646" target="_blank" rel="noopener">MDPI Sensors 2017 <span aria-hidden="true">↗</span></a> · <a href="https://doi.org/10.5194/isprs-archives-XLII-2-W6-13-2017" target="_blank" rel="noopener">UAV-g 2017 <span aria-hidden="true">↗</span></a></dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Zynq FPGA + ARM</li><li>VHDL</li><li>HLS</li><li>C/C++</li><li>IMU</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p13" aria-labelledby="p13Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="canvas" data-cap=""><canvas class="preview-canvas" data-preview="tomo3d" role="img" aria-label="Animation in 3D: an X-ray source and a flat-panel detector take 72 projections of a cast part as it turns; each projection is weighted and ramp-filtered row by row; the views are back-projected into a 44 by 44 by 32 voxel grid where the part, its pores and a crack appear in a cut-away view; the voxels are then coloured by the threads that compute them, OpenMP threads on a CPU and CUDA threads on a GPU."></canvas></figure>
+              <figure class="slide" data-kind="canvas" data-cap=""><canvas class="preview-canvas" data-preview="tomo" role="img" aria-label="Animation: an X-ray source and detector rotate around a test object while its cross-section is rebuilt by filtered back-projection, angle by angle."></canvas></figure>
+              <span class="media-tag" aria-hidden="true">13 · Reconstruct</span>
+              <button class="media-replay" type="button" data-replay="tomo" hidden>Replay</button>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots shots-2">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: 3D · FDK and the Kokkos loop"><canvas class="shot-canvas" data-preview-still="tomo3d" data-still="0.85" aria-hidden="true"></canvas><span class="shot-badge" aria-hidden="true">3D</span><span class="shot-cap">3D · FDK and the Kokkos loop</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: 2D · one slice, angle by angle"><canvas class="shot-canvas" data-preview-still="tomo" data-still="0.9" aria-hidden="true"></canvas><span class="shot-badge" aria-hidden="true">LIVE</span><span class="shot-cap">2D · one slice, angle by angle</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">HPC · GPU · Postdoc</p>
+              <h3 id="p13Title">Tomographic reconstruction on CPUs and GPUs with Kokkos</h3>
+              <p>Two imaging algorithms from CEA’s CIVA software for non-destructive testing: X-ray 3D reconstruction (FDK) and ultrasound imaging (TFM), used to find and size defects in parts. I rewrote them in C++ with Kokkos so a single source runs fast on both multicore CPUs and GPUs. In FDK, every projection is weighted and ramp-filtered row by row, then back-projected into the voxel grid; each voxel only reads the filtered projections, so the back-projection is one parallel loop over the voxels that Kokkos maps to OpenMP threads on a CPU and to CUDA threads on a GPU. The animation shows the method on a small cast part with pores and a crack.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Porting and optimising both algorithms in C++/Kokkos, and evaluating the library across CPU and GPU architectures</dd></div>
+                <div><dt>Fact to check</dt><dd>Presented at ParCo 2019, Prague</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>C++</li><li>Kokkos</li><li>CUDA</li><li>OpenMP</li><li>FDK · TFM</li></ul>
+            </div>
+          </article>
+
+          <article class="project reveal" id="p14" aria-labelledby="p14Title">
+            <div class="project-media slides" data-kind="img">
+              <figure class="slide is-active" data-kind="compare" data-short="Person · noisy vs denoised" data-cap="A thermal frame of a person in front of a hedge: drag the divider between the raw sensor output and the denoised frame. The face and the folds of the shirt stay sharp while the grain and the stripes go. Figure from Lynred’s SPIE 2025 paper."><div class="compare" data-before="Noisy" data-after="Denoised" data-auto role="img" aria-label="Thermal image of a person standing in front of a hedge, grainy on one side of a divider and clean on the other"><img class="cmp-a" src="assets/img/projects/ldn-person-noisy.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/ldn-person-clean.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <figure class="slide" data-kind="compare" data-short="Car · noisy vs denoised" data-cap="The rear of a car: the number plate and the badge survive the denoising, the speckle on the body does not. Figure from Lynred’s SPIE 2025 paper."><div class="compare" data-before="Noisy" data-after="Denoised" data-auto role="img" aria-label="Thermal image of the rear of a car, grainy on one side of a divider and clean on the other"><img class="cmp-a" src="assets/img/projects/ldn-car-noisy.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/ldn-car-clean.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <figure class="slide" data-kind="compare" data-short="Office · noisy vs denoised" data-cap="An office scene with a screen and warm objects on a desk: edges and small warm details are kept, the flat surfaces come out clean. Figure from Lynred’s SPIE 2025 paper."><div class="compare" data-before="Noisy" data-after="Denoised" data-auto role="img" aria-label="Thermal image of a desk with a screen and small warm objects, grainy on one side of a divider and clean on the other"><img class="cmp-a" src="assets/img/projects/ldn-screen-noisy.jpg" alt="" loading="lazy"><img class="cmp-b" src="assets/img/projects/ldn-screen-clean.jpg" alt="" loading="lazy"><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Reveal the processed image"></div></figure>
+              <span class="media-tag" aria-hidden="true">14 · Denoise</span>
+              <button class="media-open" type="button" aria-label="Open the image full size">⤢</button>
+              <div class="slide-cap" aria-hidden="true"></div>
+            </div>
+            <div class="project-extra">
+              <p class="extra-label">From the project · pick a view</p>
+              <ul class="shots">
+                <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: Person · noisy vs denoised"><img src="assets/img/projects/ldn-person-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Person · noisy vs denoised</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Car · noisy vs denoised"><img src="assets/img/projects/ldn-car-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Car · noisy vs denoised</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: Office · noisy vs denoised"><img src="assets/img/projects/ldn-screen-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">A/B</span><span class="shot-cap">Office · noisy vs denoised</span></button></li>
+              </ul>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Lynred · 2019–2023 · Infrared · Embedded AI</p>
+              <h3 id="p14Title">An AI denoiser for thermal cameras, small enough to live in the camera</h3>
+              <p>Raw thermal video is grainy and striped: temporal noise, fixed-pattern residue, soft edges. On Lynred’s image-signal-processing team I worked on the embedded AI denoising model that became Lynred Denoiser Net (LDN): a compact network that cleans each frame on the camera’s own processor, keeping edges, faint warm details and the natural look of the scene. Lynred presented it at SPIE Defense + Commercial Sensing 2025 alongside its toolbox.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>Algorithm and model development in Python on Lynred’s infrared data, and the port of the retained solutions to the product’s constrained chips, as part of the ISP R&amp;D team</dd></div>
+                <div><dt>Fact to check</dt><dd>Lynred Denoiser Net (LDN), presented by Lynred at SPIE DCS 2025, <a href="https://spie.org/Publications/Proceedings/Volume/13469" target="_blank" rel="noopener">Proc. SPIE 13469 <span aria-hidden="true">↗</span></a></dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>LWIR</li><li>Denoising</li><li>CNN</li><li>Python</li><li>Embedded port</li></ul>
+            </div>
+          </article>
+
+          <!--
+            Template for a new project card. Copy it above this comment and fill it in.
+            For a static image instead of an animation, swap the <canvas> for:
+              <img src="assets/img/projects/NAME.jpg" alt="WHAT THE IMAGE SHOWS" loading="lazy">
+            and remove the Replay button.
+
+          <article class="project reveal" aria-labelledby="pNTitle">
+            <div class="project-media">
+              <img src="assets/img/projects/NAME.jpg" alt="" loading="lazy">
+              <span class="media-tag" aria-hidden="true">03 · Verb</span>
+            </div>
+            <div class="project-body">
+              <p class="project-tags">Category · Category</p>
+              <h3 id="pNTitle">Project title</h3>
+              <p>What it does, in one or two plain sentences.</p>
+              <dl class="project-facts">
+                <div><dt>My part</dt><dd>What you did</dd></div>
+                <div><dt>Fact to check</dt><dd>One number or result someone could verify</dd></div>
+              </dl>
+              <ul class="chips chips-sm"><li>Tech</li><li>Tech</li></ul>
+            </div>
+          </article>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact strip ------------------------------------------------------>
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="container">
+        <div class="contact-card contact-card-sm reveal">
+          <p class="label"><span class="label-n">→</span>Contact</p>
+          <h2 class="contact-title" id="contactTitle">Have one <em>like these</em>?</h2>
+          <p class="contact-lede">Based in Grenoble, France. Open to freelance projects and R&amp;D collaborations in computer vision, embedded systems and GPU computing.</p>
+          <a class="contact-email" href="mailto:audiahmad@hotmail.com">audiahmad@hotmail.com <span aria-hidden="true">→</span></a>
+          <ul class="contact-links">
+            <li><a href="mailto:audiahmad@hotmail.com">Email</a></li>
+            <li><a href="index.html#log">Experience →</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <ul class="footer-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#papers">Papers</a></li>
+        <li><a href="index.html#log">Experience</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <p>© <span id="year">2026</span> Ahmad Audi · Grenoble, France</p>
+      <p class="footer-note">The 3D views and simulations are drawn in your browser. No client footage is used.</p>
+      <a href="#top" class="footer-top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Project image">
+    <span class="lb-count" aria-hidden="true"></span>
+    <button class="lb-btn lb-close" type="button" aria-label="Close">×</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous image">‹</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <video id="lbVid" controls playsinline muted loop hidden></video>
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Next image">›</button>
+  </dialog>
+
+  <script src="js/main.js"></script>
+  <script src="js/titles.js"></script>
+  <script src="js/work.js"></script>
+  <script src="js/sims.js"></script>
+  <script src="js/previews.js"></script>
+  <script src="js/slides.js"></script>
+  <script src="js/compare.js"></script>
+</body>
+</html>
