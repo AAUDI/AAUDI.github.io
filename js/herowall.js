@@ -86,7 +86,8 @@
       }
       el.style.objectPosition = m.p || '50% 50%';
       c.appendChild(el);
-      if (m.l) { var lab = document.createElement('span'); lab.className = 'hm-label'; lab.textContent = m.l; c.appendChild(lab); }
+      // lp: "tl" puts the label top-left, for clips that carry their own caption top-right.
+      if (m.l) { var lab = document.createElement('span'); lab.className = 'hm-label' + (m.lp === 'tl' ? ' tl' : ''); lab.textContent = m.l; c.appendChild(lab); }
       g.appendChild(c);
     });
     return g;
