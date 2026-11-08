@@ -1941,3 +1941,10 @@ html[data-look="senior"] .hw-main :is(img, video) { object-fit: cover; object-po
   html[data-look="senior"] .hero-wall:not(.is-live):not(.is-held) .hw-grid button[aria-pressed="true"]::after { transform: scaleY(0); }
 }
 @keyframes hw-progress-y { to { transform: scaleY(1); } }
+/* Senior: five figures under the name. */
+html[data-look="senior"] .hero-stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 1000px) {
+  html[data-look="senior"] .hero-stats { grid-template-columns: 1fr 1fr; }
+  html[data-look="senior"] .hero-stats li:nth-child(odd) { border-left: 0; padding-left: 0; }
+  html[data-look="senior"] .hero-stats li:nth-child(even) { border-left: 1px solid var(--line); padding-left: 20px; }
+}
