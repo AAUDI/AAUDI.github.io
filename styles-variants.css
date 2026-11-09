@@ -1948,3 +1948,59 @@ html[data-look="senior"] .hero-stats { grid-template-columns: repeat(5, minmax(0
   html[data-look="senior"] .hero-stats li:nth-child(odd) { border-left: 0; padding-left: 0; }
   html[data-look="senior"] .hero-stats li:nth-child(even) { border-left: 1px solid var(--line); padding-left: 20px; }
 }
+
+/* ---- Senior polish (2026-11-09): violet used more, hero polish, Services line drawings ---- */
+html[data-look="senior"] .label { color: var(--accent); }
+html[data-look="senior"] .offer-n { color: var(--accent); }
+html[data-look="senior"] .brand-mark::after { background: var(--accent); }
+html[data-look="senior"] .live-dot { background: var(--accent); animation-name: pulse-accent; }
+@keyframes pulse-accent {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  70% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+html[data-look="senior"] .pcard:hover h3 { color: var(--accent-hot); }
+/* Hero: the playing project in violet, its progress line too; softer grid. */
+html[data-look="senior"] .hw-grid button::after { background: var(--accent); }
+html[data-look="senior"]:not(#_) .hw-grid button[aria-pressed="true"] { color: var(--accent-hot); }
+html[data-look="senior"] .hw-multi { gap: 4px; }
+html[data-look="senior"] .hm-tile { border-radius: 6px; }
+@media (min-width: 1001px) { html[data-look="senior"] .hw-grid button { font-size: 14.5px; } }
+
+/* Services: one line drawing per card, drawn when the card scrolls into view (main.js adds .in). */
+.offer-art { display: block; width: 100%; height: auto; margin: 2px 0 22px; overflow: visible; }
+.offer-art text { font-family: var(--f-body); font-size: 9.5px; fill: var(--fg-faint); }
+.offer-art .a-chip { fill: var(--accent); font-size: 11px; font-weight: 600; }
+.offer-art :is(.a-l, .a-f, .a-x, .a-miss, .a-budget) { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.offer-art .a-l { stroke: var(--fg-muted); stroke-width: 1.3; }
+.offer-art .a-f { stroke: color-mix(in srgb, var(--fg) 24%, transparent); stroke-width: 1.1; }
+.offer-art .a-x { stroke: var(--accent); stroke-width: 1.5; }
+.offer-art .a-miss { stroke: var(--fg-faint); stroke-width: 1.4; }
+.offer-art .a-dash, .offer-art .a-budget { stroke-dasharray: 2 3; }
+.offer-art .a-budget { stroke: var(--fg-muted); stroke-width: 1; }
+.offer-art :is(.a-dot, .a-run, .a-bar) { fill: var(--accent); }
+.offer-art .a-fov { fill: var(--accent-soft); }
+.offer-art .a-node { fill: var(--bg-raise); stroke: var(--fg-muted); stroke-width: 1.2; }
+.offer-art .a-px { fill: none; stroke: color-mix(in srgb, var(--fg) 16%, transparent); stroke-width: 1; }
+.offer-art .a-px.on { fill: var(--accent); stroke: none; }
+.offer-art .a-track { fill: color-mix(in srgb, var(--fg) 8%, transparent); }
+.offer .offer-art .a-draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s cubic-bezier(0.45, 0, 0.2, 1) var(--d, 0s); }
+.offer.in .offer-art .a-draw { stroke-dashoffset: 0; }
+.offer .offer-art :is(.a-pop, .a-fov, .a-px.on) { opacity: 0; transition: opacity 0.6s ease var(--d, 0.6s); }
+.offer.in .offer-art :is(.a-pop, .a-fov, .a-px.on) { opacity: 1; }
+.offer .offer-art .a-bar { transform: scaleX(0); transform-box: fill-box; transform-origin: left center; transition: transform 1.1s cubic-bezier(0.3, 0, 0.2, 1) var(--d, 1s); }
+.offer.in .offer-art .a-bar { transform: scaleX(1); }
+.offer .offer-art .a-run { opacity: 0; }
+.offer.in .offer-art .a-run { animation: a-run 2.8s ease-in-out 1.8s infinite; }
+@keyframes a-run {
+  0% { transform: translateX(86px); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(222px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offer .offer-art .a-draw { stroke-dasharray: none; stroke-dashoffset: 0; transition: none; }
+  .offer .offer-art :is(.a-pop, .a-fov, .a-px.on) { opacity: 1; transition: none; }
+  .offer .offer-art .a-bar { transform: none; transition: none; }
+  .offer.in .offer-art .a-run { animation: none; }
+}
