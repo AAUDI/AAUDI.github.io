@@ -14,9 +14,7 @@
   var main = document.getElementById('hwMain');
   var still = document.getElementById('hwStill');
   var video = document.getElementById('hwVideo');
-  var camEl = document.getElementById('hwCam');
   var titleEl = document.getElementById('hwTitle');
-  var timeEl = document.getElementById('hwTime');
   var resultEl = document.getElementById('hwResult');
   var openEl = document.getElementById('hwOpen');
   var word = document.getElementById('hsWord');
@@ -33,12 +31,11 @@
     for (var k = 1; k <= tiles.length; k++) { var j = ((from + dir * k) % tiles.length + tiles.length) % tiles.length; if (shown(tiles[j])) return j; }
     return from;
   }
-  var idx = 0, timer = 0, visible = true, holdUntil = 0, t0 = performance.now(), shownIdx = -1;
+  var idx = 0, timer = 0, visible = true, holdUntil = 0, shownIdx = -1;
   // A clip's turn only starts once it plays, so a slow connection never skips a project.
   var pendingPlay = false, MAXWAIT = 15000;
 
   function on() { return root.getAttribute('data-hero') === 'wall'; }
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
 
   function swapWord(text, mk) {
     if (!word) return;
@@ -118,7 +115,6 @@
     main.href = d.href;
     if (openEl) openEl.href = d.href;
     main.setAttribute('aria-label', 'Open the project: ' + d.title);
-    camEl.textContent = 'CAM ' + pad(idx + 1) + ' · ' + d.cam;
     wall.style.setProperty('--mk', d.mk);
     // What the project achieved, under its name.
     if (resultEl) resultEl.textContent = d.result || '';
@@ -179,12 +175,6 @@
   tiles.forEach(function (b, k) {
     b.addEventListener('click', function () { holdUntil = performance.now() + HOLD; show(k); schedule(); });
   });
-
-  setInterval(function () {
-    if (!on() || !visible || document.hidden) return;
-    var s = Math.floor((performance.now() - t0) / 1000);
-    timeEl.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60);
-  }, 1000);
 
   function resume() {
     if (!on()) { video.pause(); multiVideos(function (v) { v.pause(); }); clearTimeout(timer); return; }
