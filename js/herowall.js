@@ -141,7 +141,7 @@
     turn = dwell();
     wall.style.setProperty('--hw-dwell-s', (turn / 1000) + 's');
     still.style.visibility = '';
-    titleEl.textContent = d.title + (m.l ? ' · ' + m.l : '');
+    titleEl.textContent = d.title;
     still.src = m.s;
     // Light crop: each clip fills the frame from its focus point (data-pos, default the centre).
     main.style.setProperty('--hw-pos', m.p || '50% 50%');

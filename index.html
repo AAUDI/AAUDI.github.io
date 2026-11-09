@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ahmad Audi — Computer vision, end to end</title>
-  <meta name="description" content="Ahmad Audi, Ph.D. Senior computer vision AI engineer and researcher, university lecturer, independent freelancer, based in Grenoble. I build vision systems end to end: camera choice and data capture, the algorithms and models, and the application that runs them, on a server or on an edge device.">
+  <meta name="description" content="Ahmad Audi, Ph.D.: senior lead computer vision engineer at Oreyeon, researcher, university lecturer and independent freelancer, based in Grenoble. I build vision systems end to end: camera choice and data capture, the algorithms and models, and the application that runs them, on a server or on an edge device.">
   <meta name="author" content="Ahmad Audi">
   <meta name="theme-color" content="#0b0f13">
 
@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=1794236129">
-  <link rel="stylesheet" href="styles-variants.css?v=1794236129">
+  <link rel="stylesheet" href="styles.css?v=1794250341">
+  <link rel="stylesheet" href="styles-variants.css?v=1794250341">
 
   <script>
     // Restore the visitor's light/dark choice before first paint, so there is no flash.
@@ -37,7 +37,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Ahmad Audi",
-    "jobTitle": "Senior Computer Vision AI Engineer and Researcher",
+    "jobTitle": "Senior Lead Computer Vision Engineer",
     "worksFor": [{ "@type": "Organization", "name": "Oreyeon" }, { "@type": "CollegeOrUniversity", "name": "Saint Joseph University of Beirut" }, { "@type": "CollegeOrUniversity", "name": "Lebanese American University" }],
     "email": "mailto:audiahmad@hotmail.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Grenoble", "addressCountry": "FR" },
@@ -85,7 +85,7 @@
         <canvas id="heroCanvas" aria-hidden="true"></canvas>
       </div>
       <!-- Camera wall: one hero per project (used by looks with data-hero="wall"; js/herowall.js). -->
-      <div class="hero-wall" id="heroWall" aria-label="Thirteen projects, one camera each">
+      <div class="hero-wall" id="heroWall" aria-label="Nine projects, each with its own footage">
         <a class="hw-main" id="hwMain" href="projects.html#p2" aria-label="Open the project: Real-time tracking on an FPV drone">
           <img class="hw-still" id="hwStill" src="assets/img/projects/fpv-flight-poster.jpg" alt="" loading="lazy">
           <video class="hw-video" id="hwVideo" muted loop playsinline preload="none" aria-hidden="true"></video>
@@ -96,16 +96,16 @@
         </div>
         <ol class="hw-grid" id="hwGrid">
             <li><button type="button" data-word="drones" data-media='[{"v": "assets/video/hero/fpv-flight.mp4", "s": "assets/img/projects/fpv-flight-poster.jpg", "l": "test flight"}, {"v": "assets/video/hero/fpv-dtb70-car6.mp4", "s": "assets/img/projects/fpv-dtb70-car6-poster.jpg", "l": "DTB70 benchmark, a car"}, {"v": "assets/video/hero/fpv-uav123-boat.mp4", "s": "assets/img/projects/fpv-uav123-boat-poster.jpg", "l": "UAV123 benchmark, a tiny boat"}, {"v": "assets/video/hero/fpv-uav123-uav.mp4", "s": "assets/img/projects/fpv-uav123-uav-poster.jpg", "l": "UAV123 benchmark, a drone"}]' data-ar="2.025" data-short="FPV drone tracking" data-href="projects.html#p2" data-result="30 fps at 1280×740 · Jetson Orin Nano Super" data-cam="UAV · RGB · 30 fps" data-title="Real-time tracking on an FPV drone" data-video="assets/video/hero/fpv-flight.mp4" data-still="assets/img/projects/fpv-flight-poster.jpg" data-mk="#ffd23f" aria-label="Show: Real-time tracking on an FPV drone"><img src="assets/img/projects/fpv-flight-thumb.jpg" alt="" loading="lazy"><span>UAV</span></button></li>
-            <li><button type="button" data-word="wildlife at night" data-media='[{"v": "assets/video/hero/wg-buck.mp4", "s": "assets/img/projects/wg-buck-poster.jpg", "l": "a buck at dusk", "p": "50% 0%"}, {"v": "assets/video/hero/wg-doe.mp4", "s": "assets/img/projects/wg-doe-poster.jpg", "l": "two deer, two tracks", "p": "50% 0%"}, {"v": "assets/video/hero/wg-brush.mp4", "s": "assets/img/projects/wg-brush-poster.jpg", "l": "half hidden in tall grass", "p": "50% 0%"}, {"v": "assets/video/hero/wg-edge.mp4", "s": "assets/img/projects/wg-edge-poster.jpg", "l": "a buck at the brush edge", "p": "50% 0%"}]' data-pos="50% 0%" data-ar="1.25" data-short="Thermal detection" data-href="projects.html#p4" data-result="Whole chain · camera → Jetson → alert" data-cam="LWIR · 640×512 · YOLO + BoT-SORT" data-title="A thermal detector, camera to alert" data-video="assets/video/hero/wg-buck.mp4" data-still="assets/img/projects/wg-buck-poster.jpg" data-mk="#ff9ec4" aria-label="Show: A thermal detector, camera to alert"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy"><span>LWIR</span></button></li>
-            <li><button type="button" data-word="airport runways" data-media='[{"s": "assets/img/projects/mdu-ride-enters.jpg", "l": "on the runway", "p": "50% 0%"}, {"s": "assets/img/projects/mdu-madrid.jpg", "l": "Madrid", "p": "50% 30%"}, {"s": "assets/img/projects/mdu-rig.jpg", "l": "the sensor pod", "p": "50% 40%"}, {"s": "assets/img/projects/mdu-fod-retrieval.jpg", "l": "Lyon, retrieving debris", "p": "50% 60%"}, {"s": "assets/img/projects/mdu-detected.jpg", "l": "debris a few metres ahead", "p": "50% 75%"}]' data-pos="50% 0%" data-ar="1.331" data-short="Airport debris unit" data-href="projects.html#p1" data-result="Lead since 2024 · debris under 2 cm" data-cam="Cameras · IMU · GNSS · edge SoC" data-title="The Mobile Detection Unit at Oreyeon" data-still="assets/img/projects/mdu-ride-enters.jpg" data-mk="#7ee0f5" aria-label="Show: The Mobile Detection Unit at Oreyeon"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy"><span>MDU</span></button></li>
+            <li><button type="button" data-word="wildlife at night" data-media='[{"v": "assets/video/hero/wg-buck.mp4", "s": "assets/img/projects/wg-buck-poster.jpg", "l": "a buck at dusk", "p": "50% 0%"}, {"v": "assets/video/hero/wg-doe.mp4", "s": "assets/img/projects/wg-doe-poster.jpg", "l": "two deer, two tracks", "p": "50% 0%"}, {"v": "assets/video/hero/wg-brush.mp4", "s": "assets/img/projects/wg-brush-poster.jpg", "l": "half hidden in tall grass", "p": "50% 0%"}, {"v": "assets/video/hero/wg-edge.mp4", "s": "assets/img/projects/wg-edge-poster.jpg", "l": "a buck at the brush edge", "p": "50% 0%"}]' data-pos="50% 0%" data-ar="1.25" data-short="Thermal detection" data-href="projects.html#p4" data-result="Whole chain: camera → Jetson → alert" data-cam="LWIR · 640×512 · YOLO + BoT-SORT" data-title="A thermal detector, camera to alert" data-video="assets/video/hero/wg-buck.mp4" data-still="assets/img/projects/wg-buck-poster.jpg" data-mk="#ff9ec4" aria-label="Show: A thermal detector, camera to alert"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy"><span>LWIR</span></button></li>
+            <li><button type="button" data-word="airport runways" data-media='[{"s": "assets/img/projects/mdu-ride-enters.jpg", "l": "on the runway", "p": "50% 0%"}, {"s": "assets/img/projects/mdu-madrid.jpg", "l": "Madrid", "p": "50% 30%"}, {"s": "assets/img/projects/mdu-rig.jpg", "l": "the sensor pod", "p": "50% 40%"}, {"s": "assets/img/projects/mdu-fod-retrieval.jpg", "l": "Lyon, retrieving debris", "p": "50% 60%"}, {"s": "assets/img/projects/mdu-detected.jpg", "l": "debris a few metres ahead", "p": "50% 75%"}]' data-pos="50% 0%" data-ar="1.331" data-short="Airport debris unit" data-href="projects.html#p1" data-result="Lead since 2023 · Debris under 2 cm" data-cam="Cameras · IMU · GNSS · edge SoC" data-title="The Mobile Detection Unit at Oreyeon" data-still="assets/img/projects/mdu-ride-enters.jpg" data-mk="#7ee0f5" aria-label="Show: The Mobile Detection Unit at Oreyeon"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy"><span>MDU</span></button></li>
             <li><button type="button" data-word="thermal cameras" data-media='[{"v": "assets/video/hero/ati-detect.mp4", "s": "assets/img/projects/ati-person-poster.jpg", "l": "night, a person detected"}, {"v": "assets/video/hero/ati-track.mp4", "s": "assets/img/projects/ati-vehicle-poster.jpg", "l": "night, a vehicle tracked"}, {"v": "assets/video/hero/ati-corrected.mp4", "s": "assets/img/projects/ati-corrected-poster.jpg", "l": "corrected in the camera"}, {"v": "assets/video/hero/ati-shutterless.mp4", "s": "assets/img/projects/ati-shutterless-poster.jpg", "l": "shutterless, never freezes"}]' data-ar="1.778" data-short="Thermal image quality" data-href="projects.html#p15" data-result="Raw sensor → clean video · PC and in-camera C++" data-cam="LWIR · image processing in the camera" data-title="Image quality for thermal sensors, at Lynred" data-video="assets/video/hero/ati-detect.mp4" data-still="assets/img/projects/ati-person-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Image quality for thermal sensors, at Lynred"><img src="assets/img/projects/ati-person-thumb.jpg" alt="" loading="lazy"><span>ISP</span></button></li>
-            <li><button type="button" data-word="robot arms" data-ar="1.745" data-short="Bin picking" data-href="projects.html#p7" data-result="Sub-mm pick targets · place flips 11/17 → 0" data-cam="RGB-D · FoundationPose · cuRobo" data-title="Bin picking and assembly without fixtures" data-video="assets/video/hero/bin-sim-assembly.mp4" data-still="assets/img/projects/bin-sim-assembly-poster.jpg" data-mk="#b7f36b" aria-label="Show: Bin picking and assembly without fixtures"><img src="assets/img/projects/bin-sim-assembly-poster.jpg" alt="" loading="lazy"><span>RGB-D</span></button></li>
-            <li><button type="button" data-word="3D cameras" data-media='[{"v": "assets/video/hero/tof-sizing.mp4", "s": "assets/img/projects/tof-sizing-poster.jpg", "l": "object sizing, live"}, {"v": "assets/video/hero/tof-underfill.mp4", "s": "assets/img/projects/tof-underfill-poster.jpg", "l": "a carton missing", "lp": "tl"}, {"v": "assets/video/hero/tof-overfill.mp4", "s": "assets/img/projects/tof-overfill-poster.jpg", "l": "a carton too many", "lp": "tl"}, {"v": "assets/video/hero/tof-racket.mp4", "s": "assets/img/projects/tof-racket-poster.jpg", "l": "distance zones", "lp": "tl"}]' data-ar="1.778" data-short="ToF 3D camera" data-href="projects.html#p8" data-result="Launched product · ±5 mm · 3 embedded use cases" data-cam="ToF · 320×240 · C++" data-title="Perception inside a 3D time-of-flight camera" data-video="assets/video/hero/tof-sizing.mp4" data-still="assets/img/projects/tof-sizing-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Perception inside a 3D time-of-flight camera"><img src="assets/img/projects/tof-sizing-large-thumb.jpg" alt="" loading="lazy"><span>ToF</span></button></li>
-            <li><button type="button" data-word="dairy barns" data-media='[{"v": "assets/video/hero/barn-pushup-night.mp4", "s": "assets/img/projects/barn-pushup-night-poster.jpg", "l": "night"}, {"v": "assets/video/hero/barn-pushup-day.mp4", "s": "assets/img/projects/barn-pushup-day-poster.jpg", "l": "day"}, {"v": "assets/video/hero/barn-transition.mp4", "s": "assets/img/projects/barn-transition-poster.jpg", "l": "feed delivered"}]' data-ar="1.778" data-short="Feed-bunk monitoring" data-href="projects.html#p10" data-result="Evaluated across 3 camera angles" data-cam="RGB · night · PyTorch" data-title="Feed-bunk monitoring from fixed cameras" data-video="assets/video/hero/barn-pushup-night.mp4" data-still="assets/img/projects/barn-pushup-night-poster.jpg" data-mk="#ffb27a" aria-label="Show: Feed-bunk monitoring from fixed cameras"><img src="assets/img/projects/barn-pushup-night-thumb.jpg" alt="" loading="lazy"><span>BARN</span></button></li>
+            <li><button type="button" data-word="robot arms" data-ar="1.745" data-short="Bin picking" data-href="projects.html#p7" data-result="Sub-mm pick targets · Placement flips 11/17 → 0" data-cam="RGB-D · FoundationPose · cuRobo" data-title="Bin picking and assembly without fixtures" data-video="assets/video/hero/bin-sim-assembly.mp4" data-still="assets/img/projects/bin-sim-assembly-poster.jpg" data-mk="#b7f36b" aria-label="Show: Bin picking and assembly without fixtures"><img src="assets/img/projects/bin-sim-assembly-poster.jpg" alt="" loading="lazy"><span>RGB-D</span></button></li>
+            <li><button type="button" data-word="3D cameras" data-media='[{"v": "assets/video/hero/tof-sizing.mp4", "s": "assets/img/projects/tof-sizing-poster.jpg", "l": "object sizing, live"}, {"v": "assets/video/hero/tof-underfill.mp4", "s": "assets/img/projects/tof-underfill-poster.jpg", "l": "a carton missing", "lp": "tl"}, {"v": "assets/video/hero/tof-overfill.mp4", "s": "assets/img/projects/tof-overfill-poster.jpg", "l": "a carton too many", "lp": "tl"}, {"v": "assets/video/hero/tof-racket.mp4", "s": "assets/img/projects/tof-racket-poster.jpg", "l": "distance zones", "lp": "tl"}]' data-ar="1.778" data-short="ToF 3D camera" data-href="projects.html#p8" data-result="Launched product · ±5 mm · Three embedded use cases" data-cam="ToF · 320×240 · C++" data-title="Perception inside a 3D time-of-flight camera" data-video="assets/video/hero/tof-sizing.mp4" data-still="assets/img/projects/tof-sizing-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Perception inside a 3D time-of-flight camera"><img src="assets/img/projects/tof-sizing-large-thumb.jpg" alt="" loading="lazy"><span>ToF</span></button></li>
+            <li><button type="button" data-word="dairy barns" data-media='[{"v": "assets/video/hero/barn-pushup-night.mp4", "s": "assets/img/projects/barn-pushup-night-poster.jpg", "l": "night"}, {"v": "assets/video/hero/barn-pushup-day.mp4", "s": "assets/img/projects/barn-pushup-day-poster.jpg", "l": "day"}, {"v": "assets/video/hero/barn-transition.mp4", "s": "assets/img/projects/barn-transition-poster.jpg", "l": "feed delivered"}]' data-ar="1.778" data-short="Feed-bunk monitoring" data-href="projects.html#p10" data-result="Evaluated across three camera angles" data-cam="RGB · night · PyTorch" data-title="Feed-bunk monitoring from fixed cameras" data-video="assets/video/hero/barn-pushup-night.mp4" data-still="assets/img/projects/barn-pushup-night-poster.jpg" data-mk="#ffb27a" aria-label="Show: Feed-bunk monitoring from fixed cameras"><img src="assets/img/projects/barn-pushup-night-thumb.jpg" alt="" loading="lazy"><span>BARN</span></button></li>
             <li><button type="button" data-word="crowds" data-ar="2.115" data-short="People counting" data-href="projects.html#p11" data-result="CPU only · YOLOv5 + ByteTrack on NCNN" data-cam="RGB · YOLOv5 + ByteTrack · CPU" data-title="People counting on a CPU" data-video="assets/video/hero/count-feed.mp4" data-still="assets/img/projects/count-feed-poster.jpg" data-mk="#ffd23f" aria-label="Show: People counting on a CPU"><img src="assets/img/projects/count-feed-poster.jpg" alt="" loading="lazy"><span>RETAIL</span></button></li>
-            <li class="hw-off"><button type="button" data-word="production lines" data-ar="2.38" data-short="Fabric defects" data-href="projects.html#p9" data-result="Several textures · no per-material tuning" data-cam="Line-scan · defect detection" data-title="Defects on textured surfaces" data-still="assets/img/projects/fabric-detect.jpg" data-mk="#ff9ec4" aria-label="Show: Defects on textured surfaces"><img src="assets/img/projects/fabric-detect-thumb.jpg" alt="" loading="lazy"><span>LINE</span></button></li>
+            <li class="hw-off"><button type="button" data-word="production lines" data-ar="2.38" data-short="Fabric defects" data-href="projects.html#p9" data-result="Several textures · No per-material tuning" data-cam="Line-scan · defect detection" data-title="Defects on textured surfaces" data-still="assets/img/projects/fabric-detect.jpg" data-mk="#ff9ec4" aria-label="Show: Defects on textured surfaces"><img src="assets/img/projects/fabric-detect-thumb.jpg" alt="" loading="lazy"><span>LINE</span></button></li>
             <li><button type="button" data-word="aerial cameras" data-media='[{"s": "assets/img/projects/phd-uav.jpg", "l": "the UAV", "p": "37% 50%"}, {"s": "assets/img/projects/phd-camera.jpg", "l": "the camera"}, {"s": "assets/img/projects/phd-board.jpg", "l": "the FPGA board"}]' data-ar="1.308" data-short="Drone camera, Ph.D." data-href="projects.html#p12" data-result="Resampling 36.9 s → 0.41 s in the FPGA" data-cam="FPGA + IMU · Ph.D. at IGN" data-title="IMU-aided image stacking in a drone camera" data-still="assets/img/projects/phd-uav.jpg" data-mk="#7ee0f5" aria-label="Show: IMU-aided image stacking in a drone camera"><img src="assets/img/projects/phd-uav-thumb.jpg" alt="" loading="lazy"><span>FPGA</span></button></li>
-            <li class="hw-off"><button type="button" data-word="security cameras" data-ar="1.333" data-short="DeepStream + VLM" data-href="projects.html#p3" data-result="87 det/s on 4 streams · yes/no in 0.3 s" data-cam="4 × RTSP · DeepStream · local VLM" data-title="DeepStream with a local vision-language model" data-still="assets/img/projects/vlm-cam4-day.jpg" data-mk="#b7f36b" aria-label="Show: DeepStream with a local vision-language model"><img src="assets/img/projects/vlm-cam4-day-thumb.jpg" alt="" loading="lazy"><span>RTSP</span></button></li>
+            <li class="hw-off"><button type="button" data-word="security cameras" data-ar="1.333" data-short="DeepStream + VLM" data-href="projects.html#p3" data-result="87 detections/s on 4 streams · Yes/no answers in 0.3 s" data-cam="4 × RTSP · DeepStream · local VLM" data-title="DeepStream with a local vision-language model" data-still="assets/img/projects/vlm-cam4-day.jpg" data-mk="#b7f36b" aria-label="Show: DeepStream with a local vision-language model"><img src="assets/img/projects/vlm-cam4-day-thumb.jpg" alt="" loading="lazy"><span>RTSP</span></button></li>
             <li class="hw-off"><button type="button" data-word="thermal cores" data-ar="1.373" data-short="Thermal denoiser" data-href="projects.html#p14" data-result="Runs in the camera · Proc. SPIE 13469" data-cam="LWIR · AI denoiser · on the camera" data-title="An AI denoiser that lives in the camera" data-still="assets/img/projects/ldn-person-clean.jpg" data-mk="#c3b5ff" aria-label="Show: An AI denoiser that lives in the camera"><img src="assets/img/projects/ldn-person-thumb.jpg" alt="" loading="lazy"><span>LDN</span></button></li>
             <li class="hw-off"><button type="button" data-word="vehicle gimbals" data-ar="1.333" data-short="Thermal super-resolution" data-href="projects.html#p5" data-result="256×320 → 512×640 on the device" data-cam="LWIR · 2× super-resolution on device" data-title="Super-resolution on a vehicle thermal gimbal" data-still="assets/img/projects/sr-gimbal-1.jpg" data-mk="#ffb27a" aria-label="Show: Super-resolution on a vehicle thermal gimbal"><img src="assets/img/projects/sr-gimbal-1-thumb.jpg" alt="" loading="lazy"><span>GIMBAL</span></button></li>
         </ol>
@@ -118,7 +118,7 @@
             <h1 class="wordmark" id="heroName">Ahmad <em>Audi</em><span class="accent">.</span></h1>
             <p class="hero-statement"><span class="hs-line">Computer vision</span> <span class="hs-line">for <em class="hs-word" id="hsWord">drones</em>.</span></p>
             <p class="hero-role">Computer vision, end to end: the cameras, the algorithms, and the machines that act on them.</p>
-            <p class="hero-sub">Senior computer vision AI engineer and researcher, Ph.D. · Lead embedded vision at Oreyeon · Lecturer at USJ and LAU · Independent freelancer · Grenoble, France</p>
+            <p class="hero-sub">Senior lead computer vision engineer at Oreyeon&nbsp;· Researcher,&nbsp;Ph.D.&nbsp;· Lecturer at USJ and LAU&nbsp;· Independent freelancer&nbsp;· Grenoble,&nbsp;France</p>
             <div class="hero-cta">
               <a class="pill pill-fill" href="#work">Work</a>
               <a class="pill" href="#services">Services</a>
@@ -141,12 +141,12 @@
           </div>
         </div>
         <ul class="hero-stats" aria-label="At a glance">
-          <li><b data-count="14" data-suffix=" yrs">14 yrs</b><span>Industry and R&amp;D · computer vision, embedded AI, thermal, HPC</span></li>
-          <li><b data-count="12" data-suffix=" yrs">12 yrs</b><span>University lecturer · USJ, LAU, ESIEE, ESIEA</span></li>
-          <li><b data-count="80" data-suffix="+">80+</b><span>Projects delivered · 15 shown here as samples</span></li>
-          <li><b>Ph.D.</b><span>Embedded computer vision · IGN, 2017</span></li>
-          <li><b>Now</b><span>Senior lead embedded CV engineer · Oreyeon</span></li>
-          <li class="hero-fig"><span>Fig. 0 · Drawn live in your browser, no video. The inset is the gimbal camera's own view.</span></li>
+          <li><b data-count="14" data-suffix=" years">14 years</b><span>In industry and R&amp;D: computer vision, embedded AI, thermal imaging, HPC</span></li>
+          <li><b data-count="12" data-suffix=" years">12 years</b><span>Lecturing part-time at USJ, LAU, ESIEE and ESIEA</span></li>
+          <li><b data-count="80" data-suffix="+">80+</b><span>Projects delivered; 15 of them are shown here</span></li>
+          <li><b>Ph.D.</b><span>In embedded computer vision, IGN, 2017</span></li>
+          <li><b>Now</b><span>Senior lead computer vision engineer at Oreyeon, since&nbsp;2023</span></li>
+          <li class="hero-fig"><span>Fig. 0 · Drawn live in your browser, no video. The inset is the gimbal camera’s own view.</span></li>
         </ul>
       </div>
     </section>
@@ -230,7 +230,7 @@
             <div class="pcard-body">
               <p class="pcard-cat">01 · Freelance · Embedded AI · UAV</p>
               <h3>Real-time visual tracking on a Jetson for FPV drones</h3>
-              <p>The operator picks one target; the drone keeps it locked while both move. A state-of-the-art tracker adapted for the Jetson with a 30 fps low-latency link. The clips: a real test flight through the drone’s own camera, then benchmark runs on UAV123 and DTB70.</p>
+              <p>The operator picks one target; the drone keeps it locked while both move. A state-of-the-art tracker, adapted for the Jetson, with a 30 fps low-latency video link. The clips: a real test flight through the drone’s own camera, then benchmark runs on UAV123 and DTB70.</p>
               <p class="pcard-result">30 fps at 1280×740 · Jetson Orin Nano Super</p>
             </div>
           </a>
@@ -283,7 +283,7 @@
               <p class="pcard-cat">04 · Freelance · Thermal · Embedded AI</p>
               <h3>A thermal object detector, from camera choice to live alerts</h3>
               <p>Camera choice, acquisition, data and labelling, a custom YOLO model and a multithreaded C++ inference pipeline with alerts.</p>
-              <p class="pcard-result">Whole chain · camera → Jetson → alert</p>
+              <p class="pcard-result">Whole chain: camera → Jetson → alert</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p7" data-tags="3d">
@@ -295,7 +295,7 @@
               <p class="pcard-cat">05 · Freelance · Robotics · 3D vision</p>
               <h3>Vision-guided bin picking and assembly, without fixtures</h3>
               <p>Perception-only targets in a closed loop: segmentation, pose, work-in-progress tracking, motion planning; 17 perturbations, no flips after anchoring.</p>
-              <p class="pcard-result">Sub-mm pick targets · place flips 11/17 → 0</p>
+              <p class="pcard-result">Sub-mm pick targets · Placement flips 11/17 → 0</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p3" data-tags="industrial">
@@ -314,7 +314,7 @@
               <p class="pcard-cat">06 · Freelance · Video analytics · Jetson</p>
               <h3>DeepStream pipeline with a local vision-language model</h3>
               <p>RTSP cameras batched on a Jetson’s GPU, a TensorRT detector, and short questions to a small VLM served by llama.cpp.</p>
-              <p class="pcard-result">87 det/s on 4 streams · yes/no in 0.3 s</p>
+              <p class="pcard-result">87 detections/s on 4 streams · Yes/no answers in 0.3 s</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p5" data-tags="thermal">
@@ -363,7 +363,7 @@
               <p class="pcard-cat">09 · Freelance · Industrial · C++</p>
               <h3>Perception pipeline for an industrial 3D time-of-flight camera</h3>
               <p>From depth and amplitude images to point clouds, segmentation, object sizing and pose, inside a 320 × 240 ToF camera.</p>
-              <p class="pcard-result">Launched product · ±5 mm · 3 embedded use cases</p>
+              <p class="pcard-result">Launched product · ±5 mm · Three embedded use cases</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p9" data-tags="industrial">
@@ -379,7 +379,7 @@
               <p class="pcard-cat">10 · Freelance · Industrial · Deep learning</p>
               <h3>Defect detection on textured surfaces for a production line</h3>
               <p>From classical statistics to deep-learning detection and classification on moving fabric, with real-time size estimation.</p>
-              <p class="pcard-result">Several textures · no per-material tuning</p>
+              <p class="pcard-result">Several textures · No per-material tuning</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p10" data-tags="industrial">
@@ -395,7 +395,7 @@
               <p class="pcard-cat">11 · Freelance · Agriculture · PyTorch</p>
               <h3>Feed-bunk monitoring in dairy barns from fixed cameras</h3>
               <p>Segment the bunk, classify full, low or empty, count the cows and recognise the feed tractors.</p>
-              <p class="pcard-result">Evaluated across 3 camera angles</p>
+              <p class="pcard-result">Evaluated across three camera angles</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p11" data-tags="industrial">
@@ -425,8 +425,8 @@
             <div class="pcard-body">
               <p class="pcard-cat">13 · Day job · Oreyeon · Edge SoC</p>
               <h3>Vision R&amp;D at Oreyeon: the Mobile Detection Unit</h3>
-              <p>A unit on an airport patrol vehicle that finds and geolocates runway debris and pavement damage; I work on its sensors (cameras, IMU, GPS), calibration and edge deployment.</p>
-              <p class="pcard-result">Lead since 2024 · debris under 2 cm</p>
+              <p>A unit on an airport patrol vehicle that finds and geolocates runway debris and pavement damage; I lead its computer vision: sensors (cameras, IMU, GPS), calibration and edge deployment.</p>
+              <p class="pcard-result">Lead since 2023 · Debris under 2 cm</p>
             </div>
           </a>
           <a class="pcard reveal" href="projects.html#p12" data-tags="research drones">
@@ -458,7 +458,7 @@
           <a class="pill pill-fill pill-lg" href="projects.html">Open the full write-ups (15) <span aria-hidden="true">→</span></a>
           <p class="work-foot-note">Every card opens its project: what it does, my part, one fact you can check, with the photos, clips, 3D views and benchmark numbers.</p>
         </div>
-        <div class="soon reveal"><span class="live-dot" aria-hidden="true"></span><p class="soon-text"><b>Coming soon.</b> New projects and news are being written up and will be published here soon.</p></div>
+        <div class="soon reveal"><span class="live-dot" aria-hidden="true"></span><p class="soon-text"><b>Coming soon.</b> New projects and news are being written up and will appear here.</p></div>
       </div>
     </section>
 
@@ -526,17 +526,17 @@
             <h2 class="statement reveal wipe" id="aboutTitle">I build <em>computer vision end to end</em>: the <em>camera and the data</em>, the <em>algorithms and models</em>, and the <em>application that ships them</em>, wherever it has to run.</h2>
             <div class="about-text reveal">
               <p>A vision project is rarely just a model. It starts with the sensor and the optics, goes through data collection and labelling, classical image processing and deep learning, calibration and 3D, and ends in software someone actually operates: a pipeline, a service, a GUI, an alert. I have done each of those steps for clients, and most projects needed several of them at once.</p>
-              <p>When the application has to run on the edge, that is a skill I have in depth: a Ph.D. at IGN putting a real-time stabilisation algorithm inside a drone camera's FPGA, a postdoc at CEA porting tomography to GPUs, four years on Lynred's image-signal-processing team making infrared cameras see better, a year of space electronics at Airbus Defence and Space, and today the lead on embedded vision R&amp;D at Oreyeon. But the chip is the last step of a project, not its subject. I prototype in Python, write the product in C/C++, and move to CUDA, OpenCL or VHDL only when the budget asks for it.</p>
-              <p>I have also taught since 2014, part-time and alongside the engineering: today computer vision, deep learning and parallel computing at Saint Joseph University of Beirut and the Lebanese American University; before that C, C++, systems and architecture at ESIEE and ESIEA in Paris. Explaining a method to a room is still the best test of whether I understand it.</p>
+              <p>When the application has to run on the edge, that is a skill I have in depth: a Ph.D. at IGN putting a real-time stabilisation algorithm inside a drone camera’s FPGA, a postdoc at CEA porting tomography to GPUs, four years on Lynred’s image-signal-processing team making infrared cameras see better, a year of space electronics at Airbus Defence and Space, and, since 2023, senior lead computer vision engineer at Oreyeon. But the chip is the last step of a project, not its subject. I prototype in Python, write the product in C/C++, and move to CUDA, OpenCL or VHDL only when the budget asks for it.</p>
+              <p>I have also been teaching since 2014, part-time, alongside the engineering work: today computer vision, deep learning and parallel computing at Saint Joseph University of Beirut and the Lebanese American University; before that C, C++, systems and architecture at ESIEE and ESIEA in Paris. Explaining a method to a room is still the best test of whether I understand it.</p>
               <p class="muted">Away from the desk: hiking, biking and photography.</p>
             </div>
             <div class="toolchain reveal" id="toolchain">
               <p class="tool-label">Toolchain</p>
               <dl class="tool-rows">
-                <div><dt>Capture &amp; data</dt><dd>Camera selection (RGB, LWIR thermal, ToF, line-scan, RGB-D) · optics and field-of-view sizing · acquisition pipelines · data collection and labelling guidelines · CVAT · dataset design and evaluation</dd></div>
-                <div><dt>Algorithms &amp; models</dt><dd>OpenCV · PyTorch · detection, tracking, segmentation, classification · super-resolution and image enhancement · calibration · 3D reconstruction and point clouds · feature matching · time series over detections</dd></div>
-                <div><dt>Application</dt><dd>Python and C/C++ · GStreamer and DeepStream · RTSP streaming and recording · TensorRT, NCNN, OpenVINO · Qt GUIs · Linux services · tests and non-regression benches</dd></div>
-                <div><dt>Edge &amp; acceleration</dt><dd>NVIDIA Jetson · CUDA · OpenCL · OpenMP · MPI · Kokkos · ARM NEON · Xilinx Zynq (VHDL &amp; HLS) · Renesas DRP · Intel Myriad X · microcontrollers</dd></div>
+                <div><dt>Capture &amp; data</dt><dd>Camera selection (RGB, LWIR thermal, ToF, line-scan, RGB-D) · Optics and field-of-view sizing · Acquisition pipelines · Data collection and labelling guidelines · CVAT · Dataset design and evaluation</dd></div>
+                <div><dt>Algorithms &amp; models</dt><dd>OpenCV · PyTorch · Detection, tracking, segmentation, classification · Super-resolution and image enhancement · Calibration · 3D reconstruction and point clouds · Feature matching · Time series over detections</dd></div>
+                <div><dt>Application</dt><dd>Python and C/C++ · GStreamer and DeepStream · RTSP streaming and recording · TensorRT, NCNN, OpenVINO · Qt GUIs · Linux services · Tests and non-regression benches</dd></div>
+                <div><dt>Edge &amp; acceleration</dt><dd>NVIDIA Jetson · CUDA · OpenCL · OpenMP · MPI · Kokkos · ARM NEON · Xilinx Zynq (VHDL &amp; HLS) · Renesas DRP · Intel Myriad X · Microcontrollers</dd></div>
                 <div><dt>Interfaces &amp; workflow</dt><dd>UART · I²C · SPI · AXI · Matlab · Git · CMake · Linux</dd></div>
               </dl>
             </div>
@@ -571,16 +571,16 @@
           <li class="tl-item reveal">
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-card">
-              <p class="tl-meta">2024 — now</p>
-              <h3>Senior lead embedded computer vision engineer (R&amp;D) <span class="log-org">· Oreyeon · remote</span></h3>
-              <p>Senior engineer from April 2023, lead since September 2024. Detection, tracking, feature matching, stitching and online camera calibration, designed in Matlab and Python, written in C/C++, deployed on edge GPUs with CUDA and TensorRT. Integration of new sensors (GPS, IMU, cameras) and sensor fusion; validation in real conditions.</p>
+              <p class="tl-meta">2023 — now</p>
+              <h3>Senior lead computer vision engineer (R&amp;D) <span class="log-org">· Oreyeon · Remote</span></h3>
+              <p>Since April 2023, I have led the computer vision R&amp;D: detection, tracking, feature matching, stitching and online camera calibration, designed in Matlab and Python, written in C/C++, deployed on edge GPUs with CUDA and TensorRT. Integration of new sensors (GPS, IMU, cameras) and sensor fusion; validation in real conditions.</p>
             </div>
           </li>
           <li class="tl-item reveal">
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-card">
               <p class="tl-meta">2023 — now</p>
-              <h3>University lecturer <span class="log-org">· USJ &amp; LAU · Beirut · part-time</span></h3>
+              <h3>University lecturer <span class="log-org">· USJ &amp; LAU · Beirut · Part-time</span></h3>
               <p>Saint Joseph University of Beirut since August 2023: computer vision, OOP and C++, programming for AI and machine learning, introduction to AI, data structures and algorithms, supervision of electronics projects. Lebanese American University since December 2023: deep learning for computer vision and for NLP, Linux, shell and Python, parallel computing with CUDA, OpenMP and MPI.</p>
             </div>
           </li>
@@ -588,7 +588,7 @@
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-card">
               <p class="tl-meta">2023 — now</p>
-              <h3>Independent freelancer, computer vision <span class="log-org">· remote</span></h3>
+              <h3>Independent freelancer, computer vision <span class="log-org">· Remote</span></h3>
               <p>End-to-end vision systems for clients: camera choice, data, models, and the application around them, moved to GPUs or edge devices when the project needs it. Ten of them are in the <a href="#work">work</a> above.</p>
             </div>
           </li>
@@ -596,7 +596,7 @@
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-card">
               <p class="tl-meta">2023 — 2024</p>
-              <h3>Embedded software engineer, space electronics <span class="log-org">· Airbus Defence and Space · Élancourt · part-time</span></h3>
+              <h3>Embedded software engineer, space electronics <span class="log-org">· Airbus Defence and Space · Élancourt · Part-time</span></h3>
               <p>Hardware/software architectures from customer requirements; software layers in C on an in-house FPGA; real-time applications in VHDL and HLS from planning to on-target debugging; validation against space constraints with the functional-safety and radiation-hardening teams.</p>
             </div>
           </li>
@@ -612,7 +612,7 @@
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-card">
               <p class="tl-meta">2014 — 2023</p>
-              <h3>University lecturer <span class="log-org">· ESIEE Paris &amp; ESIEA · Paris · part-time</span></h3>
+              <h3>University lecturer <span class="log-org">· ESIEE Paris &amp; ESIEA · Paris · Part-time</span></h3>
               <p>ESIEE Paris, 2014 to 2020: Linux systems, C++, GPU, MPI and OpenMP. ESIEA, 2019 to 2023: C, advanced algorithms and data structures, microcontrollers and assembly, computer architecture.</p>
             </div>
           </li>
@@ -660,7 +660,7 @@
         </div>
       </div>
       <div class="container more">
-        <p class="index-head reveal"><span>More</span> of the work, by who it serves</p>
+        <p class="index-head reveal"><span>More</span> of the work, by sector</p>
         <div class="more-grid" data-stagger>
           <div class="more-group reveal">
             <h3>Industry</h3>
@@ -668,7 +668,7 @@
               <li>
                 <p class="more-meta">Lynred · 2019–2023</p>
                 <h4>Infrared image enhancement</h4>
-                <p>Algorithms that make thermal camera images cleaner and sharper, ported to whichever chip the product used: CPU, GPU, FPGA, VPU or SoC. Also firmware in C, and supervising master's interns.</p>
+                <p>Algorithms that make thermal camera images cleaner and sharper, ported to whichever chip the product used: CPU, GPU, FPGA, VPU or SoC. Also firmware in C and the supervision of master’s interns.</p>
               </li>
               <li>
                 <p class="more-meta">Oreyeon · 2023–now</p>
@@ -688,12 +688,12 @@
               <li>
                 <p class="more-meta">IGN · 2015</p>
                 <h4>Real-time functions in an ultra-light aerial camera</h4>
-                <p>The first real-time processing moved into the FPGA of IGN's ultra-light camera for aerial photography, presented at the ISPRS GeoUAV workshop.</p>
+                <p>The first real-time processing moved into the FPGA of IGN’s ultra-light camera for aerial photography, presented at the ISPRS GeoUAV workshop.</p>
               </li>
               <li>
                 <p class="more-meta">CEA · 2018</p>
                 <h4>Ultrasound imaging on GPU</h4>
-                <p>The total focusing method, which builds an image of a part's inside from ultrasonic signals, ported with Kokkos alongside the X-ray reconstruction.</p>
+                <p>The total focusing method, which builds an image of a part’s inside from ultrasonic signals, ported with Kokkos alongside the X-ray reconstruction.</p>
               </li>
             </ul>
           </div>
@@ -722,7 +722,7 @@
         <p class="label"><span class="label-n">06</span>Papers &amp; talks</p>
         <div class="section-head">
           <h2 class="section-title reveal wipe" id="papersTitle">Written <em>down</em>.</h2>
-          <p class="section-lede reveal">Four peer-reviewed papers from the Ph.D. and the postdoc. The two from 2017 are open access, and their figures are on the stacking project.</p>
+          <p class="section-lede reveal">Four peer-reviewed papers from the Ph.D. and the postdoc. The two from 2017 are open access, and their figures appear in the stacking project.</p>
         </div>
         <ol class="paper-list" data-stagger>
           <li class="paper reveal">
@@ -766,8 +766,8 @@
       <div class="container">
         <p class="label"><span class="label-n">08</span>Contact</p>
         <div class="contact-panel reveal">
-          <h2 class="contact-title" id="contactTitle">Let's build the <em>whole pipeline</em>.</h2>
-          <p class="contact-lede">Based in Grenoble, France, working remotely. Open to freelance projects and R&amp;D collaborations in computer vision: from camera choice and data to models and the application around them, on servers or on the edge. Usually answers within a day.</p>
+          <h2 class="contact-title" id="contactTitle">Let’s build the <em>whole pipeline</em>.</h2>
+          <p class="contact-lede">Based in Grenoble, France, working remotely. Open to freelance projects and R&amp;D collaborations in computer vision: from camera choice and data to models and the application around them, on servers or on the edge. I usually reply within a day.</p>
           <div class="pc-wrap" data-pointcloud>
             <a class="contact-email" href="mailto:audiahmad@hotmail.com">audiahmad@hotmail.com <span aria-hidden="true">→</span></a>
           </div>
@@ -781,7 +781,7 @@
           </ul>
           <dl class="contact-fields">
             <div><dt>Replies</dt><dd>Usually within a day</dd></div>
-            <div><dt>Based</dt><dd>Grenoble, France · remote-friendly</dd></div>
+            <div><dt>Based</dt><dd>Grenoble, France · Remote-friendly</dd></div>
             <div><dt>Signed</dt><dd class="signature">Ahmad Audi</dd></div>
           </dl>
         </div>
@@ -800,22 +800,22 @@
         <li><a href="#about">About</a></li>
       </ul>
       <p>© <span id="year">2026</span> Ahmad Audi · Grenoble, France</p>
-      <p class="footer-note">The 3D scenes and the thermal viewfinder are drawn in your browser. The clips are real recordings from the projects.</p>
+      <p class="footer-note">The animations are drawn live in your browser; the clips are real recordings from the projects.</p>
       <a href="#top" class="footer-top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
 
-  <script src="js/main.js?v=1794236129"></script>
-  <script src="js/titles.js?v=1794236129"></script>
-  <script src="js/ambient.js?v=1794236129"></script>
-  <script src="js/work.js?v=1794236129"></script>
-  <script src="js/sims.js?v=1794236129"></script>
-  <script src="js/previews.js?v=1794236129"></script>
-  <script src="js/hero3d.js?v=1794236129"></script>
-  <script src="js/herowall.js?v=1794236129"></script>
-  <script src="js/motifs.js?v=1794236129"></script>
-  <script src="js/compare.js?v=1794236129"></script>
-  <script src="js/rotate.js?v=1794236129"></script>
-  <script src="js/pfilter.js?v=1794236129"></script>
+  <script src="js/main.js?v=1794250341"></script>
+  <script src="js/titles.js?v=1794250341"></script>
+  <script src="js/ambient.js?v=1794250341"></script>
+  <script src="js/work.js?v=1794250341"></script>
+  <script src="js/sims.js?v=1794250341"></script>
+  <script src="js/previews.js?v=1794250341"></script>
+  <script src="js/hero3d.js?v=1794250341"></script>
+  <script src="js/herowall.js?v=1794250341"></script>
+  <script src="js/motifs.js?v=1794250341"></script>
+  <script src="js/compare.js?v=1794250341"></script>
+  <script src="js/rotate.js?v=1794250341"></script>
+  <script src="js/pfilter.js?v=1794250341"></script>
 </body>
 </html>
