@@ -2031,6 +2031,17 @@ html[data-look="senior"] .paper-year::before { background: var(--accent); box-sh
 html[data-look="senior"] .contact-fields dt { font-family: var(--f-body); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--fg-faint); }
 html[data-justify="on"] main .offers .offer-list li { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
 
+/* ---- No duplicates (2026-11-09): the header name waits until the big name has scrolled away, and the
+   hero has no Work / Services / Contact buttons where the menu already shows them (wider than 720 px). ---- */
+.brand-name { transition: opacity .3s var(--ease), transform .3s var(--ease); }
+.site-header.brand-hidden .brand-name { opacity: 0; transform: translateY(6px); pointer-events: none; }
+@media (min-width: 721px) { html[data-look="senior"] .hero .hero-cta { display: none; } }
+/* Without the buttons, the sentence on the right lines up with the bottom of the roles line under the name. */
+@media (min-width: 1001px) {
+  html[data-look="senior"] .hero { grid-template-areas: "name role" "sub role" "wall wall" "stats stats"; }
+  html[data-look="senior"] .hero-role { align-self: end; margin: 0; }
+}
+
 /* ---- Hero lab (2026-11-09): four layouts + viewfinder frame, switched by data-hl / data-hvf on <html>
    (js/herolab.js, only with ?hero in the address; visitors keep the current hero). ---- */
 .hw-bar { display: none; }

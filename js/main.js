@@ -62,6 +62,11 @@
   if (header) {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+    // Home page: the big name is the title, so the small one in the header only appears once it has scrolled away.
+    var bigName = document.getElementById('heroName');
+    if (bigName && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { header.classList.toggle('brand-hidden', e[0].isIntersecting); }, { rootMargin: '-64px 0px 0px 0px' }).observe(bigName);
+    } else header.classList.remove('brand-hidden');
   }
 
   // ---------- Reveal on scroll ----------
