@@ -17,6 +17,7 @@
   var camEl = document.getElementById('hwCam');
   var titleEl = document.getElementById('hwTitle');
   var timeEl = document.getElementById('hwTime');
+  var resultEl = document.getElementById('hwResult');
   var word = document.getElementById('hsWord');
   var tiles = Array.prototype.slice.call(wall.querySelectorAll('.hw-grid button'));
   if (!tiles.length) return;
@@ -117,6 +118,8 @@
     main.setAttribute('aria-label', 'Open the project: ' + d.title);
     camEl.textContent = 'CAM ' + pad(idx + 1) + ' · ' + d.cam;
     wall.style.setProperty('--mk', d.mk);
+    // What the project achieved, under its name.
+    if (resultEl) resultEl.textContent = d.result || '';
     if (shownIdx !== idx) swapWord(d.word, d.mk);
     shownIdx = idx;
     video.classList.remove('is-on');
