@@ -2085,4 +2085,15 @@ html[data-look="senior"] .hw-open:hover { color: var(--accent-hot); }
   html[data-look="senior"] .hero-stats li:not(.hero-fig) { display: grid; grid-template-columns: 5.4em minmax(0, 1fr); align-items: baseline; column-gap: 14px; padding: 10px 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
   html[data-look="senior"]:not(#_) .hero-stats b { font-size: 1.2rem; line-height: 1.3; }
   html[data-look="senior"] .hero-stats span { font-size: 13px; line-height: 1.45; }
+
+  /* Both columns start and end on the same lines: the name's capitals start level with the top of the clips,
+     the figures share out the remaining height evenly, and both columns close on a hairline. */
+  html[data-look="senior"] .wordmark { text-box: trim-both cap alphabetic; }
+  @supports (text-box: trim-both cap alphabetic) { html[data-look="senior"] .hero-role { margin-top: 30px; } }
+  html[data-look="senior"] .hero-stats { align-self: stretch; grid-auto-rows: minmax(0, 1fr); }
+  html[data-look="senior"] .hero-stats li:not(.hero-fig) { align-content: center; }
+  html[data-look="senior"] .hw-grid { border-bottom: 1px solid var(--line); }
+  /* When the left column is the taller one (narrow laptops), the project names spread out instead. */
+  html[data-look="senior"] .hero-wall { align-self: stretch; grid-template-rows: auto auto minmax(0, 1fr); }
+  html[data-look="senior"] .hw-grid { grid-auto-rows: minmax(0, 1fr); }
 }
