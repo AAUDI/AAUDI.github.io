@@ -2042,6 +2042,28 @@ html[data-justify="on"] main .offers .offer-list li { text-align: left; hyphens:
   html[data-look="senior"] .hero-role { align-self: end; margin: 0; }
 }
 
+/* ---- Clean clips (2026-11-09): no text on the footage. The small clip labels are gone, and the project
+   name, its result and the link sit in a caption under the frame. ---- */
+html[data-look="senior"] .hm-label { display: none; }
+html[data-look="senior"] .hw-bar { grid-area: bar; }
+html[data-look="senior"] .hw-main { grid-area: v; }
+html[data-look="senior"] .hw-cap { grid-area: cap; }
+html[data-look="senior"] .hw-grid { grid-area: tabs; }
+html[data-look="senior"] .hero-wall { grid-template-areas: "bar" "v" "cap" "tabs"; }
+@media (min-width: 1001px) {
+  /* The frame is sized so it and its caption fit on a laptop's first screen; the project list takes the rest of the row. */
+  html[data-look="senior"] .hero-wall { grid-template-columns: minmax(0, max(600px, calc((100svh - 420px) * 16 / 9))) minmax(210px, 1fr); grid-template-areas: "bar ." "v tabs" "cap ."; }
+}
+html[data-look="senior"] .hw-cap { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; min-width: 0; padding: 14px 2px 0; }
+html[data-look="senior"] .hw-cap .hw-name { font-family: var(--f-display); font-size: clamp(16px, 1.3vw, 18.5px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; color: var(--fg); }
+html[data-look="senior"] .hw-cap .hw-result { margin-top: 3px; font-size: 13.5px; font-weight: 400; line-height: 1.45; color: var(--fg-muted); }
+html[data-look="senior"] .hw-open { flex: none; padding-top: 2px; font-size: 13.5px; font-weight: 500; color: var(--fg-muted); white-space: nowrap; transition: color .2s; }
+html[data-look="senior"] .hw-open:hover { color: var(--accent-hot); }
+@media (max-width: 640px) {
+  html[data-look="senior"] .hw-cap { flex-direction: column; gap: 6px; padding-top: 12px; }
+  html[data-look="senior"] .hw-cap .hw-result { font-size: 12.5px; }
+}
+
 /* ---- Hero lab (2026-11-09): four layouts + viewfinder frame, switched by data-hl / data-hvf on <html>
    (js/herolab.js, only with ?hero in the address; visitors keep the current hero). ---- */
 .hw-bar { display: none; }
@@ -2049,9 +2071,9 @@ html[data-justify="on"] main .offers .offer-list li { text-align: left; hyphens:
 html[data-look="senior"]:is([data-hl], [data-hvf]) .hw-bar { grid-area: bar; }
 html[data-look="senior"]:is([data-hl], [data-hvf]) .hw-main { grid-area: v; }
 html[data-look="senior"]:is([data-hl], [data-hvf]) .hw-grid { grid-area: tabs; }
-html[data-look="senior"]:is([data-hl], [data-hvf]) .hero-wall { grid-template-areas: "bar" "v" "tabs"; }
+html[data-look="senior"]:is([data-hl], [data-hvf]) .hero-wall { grid-template-areas: "bar" "v" "cap" "tabs"; }
 @media (min-width: 1001px) {
-  html[data-look="senior"][data-hvf]:not([data-hl]) .hero-wall { grid-template-areas: "bar ." "v tabs"; }
+  html[data-look="senior"][data-hvf]:not([data-hl]) .hero-wall { grid-template-areas: "bar ." "v tabs" "cap ."; }
 }
 
 /* Viewfinder: camera label and REC timecode in a thin bar above the frame, violet corner brackets inside it. */
@@ -2078,7 +2100,7 @@ html[data-look="senior"][data-hvf] .hw-title { padding-left: 30px; padding-right
 
 @media (min-width: 1001px) {
   /* Shared by the layouts with the project names in a row under the clips. */
-  html[data-look="senior"]:is([data-hl="stage"], [data-hl="split"], [data-hl="cinema"], [data-hl="tilt"]) .hero-wall { grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "v" "tabs"; column-gap: 0; }
+  html[data-look="senior"]:is([data-hl="stage"], [data-hl="split"], [data-hl="cinema"], [data-hl="tilt"]) .hero-wall { grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "v" "cap" "tabs"; column-gap: 0; }
   html[data-look="senior"]:is([data-hl="stage"], [data-hl="split"], [data-hl="cinema"], [data-hl="tilt"]) .hw-grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0 14px; margin-top: 14px; padding: 0; border: 0; overflow: visible; }
   html[data-look="senior"]:is([data-hl="stage"], [data-hl="split"], [data-hl="cinema"], [data-hl="tilt"]) .hw-grid button { padding: 12px 0 0; border-top: 1px solid var(--line); white-space: normal; font-size: 13.5px; line-height: 1.35; }
   html[data-look="senior"]:is([data-hl="stage"], [data-hl="split"], [data-hl="cinema"], [data-hl="tilt"]) .hw-grid button::after { left: 0; right: 0; top: -1px; bottom: auto; width: auto; height: 1px; transform: scaleX(0); transform-origin: left center; }
@@ -2092,7 +2114,7 @@ html[data-look="senior"][data-hvf] .hw-title { padding-left: 30px; padding-right
   html[data-look="senior"][data-hl="stage"] .hero-role { margin: 14px 0 6px; max-width: 46ch; text-align: center; }
   html[data-look="senior"][data-hl="stage"] .hero-sub { margin: 0 0 18px; max-width: 80ch; text-align: center; }
   html[data-look="senior"][data-hl="stage"] .hero-cta { justify-content: center; }
-  html[data-look="senior"][data-hl="stage"] .hero-wall { width: min(100%, calc((100svh - 480px) * 16 / 9)); min-width: min(100%, 680px); margin-top: clamp(26px, 3vw, 40px); justify-self: center; }
+  html[data-look="senior"][data-hl="stage"] .hero-wall { width: min(100%, calc((100svh - 540px) * 16 / 9)); min-width: min(100%, 680px); margin-top: clamp(26px, 3vw, 40px); justify-self: center; }
   html[data-look="senior"][data-hl="stage"] .hero-stats { width: 100%; margin-top: clamp(30px, 3vw, 44px); }
 
   /* 2 · Control room: numbered list | clips | numbers, all in one band */
@@ -2101,7 +2123,7 @@ html[data-look="senior"][data-hvf] .hw-title { padding-left: 30px; padding-right
   html[data-look="senior"][data-hl="control"] .hero-cta { justify-self: end; align-self: center; }
   html[data-look="senior"][data-hl="control"] .hero-role { margin: 16px 0 4px; max-width: 70ch; }
   html[data-look="senior"][data-hl="control"] .hero-sub { margin: 0; max-width: 90ch; }
-  html[data-look="senior"][data-hl="control"] .hero-wall { width: 100%; min-width: 0; margin-top: clamp(26px, 3vw, 38px); grid-template-columns: 232px minmax(0, 1fr); grid-template-areas: ". bar" "tabs v"; column-gap: 24px; align-self: start; align-items: start; }
+  html[data-look="senior"][data-hl="control"] .hero-wall { width: 100%; min-width: 0; margin-top: clamp(26px, 3vw, 38px); grid-template-columns: 232px minmax(0, 1fr); grid-template-areas: ". bar" "tabs v" "tabs cap"; column-gap: 24px; align-self: start; align-items: start; }
   html[data-look="senior"][data-hl="control"] .hw-grid { counter-reset: hwi; justify-content: flex-start; border-left: 1px solid var(--line); }
   html[data-look="senior"][data-hl="control"] .hw-grid li:not(.hw-off) { position: relative; counter-increment: hwi; }
   html[data-look="senior"][data-hl="control"] .hw-grid li:not(.hw-off)::before { content: counter(hwi, decimal-leading-zero); position: absolute; left: 18px; top: 10px; font-size: 12px; line-height: 1.6; color: var(--fg-faint); font-variant-numeric: tabular-nums; pointer-events: none; }
@@ -2128,13 +2150,12 @@ html[data-look="senior"][data-hvf] .hw-title { padding-left: 30px; padding-right
   html[data-look="senior"][data-hl="split"] .hero-stats li:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--line); }
 
   /* 4 · Cinematic: the clips fill the first screen, the text sits on them */
-  html[data-look="senior"][data-hl="cinema"] .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; grid-template-rows: minmax(0, 1fr) auto auto auto auto 92px auto; row-gap: 0; padding-top: 0; }
-  html[data-look="senior"][data-hl="cinema"] .hero-wall { grid-area: auto; grid-column: 1 / -1; grid-row: 1 / 7; width: 100vw; min-width: 0; max-width: none; height: calc(100svh - 64px); margin: 0 calc(50% - 50vw); grid-template-rows: auto minmax(0, 1fr) auto; }
+  html[data-look="senior"][data-hl="cinema"] .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; grid-template-rows: minmax(0, 1fr) auto auto auto auto 152px auto; row-gap: 0; padding-top: 0; }
+  html[data-look="senior"][data-hl="cinema"] .hero-wall { grid-area: auto; grid-column: 1 / -1; grid-row: 1 / 7; width: 100vw; min-width: 0; max-width: none; height: calc(100svh - 64px); margin: 0 calc(50% - 50vw); grid-template-rows: auto minmax(0, 1fr) auto auto; }
   html[data-look="senior"][data-hl="cinema"] .hw-main { aspect-ratio: auto; height: 100%; border-radius: 0; box-shadow: none; }
   html[data-look="senior"][data-hl="cinema"] .hw-main::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(90deg, rgba(6, 7, 8, 0.88) 0%, rgba(6, 7, 8, 0.6) 38%, rgba(6, 7, 8, 0.12) 72%), linear-gradient(0deg, rgba(6, 7, 8, 0.75) 0%, transparent 40%); }
   html[data-look="senior"][data-hl="cinema"] .hw-title { z-index: 3; left: auto; right: 0; width: min(46%, 560px); padding: 0 calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter)) 26px 0; background: none; flex-direction: column; align-items: flex-end; text-align: right; }
-  html[data-look="senior"][data-hl="cinema"] .hw-tt { align-items: flex-end; }
-  html[data-look="senior"][data-hl="cinema"] :is(.hw-bar, .hw-grid) { padding-left: calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter)); padding-right: calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter)); }
+  html[data-look="senior"][data-hl="cinema"] :is(.hw-bar, .hw-cap, .hw-grid) { padding-left: calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter)); padding-right: calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter)); }
   html[data-look="senior"][data-hl="cinema"] .hw-bar { padding-top: 10px; }
   html[data-look="senior"][data-hl="cinema"] .hw-grid { margin-top: 0; padding-top: 16px; padding-bottom: 18px; background: var(--bg); }
   html[data-look="senior"][data-hl="cinema"] :is(.wordmark, .hero-role, .hero-sub, .hero-cta) { position: relative; z-index: 3; grid-column: 1; max-width: 640px; }
@@ -2184,11 +2205,11 @@ html[data-look="senior"][data-hl="monitors"] .hw-grid button::after { top: 7px; 
 
 @media (min-width: 1001px) {
   /* 6 · Filmstrip: the clips centred, the projects as a row of pictures under them. */
-  html[data-look="senior"][data-hl="strip"] .hero-wall { width: min(100%, calc((100svh - 450px) * 16 / 9)); min-width: min(100%, 700px); justify-self: center; grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "v" "tabs"; column-gap: 0; }
+  html[data-look="senior"][data-hl="strip"] .hero-wall { width: min(100%, calc((100svh - 510px) * 16 / 9)); min-width: min(100%, 700px); justify-self: center; grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "v" "cap" "tabs"; column-gap: 0; }
   html[data-look="senior"][data-hl="strip"] .hw-grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0 10px; margin-top: 14px; padding: 0; border: 0; overflow: visible; }
 
   /* 7 · Monitor wall: the clips, and all nine projects as a 3 × 3 wall of screens beside them. */
-  html[data-look="senior"][data-hl="monitors"] .hero-wall { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 0.58fr); grid-template-areas: "bar ." "v tabs"; column-gap: 12px; align-items: stretch; }
+  html[data-look="senior"][data-hl="monitors"] .hero-wall { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 0.58fr); grid-template-areas: "bar ." "v tabs" "cap ."; column-gap: 12px; align-items: stretch; }
   html[data-look="senior"][data-hl="monitors"] .hw-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; border: 0; overflow: visible; }
   html[data-look="senior"][data-hl="monitors"] .hw-grid li { min-height: 0; }
   html[data-look="senior"][data-hl="monitors"] .hw-grid button { height: 100%; }
@@ -2203,9 +2224,10 @@ html[data-look="senior"][data-hl="monitors"] .hw-grid button::after { top: 7px; 
   html[data-look="senior"]:is([data-hl="sides"], [data-hl="tilt"]) .hero-stats { width: 100%; margin-top: clamp(30px, 3vw, 44px); }
 
   /* 8 · Two sides: the clips in the middle, the project names split left and right. */
-  html[data-look="senior"][data-hl="sides"] .hero-wall { width: 100%; margin-top: clamp(24px, 2.8vw, 38px); grid-template-columns: 196px minmax(0, max(540px, calc((100svh - 470px) * 16 / 9))) 196px; grid-template-rows: auto minmax(0, 1fr) repeat(5, auto) minmax(0, 1fr); grid-template-areas: none; justify-content: center; column-gap: 28px; align-items: stretch; }
+  html[data-look="senior"][data-hl="sides"] .hero-wall { width: 100%; margin-top: clamp(24px, 2.8vw, 38px); grid-template-columns: 196px minmax(0, max(540px, calc((100svh - 530px) * 16 / 9))) 196px; grid-template-rows: auto minmax(0, 1fr) repeat(5, auto) minmax(0, 1fr) auto; grid-template-areas: none; justify-content: center; column-gap: 28px; align-items: stretch; }
   html[data-look="senior"][data-hl="sides"] .hw-bar { grid-area: auto; grid-column: 2; grid-row: 1; }
   html[data-look="senior"][data-hl="sides"] .hw-main { grid-area: auto; grid-column: 2; grid-row: 2 / 9; }
+  html[data-look="senior"][data-hl="sides"] .hw-cap { grid-area: auto; grid-column: 2; grid-row: 9; }
   html[data-look="senior"][data-hl="sides"] .hw-grid { display: contents; }
   html[data-look="senior"][data-hl="sides"] .hw-grid li:nth-child(-n+5) { grid-column: 1; }
   html[data-look="senior"][data-hl="sides"] .hw-grid li:nth-child(n+6) { grid-column: 3; }
@@ -2223,7 +2245,7 @@ html[data-look="senior"][data-hl="monitors"] .hw-grid button::after { top: 7px; 
   html[data-look="senior"][data-hl="sides"] .hw-grid li:nth-child(n+6) button { padding: 10px 0 10px 20px; border-left: 1px solid var(--line); }
 
   /* 9 · Tilted: the clips lean back under a violet light and straighten as the page scrolls. */
-  html[data-look="senior"][data-hl="tilt"] .hero-wall { position: relative; isolation: isolate; width: min(100%, calc((100svh - 500px) * 16 / 9)); min-width: min(100%, 640px); justify-self: center; margin-top: clamp(24px, 2.8vw, 40px); perspective: 1500px; }
+  html[data-look="senior"][data-hl="tilt"] .hero-wall { position: relative; isolation: isolate; width: min(100%, calc((100svh - 550px) * 16 / 9)); min-width: min(100%, 640px); justify-self: center; margin-top: clamp(24px, 2.8vw, 40px); perspective: 1500px; }
   html[data-look="senior"][data-hl="tilt"] .hero-wall::before { content: ""; position: absolute; left: 4%; right: 4%; top: 4%; height: 76%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 34%, transparent), transparent); filter: blur(34px); pointer-events: none; }
   html[data-look="senior"][data-hl="tilt"] .hw-main { transform-origin: 50% 100%; transform: rotateX(10deg); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, var(--line)), 0 40px 110px -40px color-mix(in srgb, var(--accent) 55%, transparent); }
   @supports (animation-timeline: scroll()) {
@@ -2231,7 +2253,7 @@ html[data-look="senior"][data-hl="monitors"] .hw-grid button::after { top: 7px; 
   }
 
   /* 10 · Big index: the project names as a large numbered list, the clips beside it. */
-  html[data-look="senior"][data-hl="index"] .hero-wall { width: 100%; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); grid-template-areas: ". bar" "tabs v"; column-gap: clamp(32px, 4vw, 64px); align-items: center; }
+  html[data-look="senior"][data-hl="index"] .hero-wall { width: 100%; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); grid-template-areas: ". bar" "tabs v" "tabs cap"; column-gap: clamp(32px, 4vw, 64px); align-items: center; }
   html[data-look="senior"][data-hl="index"] .hw-grid { display: block; counter-reset: hwi; margin: 0; padding: 0; border: 0; border-bottom: 1px solid var(--line); overflow: visible; }
   html[data-look="senior"][data-hl="index"] .hw-grid li:not(.hw-off) { position: relative; counter-increment: hwi; border-top: 1px solid var(--line); }
   html[data-look="senior"][data-hl="index"] .hw-grid li:not(.hw-off)::before { content: counter(hwi, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-size: 12px; line-height: 1.5; color: var(--fg-faint); font-variant-numeric: tabular-nums; pointer-events: none; }
