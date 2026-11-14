@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=1794638073">
-  <link rel="stylesheet" href="styles-variants.css?v=1794638073">
+  <link rel="stylesheet" href="styles.css?v=1794671570">
+  <link rel="stylesheet" href="styles-variants.css?v=1794671570">
 
   <script>
     // Restore the visitor's light/dark choice before first paint, so there is no flash.
@@ -141,6 +141,8 @@
           <article class="project reveal" id="p2" aria-labelledby="p2Title">
             <div class="project-media slides" data-kind="img">
               <figure class="slide is-active" data-kind="video" data-short="UAV123 car9 · Hybrid tracker, a small car under a sign" data-cap="UAV123 car9, a public drone benchmark, run with the hybrid tracker: a fast tracker on every frame, re-anchored by a stronger model when its confidence drops. The small car passes under an overhead sign, the label reads RE-ANCHOR as the box is re-centred, and the track holds past the sign and another car. On this sequence the hybrid scores 0.76 success, against 0.37 for the fast tracker alone."><video src="assets/video/fpv-uav123-car9.mp4" poster="assets/img/projects/fpv-uav123-car9-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: an aerial view of a palm-lined road, a small green box following one car under an overhead sign"></video></figure>
+              <figure class="slide" data-kind="video" data-short="UAV123 car15 · A car a few pixels wide" data-cap="UAV123 car15, filmed from high above a highway: the target is a car a few pixels wide crossing the bridge. The evaluation tool’s live readout: EfficientTAM-tiny at 640 px running at 22.9 fps, the IoU against the ground truth (white) frame by frame, and a sequence AUC of 0.611."><video src="assets/video/fpv-uav123-car15.mp4" poster="assets/img/projects/fpv-uav123-car15-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a wide aerial view of a highway bridge over a construction site, a tiny magenta box on a car crossing the bridge"></video></figure>
+              <figure class="slide" data-kind="video" data-short="UAV123 car12 · Held past palms and buildings" data-cap="UAV123 car12: one box drawn by the operator, detector switched off. The camera pans across palms, buildings and the waterfront while the tracker stays on the small car; its readout counts 497 of 499 frames tracked at 29.9 fps."><video src="assets/video/fpv-uav123-car12.mp4" poster="assets/img/projects/fpv-uav123-car12-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: an aerial pan over palm trees, office buildings and a waterfront road, a small magenta box on one car"></video></figure>
               <figure class="slide" data-kind="video" data-short="Benchmark · DTB70 Car6, frozen lake" data-cap="The evaluation tool on DTB70 Car6, a public drone benchmark: yellow is the tracker, white is the ground truth. The readout prints the live frame rate (29.6 fps), the IoU per frame and the success rate so far; sequence AUC 0.73."><video src="assets/video/fpv-dtb70-car6.mp4" poster="assets/img/projects/fpv-dtb70-car6-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a car driving on a frozen lake seen from a drone, a yellow tracking box around it and evaluation text at the top"></video></figure>
               <figure class="slide" data-kind="video" data-short="UAV123 · A boat a few pixels wide" data-cap="The hard regime: a boat a few pixels wide beside a lighthouse, tracked from one operator box with the detector switched off. 480 of 481 frames held at 30 fps."><video src="assets/video/fpv-uav123-boat.mp4" poster="assets/img/projects/fpv-uav123-boat-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: aerial view of a bay with a lighthouse and marina, a tiny magenta tracking box on a boat"></video></figure>
               <figure class="slide" data-kind="video" data-fit="contain" data-short="UAV123 · Tracking another drone" data-cap="Tracking a flying drone against sky and beach from a single box, detector off: 132 of 133 frames held at 30 fps."><video src="assets/video/fpv-uav123-uav.mp4" poster="assets/img/projects/fpv-uav123-uav-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video: a beach seen from a low camera, a small magenta tracking box on a drone in the sky"></video></figure>
@@ -150,11 +152,13 @@
             </div>
             <div class="project-extra">
               <p class="extra-label">From the project · Pick a view</p>
-              <ul class="shots shots-4">
+              <ul class="shots">
                 <li><button class="shot" type="button" data-slide="0" aria-pressed="true" aria-label="Show: UAV123 car9 · Hybrid tracker, a small car under a sign"><img src="assets/img/projects/fpv-uav123-car9-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 car9 · Hybrid tracker, a small car under a sign</span></button></li>
-                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: Benchmark · DTB70 Car6, frozen lake"><img src="assets/img/projects/fpv-dtb70-car6-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Benchmark · DTB70 Car6, frozen lake</span></button></li>
-                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: UAV123 · A boat a few pixels wide"><img src="assets/img/projects/fpv-uav123-boat-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · A boat a few pixels wide</span></button></li>
-                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: UAV123 · Tracking another drone"><img src="assets/img/projects/fpv-uav123-uav-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · Tracking another drone</span></button></li>
+                <li><button class="shot" type="button" data-slide="1" aria-pressed="false" aria-label="Show: UAV123 car15 · A car a few pixels wide"><img src="assets/img/projects/fpv-uav123-car15-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 car15 · A car a few pixels wide</span></button></li>
+                <li><button class="shot" type="button" data-slide="2" aria-pressed="false" aria-label="Show: UAV123 car12 · Held past palms and buildings"><img src="assets/img/projects/fpv-uav123-car12-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 car12 · Held past palms and buildings</span></button></li>
+                <li><button class="shot" type="button" data-slide="3" aria-pressed="false" aria-label="Show: Benchmark · DTB70 Car6, frozen lake"><img src="assets/img/projects/fpv-dtb70-car6-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">Benchmark · DTB70 Car6, frozen lake</span></button></li>
+                <li><button class="shot" type="button" data-slide="4" aria-pressed="false" aria-label="Show: UAV123 · A boat a few pixels wide"><img src="assets/img/projects/fpv-uav123-boat-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · A boat a few pixels wide</span></button></li>
+                <li><button class="shot" type="button" data-slide="5" aria-pressed="false" aria-label="Show: UAV123 · Tracking another drone"><img src="assets/img/projects/fpv-uav123-uav-thumb.jpg" alt="" loading="lazy" width="560" height="420"><span class="shot-badge" aria-hidden="true">Video</span><span class="shot-cap">UAV123 · Tracking another drone</span></button></li>
               </ul>
             </div>
             <div class="project-body">
@@ -637,13 +641,13 @@
     <button class="lb-btn lb-next" type="button" aria-label="Next image">›</button>
   </dialog>
 
-  <script src="js/main.js?v=1794638073"></script>
-  <script src="js/titles.js?v=1794638073"></script>
-  <script src="js/ambient.js?v=1794638073"></script>
-  <script src="js/work.js?v=1794638073"></script>
-  <script src="js/sims.js?v=1794638073"></script>
-  <script src="js/previews.js?v=1794638073"></script>
-  <script src="js/slides.js?v=1794638073"></script>
-  <script src="js/compare.js?v=1794638073"></script>
+  <script src="js/main.js?v=1794671570"></script>
+  <script src="js/titles.js?v=1794671570"></script>
+  <script src="js/ambient.js?v=1794671570"></script>
+  <script src="js/work.js?v=1794671570"></script>
+  <script src="js/sims.js?v=1794671570"></script>
+  <script src="js/previews.js?v=1794671570"></script>
+  <script src="js/slides.js?v=1794671570"></script>
+  <script src="js/compare.js?v=1794671570"></script>
 </body>
 </html>

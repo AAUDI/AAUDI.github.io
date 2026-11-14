@@ -1921,5 +1921,6 @@ em {
 .hw-multi.n-5 { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: 1fr 1fr; }
 .hw-multi.n-5 .hm-tile:nth-child(-n+2) { grid-column: span 3; }
 .hw-multi.n-5 .hm-tile:nth-child(n+3) { grid-column: span 2; }
+.hw-multi.n-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr 1fr; }
 /* The main clip fades in once it plays; the grid's clips are visible from the start (poster first). */
 .hw-main .hm-tile video { opacity: 1; transition: none; }

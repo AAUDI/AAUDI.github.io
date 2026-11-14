@@ -70,8 +70,8 @@
   function multiOK() { return !window.matchMedia || window.matchMedia('(min-width: 1001px)').matches; }
   function buildMulti(list) {
     var g = document.createElement('div');
-    g.className = 'hw-multi n-' + Math.min(list.length, 5);
-    list.slice(0, 5).forEach(function (m) {
+    g.className = 'hw-multi n-' + Math.min(list.length, 6);
+    list.slice(0, 6).forEach(function (m) {
       var c = document.createElement('div'), el;
       c.className = 'hm-tile';
       if (m.v && !reduce) {
