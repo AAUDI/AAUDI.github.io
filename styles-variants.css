@@ -654,12 +654,12 @@ html[data-look="senior"] .hero-stats { grid-template-columns: repeat(5, minmax(0
 html[data-look="senior"] .label { color: var(--accent); }
 html[data-look="senior"] .offer-n { color: var(--accent); }
 html[data-look="senior"] .brand-mark::after { background: var(--accent); }
-html[data-look="senior"] .live-dot { background: var(--accent); animation-name: pulse-accent; }
-@keyframes pulse-accent {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
-  70% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 0%, transparent); }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
+/* The pulse is a ring that scales and fades (moved by the graphics card); animating a box-shadow
+   made the browser restyle and repaint the page about 60 times a second, even when the dot was off screen. */
+html[data-look="senior"] .live-dot { position: relative; background: var(--accent); box-shadow: none; animation: none; }
+html[data-look="senior"] .live-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--accent); opacity: 0; pointer-events: none; animation: dot-ring 2.4s ease-out infinite; }
+@keyframes dot-ring { 0% { transform: scale(1); opacity: 0.55; } 70%, 100% { transform: scale(3.25); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { html[data-look="senior"] .live-dot::after { animation: none; } }
 html[data-look="senior"] .pcard:hover h3 { color: var(--accent-hot); }
 /* Hero: the playing project in violet, its progress line too; softer grid. */
 html[data-look="senior"] .hw-grid button::after { background: var(--accent); }
