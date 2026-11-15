@@ -161,6 +161,22 @@
     sections.forEach(function (s) { navObserver.observe(s.el); });
   }
 
+  // ---------- Media that waits until it is near the screen ----------
+  // A <video data-poster> gets its poster, and a stand-alone card clip (data-autoplay) its
+  // source, only when it comes within a screen or so of the viewport; nothing far down the
+  // page is downloaded on arrival.
+  function hydrate(v) {
+    if (v.hasAttribute('data-poster')) { v.poster = v.getAttribute('data-poster'); v.removeAttribute('data-poster'); }
+    if (v.hasAttribute('data-autoplay') && v.hasAttribute('data-src')) { v.src = v.getAttribute('data-src'); v.removeAttribute('data-src'); }
+  }
+  var lazyMedia = document.querySelectorAll('video[data-poster], video[data-autoplay][data-src]');
+  if ('IntersectionObserver' in window) {
+    var lazyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { hydrate(e.target); lazyObserver.unobserve(e.target); } });
+    }, { rootMargin: '600px 0px' });
+    lazyMedia.forEach(function (v) { lazyObserver.observe(v); });
+  } else lazyMedia.forEach(hydrate);
+
   // ---------- Muted clips on cards: play only while on screen ----------
   var clips = document.querySelectorAll('video[data-autoplay]');
   var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -168,7 +184,7 @@
     var clipObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var v = e.target;
-        if (e.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+        if (e.isIntersecting) { hydrate(v); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
         else v.pause();
       });
     }, { threshold: 0.3 });

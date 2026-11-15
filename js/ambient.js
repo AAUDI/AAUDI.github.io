@@ -36,17 +36,20 @@
     audio = new Audio(TRACK);
     audio.loop = true;
     audio.preload = 'none';
-    // Through Web Audio so the fades also work on iPhones (which ignore audio.volume).
-    if (AC) {
-      try {
-        ctx = new AC();
-        gain = ctx.createGain();
-        gain.gain.value = 0;
-        ctx.createMediaElementSource(audio).connect(gain);
-        gain.connect(ctx.destination);
-      } catch (e) { ctx = null; gain = null; }
-    }
-    if (!gain) audio.volume = 0;
+    audio.volume = 0;
+  }
+  // Through Web Audio so the fades also work on iPhones (which ignore audio.volume). Creating the
+  // audio context is slow on some systems, so it is only built when the music actually starts.
+  function graph() {
+    if (ctx || !AC) return;
+    try {
+      ctx = new AC();
+      gain = ctx.createGain();
+      gain.gain.value = 0;
+      ctx.createMediaElementSource(audio).connect(gain);
+      gain.connect(ctx.destination);
+      audio.volume = 1;
+    } catch (e) { ctx = null; gain = null; }
   }
 
   function fade(to, sec, done) {
@@ -79,6 +82,7 @@
   function start() {
     armed = false;
     if (!audio) setup();
+    graph();
     if (ctx && ctx.state === 'suspended') ctx.resume();
     on = true;
     play();
@@ -113,9 +117,15 @@
     document.addEventListener('pointerdown', resume, true);
     document.addEventListener('keydown', resume, true);
     // Some browsers allow sound straight away (for example on a site the visitor uses often).
-    setup();
-    var p = audio.play();
-    if (p && p.then) p.then(function () { if (armed) start(); }).catch(function () { if (!on) audio.pause(); });
+    // Try once the page has finished loading, so the attempt never delays it.
+    var tryNow = function () {
+      if (!armed) return;
+      if (!audio) setup();
+      var p = audio.play();
+      if (p && p.then) p.then(function () { if (armed) start(); }).catch(function () { if (!on) audio.pause(); });
+    };
+    var later = function () { setTimeout(function () { (window.requestIdleCallback || setTimeout)(tryNow); }, 1500); };
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
   }
 
   // Quiet in background tabs; give way to a YouTube video.

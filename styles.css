@@ -1924,3 +1924,6 @@ em {
 .hw-multi.n-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr 1fr; }
 /* The main clip fades in once it plays; the grid's clips are visible from the start (poster first). */
 .hw-main .hm-tile video { opacity: 1; transition: none; }
+
+/* Read by screen readers, not shown (keeps the heading levels in order). */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

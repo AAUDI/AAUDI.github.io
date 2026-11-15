@@ -62,7 +62,8 @@
       var prev = vids[i];
       i = (k + vids.length) % vids.length;
       var v = vids[i];
-      load(v);
+      // A clip is only fetched once its card is on screen (its small poster shows until then).
+      if (onScreen) load(v);
       vids.forEach(function (x, j) { x.classList.toggle('is-on', j === i); if (dots) dots.children[j].classList.toggle('is-on', j === i); });
       if (media && v.getAttribute('data-cls')) media.setAttribute('data-cls', v.getAttribute('data-cls'));
       if (prev !== v) { prev.pause(); try { v.currentTime = 0; } catch (e) {} }

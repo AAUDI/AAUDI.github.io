@@ -20,7 +20,16 @@
     var cap = box.querySelector('.slide-cap');
     var openBtn = box.querySelector('.media-open');
     var replay = box.querySelector('.media-replay');
-    var idx = 0, timer = 0, auto = !reduceMotion, hover = false, onScreen = false;
+    var idx = 0, timer = 0, auto = !reduceMotion, hover = false, onScreen = false, near = false;
+
+    // Slide media waits as data-src / data-poster: a slide's picture or clip is only fetched
+    // once the project is close to the screen and the slide is showing (plus the next one).
+    function hydrate(s) {
+      if (!s || s._hydrated) return;
+      s._hydrated = true;
+      s.querySelectorAll('[data-src]').forEach(function (el) { el.setAttribute('src', el.getAttribute('data-src')); el.removeAttribute('data-src'); });
+      s.querySelectorAll('[data-poster]').forEach(function (el) { el.setAttribute('poster', el.getAttribute('data-poster')); el.removeAttribute('data-poster'); });
+    }
 
     slides.forEach(function (s) {
       var c = s.querySelector('canvas');
@@ -32,13 +41,15 @@
     // Photos and videos both open in the lightbox.
     var photos = slides.filter(function (s) { var k = s.getAttribute('data-kind'); return k === 'img' || k === 'video'; }).map(function (s) {
       var img = s.querySelector('img'), v = s.querySelector('video');
-      return { full: s.getAttribute('data-full') || (img && img.getAttribute('src')), video: v ? v.getAttribute('src') : null, poster: v ? v.getAttribute('poster') : null, cap: s.getAttribute('data-cap'), alt: img ? img.alt : (v ? v.getAttribute('aria-label') : ''), el: s };
+      return { full: s.getAttribute('data-full') || (img && (img.getAttribute('src') || img.getAttribute('data-src'))), video: v ? (v.getAttribute('src') || v.getAttribute('data-src')) : null, poster: v ? (v.getAttribute('poster') || v.getAttribute('data-poster')) : null, cap: s.getAttribute('data-cap'), alt: img ? img.alt : (v ? v.getAttribute('aria-label') : ''), el: s };
     });
 
     function go(i, byUser) {
       idx = (i + slides.length) % slides.length;
       var s = slides[idx], kind = s.getAttribute('data-kind') || 'img';
-      slides.forEach(function (x, k) { x.classList.toggle('is-active', k === idx); x.setAttribute('aria-hidden', k === idx ? 'false' : 'true'); });
+      if (near || byUser) { hydrate(s); hydrate(slides[(idx + 1) % slides.length]); }
+      // Hidden slides are inert: out of the tab order and of the accessibility tree.
+      slides.forEach(function (x, k) { x.classList.toggle('is-active', k === idx); x.setAttribute('aria-hidden', k === idx ? 'false' : 'true'); x.inert = k !== idx; });
       thumbs.forEach(function (b) { b.setAttribute('aria-pressed', String(parseInt(b.getAttribute('data-slide'), 10) === idx)); });
       box.setAttribute('data-kind', kind);
       if (cap) cap.textContent = s.getAttribute('data-short') || s.getAttribute('data-cap') || '';
@@ -52,13 +63,18 @@
         if (k === idx && !reduceMotion) { var pr = x._video.play(); if (pr && pr.catch) pr.catch(function () {}); }
         else x._video.pause();
       });
-      if (s._player) {
-        s._player.visible = true;
-        s._player.resize();
-        if (reduceMotion) s._player.render(); else s._player.play();
-      }
+      // An animation only starts once its project is on screen (or the visitor picked it);
+      // before, the two animations far down the page ran from the moment the page opened.
+      if (s._player && (onScreen || byUser)) startPlayer(s);
       if (byUser) auto = false;
       schedule();
+    }
+
+    function startPlayer(s) {
+      s._started = true;
+      s._player.visible = true;
+      s._player.resize();
+      if (reduceMotion) s._player.render(); else s._player.play();
     }
 
     function schedule() {
@@ -112,13 +128,21 @@
     slides.forEach(function (s) { if (s.getAttribute('data-kind') === 'compare') return; var el = s.querySelector('img, video'); if (el) el.addEventListener('click', openCurrent); });
 
     if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        near = true; obs.disconnect();
+        hydrate(slides[idx]); hydrate(slides[(idx + 1) % slides.length]);
+      }, { rootMargin: '800px 0px' }).observe(box);
       new IntersectionObserver(function (entries) {
         onScreen = entries[0].isIntersecting;
+        if (onScreen) hydrate(slides[idx]);
+        var pl = slides[idx]._player;
+        if (onScreen && pl && !pl.playing && !slides[idx]._started) { slides[idx]._started = true; startPlayer(slides[idx]); }
         var v = slides[idx]._video;
         if (v) { if (onScreen && !reduceMotion) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else v.pause(); }
         if (onScreen) schedule();
       }, { threshold: 0.4 }).observe(box);
-    } else onScreen = true;
+    } else { onScreen = true; near = true; slides.forEach(hydrate); }
 
     go(0);
   });

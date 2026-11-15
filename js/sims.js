@@ -150,7 +150,19 @@
       return [c[0] + cs * x + sn * y, c[1] - sn * x + cs * y];
     }
 
-    function buildStack(D, img) {
+    // Heavy set-up runs as a generator, a slice of about 12 ms at a time, so the page never
+    // freezes while an animation prepares its data (it used to block for a second or more).
+    function runSliced(gen, done) {
+      (function step() {
+        var t0 = performance.now();
+        try {
+          while (performance.now() - t0 < 12) { if (gen.next().done) { if (done) done(); return; } }
+        } catch (e) { if (window.console) console.error(e); return; }
+        setTimeout(step, 0);
+      })();
+    }
+
+    function* buildStack(D, img) {
       var W = 480, Hh = 360, M = 24, K = 10, n = W * Hh, c = [W / 2, Hh / 2], k, i;
       var rand = mulberry32(2017), gauss = gaussFn(rand);
       var base = makeCanvas(W + 2 * M, Hh + 2 * M);
@@ -175,6 +187,7 @@
         var d = wg.getImageData(0, 0, W, Hh).data, f = new Float32Array(n);
         for (i = 0; i < n; i++) f[i] = d[i * 4] + 24 * gauss();
         raw.push(f); sm.push(box3(f, W, Hh)); frames.push(grayCanvas(f, W, Hh));
+        yield;
       }
 
       // Grid FAST on image 1: the first corner found in each block, in raster order.
@@ -191,6 +204,7 @@
         if (feats.length >= 60) break;
         T -= 4;
       }
+      yield;
 
       // IMU-predicted ZNCC matching and least squares, for every image.
       var R5 = 5, r3 = 4, bias = [2.8, -2.0, 0.0032], est = [{ a: 1, b: 0, tx: 0, ty: 0 }], last = null, sel = null;
@@ -244,6 +258,7 @@
             sel.templ = tpl;
           }
         }
+        yield;
       }
 
       // Resample every image into image 1's geometry with its estimate and stack.
@@ -261,6 +276,7 @@
         var a = wg.getImageData(0, 0, W, Hh).data;
         for (i = 0; i < n; i++) { var wt = a[i * 4 + 3] / 255; sumA[i] += a[i * 4] * wt; wA[i] += wt; }
         aligned.push(grayCanvas(sumA, W, Hh, wA));
+        yield;
       }
       for (k = 0; k < K; k++) for (i = 0; i < n; i++) sumN[i] += raw[k][i];
       naive = grayCanvas(sumN, W, Hh, K);
@@ -651,8 +667,7 @@
         var D = p.data = { ready: false };
         var img = new Image();
         img.onload = function () {
-          buildStack(D, img);
-          if (!p.playing) p.resize();
+          runSliced(buildStack(D, img), function () { if (!p.playing) p.resize(); });
         };
         img.src = STACK_SCENE;
         var uav = new Image();
@@ -790,9 +805,9 @@
       return c;
     }
 
-    function buildTomo() {
+    function* buildTomo(D) {
       var S = T3, NX = S.NX, NY = S.NY, NZ = S.NZ, NU = S.NU, NV = S.NV, NP = S.NP, i, k, m;
-      var D = { dA: 2 * S.AU / (NU - 1), dB: 2 * S.BV / (NV - 1) };
+      D.dA = 2 * S.AU / (NU - 1); D.dB = 2 * S.BV / (NV - 1);
       var vxs = 2 * S.VX / NX, vzs = 2 * S.VZ / NZ;
       D.vs = vxs;
       D.xs = new Float32Array(NX); D.ys = new Float32Array(NY); D.zs = new Float32Array(NZ);
@@ -822,6 +837,7 @@
             if (Math.abs(acc) > fmax) fmax = Math.abs(acc);
           }
         }
+        if ((m & 3) === 3) yield;
       }
       D.fmax = fmax * 0.6;
 
@@ -834,10 +850,12 @@
 
       var N = NX * NY * NZ, truth = new Float32Array(N), full = new Float32Array(N), iz;
       for (iz = 0; iz < NZ; iz++) for (iy = 0; iy < NY; iy++) for (ix = 0; ix < NX; ix++) truth[(iz * NY + iy) * NX + ix] = density(D.xs[ix], D.ys[iy], D.zs[iz]);
+      yield;
       D.truthPts = extract(D, truth, 1, 0.5, D.noCut, 9000);
+      yield;
 
       // The full reconstruction: the scale (material = 1) and the final views.
-      for (m = 0; m < NP; m++) bpView(D, m, full);
+      for (m = 0; m < NP; m++) { bpView(D, m, full); if ((m & 3) === 3) yield; }
       var vals = [];
       for (iz = 2; iz < NZ - 2; iz++) for (iy = 2; iy < NY - 2; iy++) for (ix = 2; ix < NX - 2; ix++) {
         var o = (iz * NY + iy) * NX + ix;
@@ -846,7 +864,9 @@
       vals.sort(function (p, q) { return p - q; });
       D.scale = vals.length ? 1 / vals[vals.length >> 1] : 1;
       D.full = full;
+      yield;
       D.finalPts = extract(D, full, D.scale, 0.5, D.cut, 12000);
+      yield;
       D.vol = new Float32Array(N); D.done = 0; D.pts = null; D.ptsDone = -1;
 
       D.sliceIz = Math.max(0, Math.min(NZ - 1, Math.round((-0.15 + S.VZ) / vzs - 0.5)));
@@ -867,7 +887,7 @@
       sc.box([dx - 0.07, 0, 0], 0.1, DH + 0.14, DW + 0.14, [34, 38, 44]);
       sc.box([dx - 0.07, -DH / 2 - 0.55, 0], 0.16, 1.0, 0.3, [44, 48, 54]);
       D.bench = sc; D.DW = DW; D.DH = DH; D.detX = dx + 0.0;
-      return D;
+      D.ready = true;
     }
 
     function updateSlice(D, f, scale) {
@@ -931,6 +951,7 @@
       var S = T3, ph = 0;
       while (ph < TPH.length - 2 && t >= TPH[ph + 1]) ph++;
       ctx.fillStyle = INK; ctx.fillRect(0, 0, cw, ch);
+      if (!D.ready) { caption(ctx, cw, ch, dpr, TCAP[0]); return; }
       var wide = cw / dpr >= 520, pad = 12 * dpr;
 
       // Progressive back-projection (phase 3), the full volume afterwards.
@@ -1112,7 +1133,7 @@
 
     SPECS.tomo3d = {
       duration: 18.6,
-      init: function (p) { p.data = buildTomo(); },
+      init: function (p) { var D = p.data = { ready: false }; runSliced(buildTomo(D), function () { if (!p.playing) p.resize(); }); },
       draw: function (ctx, cw, ch, t, dpr, p) { drawTomo(ctx, cw, ch, t, dpr, p.data); }
     };
   };

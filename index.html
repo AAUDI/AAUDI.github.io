@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=1794671570">
-  <link rel="stylesheet" href="styles-variants.css?v=1794671570">
+  <link rel="stylesheet" href="styles.css?v=1794740292">
+  <link rel="stylesheet" href="styles-variants.css?v=1794740292">
 
   <script>
     // Restore the visitor's light/dark choice before first paint, so there is no flash.
@@ -85,9 +85,6 @@
 
     <!-- 01 · Hero: the perception scene fills the viewport ------------------>
     <section class="hero" id="top" aria-labelledby="heroName">
-      <div class="hero-stage" id="heroStage" tabindex="0" data-mode="rgb" aria-label="3D scene: an FPV quadcopter with a thermal gimbal camera tracks a car on a road. Drag, or use the arrow keys, to orbit. The layer buttons re-render the scene as RGB, depth, keypoints, tracks or thermal.">
-        <canvas id="heroCanvas" aria-hidden="true"></canvas>
-      </div>
       <!-- Camera wall: one hero per project (used by looks with data-hero="wall"; js/herowall.js). -->
       <div class="hero-wall" id="heroWall" aria-label="Nine projects, each with its own footage">
         <a class="hw-main" id="hwMain" href="projects.html#p2" aria-label="Open the project: Real-time tracking on an FPV drone">
@@ -99,13 +96,13 @@
           <a class="hw-open" id="hwOpen" href="projects.html#p2">Open the project →</a>
         </div>
         <ol class="hw-grid" id="hwGrid">
-            <li><button type="button" data-word="drones" data-media='[{"v": "assets/video/hero/fpv-uav123-car9.mp4", "s": "assets/img/projects/fpv-uav123-car9-poster.jpg", "l": "UAV123 car9, hybrid tracker"}, {"v": "assets/video/hero/fpv-uav123-car15.mp4", "s": "assets/img/projects/fpv-uav123-car15-poster.jpg", "l": "UAV123 car15, a car a few pixels wide"}, {"v": "assets/video/hero/fpv-uav123-car12.mp4", "s": "assets/img/projects/fpv-uav123-car12-poster.jpg", "l": "UAV123 car12"}, {"v": "assets/video/hero/fpv-dtb70-car6.mp4", "s": "assets/img/projects/fpv-dtb70-car6-poster.jpg", "l": "DTB70 benchmark, a car"}, {"v": "assets/video/hero/fpv-uav123-boat.mp4", "s": "assets/img/projects/fpv-uav123-boat-poster.jpg", "l": "UAV123 benchmark, a tiny boat"}, {"v": "assets/video/hero/fpv-uav123-uav.mp4", "s": "assets/img/projects/fpv-uav123-uav-poster.jpg", "l": "UAV123 benchmark, a drone"}]' data-ar="2.025" data-short="FPV drone tracking" data-href="projects.html#p2" data-result="30 fps at 1280×740 · Jetson Orin Nano Super" data-cam="UAV · RGB · 30 fps" data-title="Real-time tracking on an FPV drone" data-video="assets/video/hero/fpv-uav123-car9.mp4" data-still="assets/img/projects/fpv-uav123-car9-poster.jpg" data-mk="#ffd23f" aria-label="Show: Real-time tracking on an FPV drone"><img src="assets/img/projects/fpv-uav123-car9-thumb.jpg" alt="" loading="lazy"><span>UAV</span></button></li>
-            <li><button type="button" data-word="wildlife at night" data-media='[{"v": "assets/video/hero/wg-buck.mp4", "s": "assets/img/projects/wg-buck-poster.jpg", "l": "a buck at dusk", "p": "50% 0%"}, {"v": "assets/video/hero/wg-doe.mp4", "s": "assets/img/projects/wg-doe-poster.jpg", "l": "two deer, two tracks", "p": "50% 0%"}, {"v": "assets/video/hero/wg-brush.mp4", "s": "assets/img/projects/wg-brush-poster.jpg", "l": "half hidden in tall grass", "p": "50% 0%"}, {"v": "assets/video/hero/wg-edge.mp4", "s": "assets/img/projects/wg-edge-poster.jpg", "l": "a buck at the brush edge", "p": "50% 0%"}]' data-pos="50% 0%" data-ar="1.25" data-short="Thermal detection" data-href="projects.html#p4" data-result="Whole chain: camera → Jetson → alert" data-cam="LWIR · 640×512 · YOLO + BoT-SORT" data-title="A thermal detector, camera to alert" data-video="assets/video/hero/wg-buck.mp4" data-still="assets/img/projects/wg-buck-poster.jpg" data-mk="#ff9ec4" aria-label="Show: A thermal detector, camera to alert"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy"><span>LWIR</span></button></li>
-            <li><button type="button" data-word="airport runways" data-media='[{"v": "assets/video/hero/mdu-run-speed.mp4", "s": "assets/img/projects/mdu-run-speed-poster.jpg", "l": "at speed down the runway", "p": "50% 70%"}, {"v": "assets/video/hero/mdu-real-patrol.mp4", "s": "assets/img/projects/mdu-real-patrol-poster.jpg", "l": "patrol in the rain", "p": "50% 75%"}]' data-ar="1.778" data-short="Airport debris unit" data-href="projects.html#p1" data-result="Lead since 2023 · Debris under 2 cm" data-cam="Cameras · IMU · GNSS · edge SoC" data-title="The Mobile Detection Unit at Oreyeon" data-video="assets/video/hero/mdu-real-patrol.mp4" data-still="assets/img/projects/mdu-real-patrol-poster.jpg" data-mk="#7ee0f5" aria-label="Show: The Mobile Detection Unit at Oreyeon"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy"><span>MDU</span></button></li>
-            <li><button type="button" data-word="thermal cameras" data-media='[{"v": "assets/video/hero/ati-detect.mp4", "s": "assets/img/projects/ati-person-poster.jpg", "l": "night, a person detected"}, {"v": "assets/video/hero/ati-track.mp4", "s": "assets/img/projects/ati-vehicle-poster.jpg", "l": "night, a vehicle tracked"}, {"v": "assets/video/hero/ati-corrected.mp4", "s": "assets/img/projects/ati-corrected-poster.jpg", "l": "corrected in the camera"}, {"v": "assets/video/hero/ati-shutterless.mp4", "s": "assets/img/projects/ati-shutterless-poster.jpg", "l": "shutterless, never freezes"}]' data-ar="1.778" data-short="Thermal image quality" data-href="projects.html#p15" data-result="Raw sensor → clean video · PC and in-camera C++" data-cam="LWIR · image processing in the camera" data-title="Image quality for thermal sensors, at Lynred" data-video="assets/video/hero/ati-detect.mp4" data-still="assets/img/projects/ati-person-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Image quality for thermal sensors, at Lynred"><img src="assets/img/projects/ati-person-thumb.jpg" alt="" loading="lazy"><span>ISP</span></button></li>
+            <li><button type="button" data-word="drones" data-media='[{"v": "assets/video/hero/fpv-uav123-car9.mp4", "s": "assets/img/projects/fpv-uav123-car9-poster-s.jpg", "l": "UAV123 car9, hybrid tracker"}, {"v": "assets/video/hero/fpv-uav123-car15.mp4", "s": "assets/img/projects/fpv-uav123-car15-poster-s.jpg", "l": "UAV123 car15, a car a few pixels wide"}, {"v": "assets/video/hero/fpv-uav123-car12.mp4", "s": "assets/img/projects/fpv-uav123-car12-poster-s.jpg", "l": "UAV123 car12"}, {"v": "assets/video/hero/fpv-dtb70-car6.mp4", "s": "assets/img/projects/fpv-dtb70-car6-poster-s.jpg", "l": "DTB70 benchmark, a car"}, {"v": "assets/video/hero/fpv-uav123-boat.mp4", "s": "assets/img/projects/fpv-uav123-boat-poster-s.jpg", "l": "UAV123 benchmark, a tiny boat"}, {"v": "assets/video/hero/fpv-uav123-uav.mp4", "s": "assets/img/projects/fpv-uav123-uav-poster-s.jpg", "l": "UAV123 benchmark, a drone"}]' data-ar="2.025" data-short="FPV drone tracking" data-href="projects.html#p2" data-result="30 fps at 1280×740 · Jetson Orin Nano Super" data-cam="UAV · RGB · 30 fps" data-title="Real-time tracking on an FPV drone" data-video="assets/video/hero/fpv-uav123-car9.mp4" data-still="assets/img/projects/fpv-uav123-car9-poster.jpg" data-mk="#ffd23f" aria-label="Show: Real-time tracking on an FPV drone"><img src="assets/img/projects/fpv-uav123-car9-thumb.jpg" alt="" loading="lazy"><span>UAV</span></button></li>
+            <li><button type="button" data-word="wildlife at night" data-media='[{"v": "assets/video/hero/wg-buck.mp4", "s": "assets/img/projects/wg-buck-poster-s.jpg", "l": "a buck at dusk", "p": "50% 0%"}, {"v": "assets/video/hero/wg-doe.mp4", "s": "assets/img/projects/wg-doe-poster-s.jpg", "l": "two deer, two tracks", "p": "50% 0%"}, {"v": "assets/video/hero/wg-brush.mp4", "s": "assets/img/projects/wg-brush-poster-s.jpg", "l": "half hidden in tall grass", "p": "50% 0%"}, {"v": "assets/video/hero/wg-edge.mp4", "s": "assets/img/projects/wg-edge-poster-s.jpg", "l": "a buck at the brush edge", "p": "50% 0%"}]' data-pos="50% 0%" data-ar="1.25" data-short="Thermal detection" data-href="projects.html#p4" data-result="Whole chain: camera → Jetson → alert" data-cam="LWIR · 640×512 · YOLO + BoT-SORT" data-title="A thermal detector, camera to alert" data-video="assets/video/hero/wg-buck.mp4" data-still="assets/img/projects/wg-buck-poster.jpg" data-mk="#ff9ec4" aria-label="Show: A thermal detector, camera to alert"><img src="assets/img/projects/wg-buck-thumb.jpg" alt="" loading="lazy"><span>LWIR</span></button></li>
+            <li><button type="button" data-word="airport runways" data-media='[{"v": "assets/video/hero/mdu-run-speed.mp4", "s": "assets/img/projects/mdu-run-speed-poster-s.jpg", "l": "at speed down the runway", "p": "50% 70%"}, {"v": "assets/video/hero/mdu-real-patrol.mp4", "s": "assets/img/projects/mdu-real-patrol-poster-s.jpg", "l": "patrol in the rain", "p": "50% 75%"}]' data-ar="1.778" data-short="Airport debris unit" data-href="projects.html#p1" data-result="Lead since 2023 · Debris under 2 cm" data-cam="Cameras · IMU · GNSS · edge SoC" data-title="The Mobile Detection Unit at Oreyeon" data-video="assets/video/hero/mdu-real-patrol.mp4" data-still="assets/img/projects/mdu-real-patrol-poster.jpg" data-mk="#7ee0f5" aria-label="Show: The Mobile Detection Unit at Oreyeon"><img src="assets/img/projects/mdu-ride-enters-thumb.jpg" alt="" loading="lazy"><span>MDU</span></button></li>
+            <li><button type="button" data-word="thermal cameras" data-media='[{"v": "assets/video/hero/ati-detect.mp4", "s": "assets/img/projects/ati-person-poster-s.jpg", "l": "night, a person detected"}, {"v": "assets/video/hero/ati-track.mp4", "s": "assets/img/projects/ati-vehicle-poster-s.jpg", "l": "night, a vehicle tracked"}, {"v": "assets/video/hero/ati-corrected.mp4", "s": "assets/img/projects/ati-corrected-poster-s.jpg", "l": "corrected in the camera"}, {"v": "assets/video/hero/ati-shutterless.mp4", "s": "assets/img/projects/ati-shutterless-poster-s.jpg", "l": "shutterless, never freezes"}]' data-ar="1.778" data-short="Thermal image quality" data-href="projects.html#p15" data-result="Raw sensor → clean video · PC and in-camera C++" data-cam="LWIR · image processing in the camera" data-title="Image quality for thermal sensors, at Lynred" data-video="assets/video/hero/ati-detect.mp4" data-still="assets/img/projects/ati-person-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Image quality for thermal sensors, at Lynred"><img src="assets/img/projects/ati-person-thumb.jpg" alt="" loading="lazy"><span>ISP</span></button></li>
             <li><button type="button" data-word="robot arms" data-ar="1.745" data-short="Bin picking" data-href="projects.html#p7" data-result="Sub-mm pick targets · Placement flips 11/17 → 0" data-cam="RGB-D · FoundationPose · cuRobo" data-title="Bin picking and assembly without fixtures" data-video="assets/video/hero/bin-sim-assembly.mp4" data-still="assets/img/projects/bin-sim-assembly-poster.jpg" data-mk="#b7f36b" aria-label="Show: Bin picking and assembly without fixtures"><img src="assets/img/projects/bin-sim-assembly-poster.jpg" alt="" loading="lazy"><span>RGB-D</span></button></li>
-            <li><button type="button" data-word="3D cameras" data-media='[{"v": "assets/video/hero/tof-sizing.mp4", "s": "assets/img/projects/tof-sizing-poster.jpg", "l": "object sizing, live"}, {"v": "assets/video/hero/tof-underfill.mp4", "s": "assets/img/projects/tof-underfill-poster.jpg", "l": "a carton missing", "lp": "tl"}, {"v": "assets/video/hero/tof-overfill.mp4", "s": "assets/img/projects/tof-overfill-poster.jpg", "l": "a carton too many", "lp": "tl"}, {"v": "assets/video/hero/tof-racket.mp4", "s": "assets/img/projects/tof-racket-poster.jpg", "l": "distance zones", "lp": "tl"}]' data-ar="1.778" data-short="ToF 3D camera" data-href="projects.html#p8" data-result="Launched product · ±5 mm · Three embedded use cases" data-cam="ToF · 320×240 · C++" data-title="Perception inside a 3D time-of-flight camera" data-video="assets/video/hero/tof-sizing.mp4" data-still="assets/img/projects/tof-sizing-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Perception inside a 3D time-of-flight camera"><img src="assets/img/projects/tof-sizing-large-thumb.jpg" alt="" loading="lazy"><span>ToF</span></button></li>
-            <li><button type="button" data-word="dairy barns" data-media='[{"v": "assets/video/hero/barn-pushup-night.mp4", "s": "assets/img/projects/barn-pushup-night-poster.jpg", "l": "night"}, {"v": "assets/video/hero/barn-pushup-day.mp4", "s": "assets/img/projects/barn-pushup-day-poster.jpg", "l": "day"}, {"v": "assets/video/hero/barn-transition.mp4", "s": "assets/img/projects/barn-transition-poster.jpg", "l": "feed delivered"}]' data-ar="1.778" data-short="Feed-bunk monitoring" data-href="projects.html#p10" data-result="Evaluated across three camera angles" data-cam="RGB · night · PyTorch" data-title="Feed-bunk monitoring from fixed cameras" data-video="assets/video/hero/barn-pushup-night.mp4" data-still="assets/img/projects/barn-pushup-night-poster.jpg" data-mk="#ffb27a" aria-label="Show: Feed-bunk monitoring from fixed cameras"><img src="assets/img/projects/barn-pushup-night-thumb.jpg" alt="" loading="lazy"><span>BARN</span></button></li>
+            <li><button type="button" data-word="3D cameras" data-media='[{"v": "assets/video/hero/tof-sizing.mp4", "s": "assets/img/projects/tof-sizing-poster-s.jpg", "l": "object sizing, live"}, {"v": "assets/video/hero/tof-underfill.mp4", "s": "assets/img/projects/tof-underfill-poster-s.jpg", "l": "a carton missing", "lp": "tl"}, {"v": "assets/video/hero/tof-overfill.mp4", "s": "assets/img/projects/tof-overfill-poster-s.jpg", "l": "a carton too many", "lp": "tl"}, {"v": "assets/video/hero/tof-racket.mp4", "s": "assets/img/projects/tof-racket-poster-s.jpg", "l": "distance zones", "lp": "tl"}]' data-ar="1.778" data-short="ToF 3D camera" data-href="projects.html#p8" data-result="Launched product · ±5 mm · Three embedded use cases" data-cam="ToF · 320×240 · C++" data-title="Perception inside a 3D time-of-flight camera" data-video="assets/video/hero/tof-sizing.mp4" data-still="assets/img/projects/tof-sizing-poster.jpg" data-mk="#c3b5ff" aria-label="Show: Perception inside a 3D time-of-flight camera"><img src="assets/img/projects/tof-sizing-large-thumb.jpg" alt="" loading="lazy"><span>ToF</span></button></li>
+            <li><button type="button" data-word="dairy barns" data-media='[{"v": "assets/video/hero/barn-pushup-night.mp4", "s": "assets/img/projects/barn-pushup-night-poster-s.jpg", "l": "night"}, {"v": "assets/video/hero/barn-pushup-day.mp4", "s": "assets/img/projects/barn-pushup-day-poster-s.jpg", "l": "day"}, {"v": "assets/video/hero/barn-transition.mp4", "s": "assets/img/projects/barn-transition-poster-s.jpg", "l": "feed delivered"}]' data-ar="1.778" data-short="Feed-bunk monitoring" data-href="projects.html#p10" data-result="Evaluated across three camera angles" data-cam="RGB · night · PyTorch" data-title="Feed-bunk monitoring from fixed cameras" data-video="assets/video/hero/barn-pushup-night.mp4" data-still="assets/img/projects/barn-pushup-night-poster.jpg" data-mk="#ffb27a" aria-label="Show: Feed-bunk monitoring from fixed cameras"><img src="assets/img/projects/barn-pushup-night-thumb.jpg" alt="" loading="lazy"><span>BARN</span></button></li>
             <li><button type="button" data-word="crowds" data-ar="2.115" data-short="People counting" data-href="projects.html#p11" data-result="CPU only · YOLOv5 + ByteTrack on NCNN" data-cam="RGB · YOLOv5 + ByteTrack · CPU" data-title="People counting on a CPU" data-video="assets/video/hero/count-feed.mp4" data-still="assets/img/projects/count-feed-poster.jpg" data-mk="#ffd23f" aria-label="Show: People counting on a CPU"><img src="assets/img/projects/count-feed-poster.jpg" alt="" loading="lazy"><span>RETAIL</span></button></li>
             <li class="hw-off"><button type="button" data-word="production lines" data-ar="2.38" data-short="Fabric defects" data-href="projects.html#p9" data-result="Several textures · No per-material tuning" data-cam="Line-scan · defect detection" data-title="Defects on textured surfaces" data-still="assets/img/projects/fabric-detect.jpg" data-mk="#ff9ec4" aria-label="Show: Defects on textured surfaces"><img src="assets/img/projects/fabric-detect-thumb.jpg" alt="" loading="lazy"><span>LINE</span></button></li>
             <li><button type="button" data-word="aerial cameras" data-media='[{"s": "assets/img/projects/phd-uav.jpg", "l": "the UAV", "p": "37% 50%"}, {"s": "assets/img/projects/phd-camera.jpg", "l": "the camera"}, {"s": "assets/img/projects/phd-board.jpg", "l": "the FPGA board"}]' data-ar="1.308" data-short="Drone camera, Ph.D." data-href="projects.html#p12" data-result="Resampling 36.9 s → 0.41 s in the FPGA" data-cam="FPGA + IMU · Ph.D. at IGN" data-title="IMU-aided image stacking in a drone camera" data-still="assets/img/projects/phd-uav.jpg" data-mk="#7ee0f5" aria-label="Show: IMU-aided image stacking in a drone camera"><img src="assets/img/projects/phd-uav-thumb.jpg" alt="" loading="lazy"><span>FPGA</span></button></li>
@@ -115,8 +112,6 @@
         </ol>
       </div>
       <div class="hero-ui">
-        <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Frame 00 · Engineer · Researcher · Lecturer</p>
-        <p class="hero-hint" id="heroHint" aria-hidden="true"><span>⟲</span> Drag to orbit</p>
         <div class="hero-main">
           <div class="hero-copy">
             <h1 class="wordmark" id="heroName">Ahmad <em>Audi</em><span class="accent">.</span></h1>
@@ -129,20 +124,6 @@
               <a class="pill" href="#contact">Contact</a>
             </div>
           </div>
-          <div class="hero-side">
-            <div class="layers" role="group" aria-label="Render layer">
-              <button class="layer" type="button" data-layer="rgb" aria-pressed="true">RGB</button>
-              <button class="layer" type="button" data-layer="depth" aria-pressed="false">Depth</button>
-              <button class="layer" type="button" data-layer="keypoints" aria-pressed="false">Keypoints</button>
-              <button class="layer" type="button" data-layer="tracks" aria-pressed="false">Tracks</button>
-              <button class="layer" type="button" data-layer="thermal" aria-pressed="false">Thermal</button>
-            </div>
-            <dl class="hero-dials" aria-hidden="true">
-              <div><dt>Pan</dt><dd id="hPan">+0.0°</dd></div>
-              <div><dt>Tilt</dt><dd id="hTilt">+0.0°</dd></div>
-              <div><dt>Lock</dt><dd id="hLock">0.95</dd></div>
-            </dl>
-          </div>
         </div>
         <ul class="hero-stats" aria-label="At a glance">
           <li><b data-count="14" data-suffix=" years">14 years</b><span>In industry and R&amp;D: computer vision, embedded AI, thermal imaging, HPC</span></li>
@@ -150,7 +131,6 @@
           <li><b data-count="80" data-suffix="+">80+</b><span>Projects delivered; 15 of them are shown here</span></li>
           <li><b>Ph.D.</b><span>In embedded computer vision, IGN, 2017</span></li>
           <li><b>Now</b><span>Senior lead computer vision engineer at Oreyeon, since&nbsp;2023</span></li>
-          <li class="hero-fig"><span>Fig. 0 · Drawn live in your browser, no video. The inset is the gimbal camera’s own view.</span></li>
         </ul>
       </div>
     </section>
@@ -161,40 +141,40 @@
       <div class="logos-strip">
         <div class="logos-track">
         <ul class="logos-list">
-          <li><img src="assets/img/logos/ign.png" alt="IGN" style="--h:42.4px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/lynred.png" alt="Lynred" style="--h:22.5px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/cea.png" alt="CEA" style="--h:44px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/airbus.png" alt="Airbus" style="--h:26.9px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/ipgp.png" alt="IPGP" style="--h:40.0px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/psa.png" alt="PSA Peugeot Citroën" style="--h:24.2px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/contrinex.png" alt="Contrinex" style="--h:30.4px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/axomind.png" alt="Axomind" style="--h:22.3px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/nbcab.png" alt="Nordic Barrier Coating" style="--h:36.9px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/oreyeon.png" alt="Oreyeon" style="--h:21.3px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/lau.png" alt="Lebanese American University" style="--h:30px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/usj.png" alt="Université Saint-Joseph" style="--h:35.0px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/lu.png" alt="Lebanese University" style="--h:38px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/robro.png" alt="Robro Systems" style="--h:26.5px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/wildguard.png" alt="WildGuard" style="--h:56px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/harmattan.png" alt="Harmattan AI" style="--h:23.2px" loading="lazy" decoding="async"></li>
+          <li><img width="260" height="120" src="assets/img/logos/ign.png" alt="IGN" style="--h:42.4px" decoding="async" fetchpriority="low"></li>
+          <li><img width="354" height="46" src="assets/img/logos/lynred.png" alt="Lynred" style="--h:22.5px" decoding="async" fetchpriority="low"></li>
+          <li><img width="221" height="120" src="assets/img/logos/cea.png" alt="CEA" style="--h:44px" decoding="async" fetchpriority="low"></li>
+          <li><img width="292" height="54" src="assets/img/logos/airbus.png" alt="Airbus" style="--h:26.9px" decoding="async" fetchpriority="low"></li>
+          <li><img width="292" height="120" src="assets/img/logos/ipgp.png" alt="IPGP" style="--h:40.0px" decoding="async" fetchpriority="low"></li>
+          <li><img width="320" height="48" src="assets/img/logos/psa.png" alt="PSA Peugeot Citroën" style="--h:24.2px" decoding="async" fetchpriority="low"></li>
+          <li><img width="252" height="60" src="assets/img/logos/contrinex.png" alt="Contrinex" style="--h:30.4px" decoding="async" fetchpriority="low"></li>
+          <li><img width="346" height="44" src="assets/img/logos/axomind.png" alt="Axomind" style="--h:22.3px" decoding="async" fetchpriority="low"></li>
+          <li><img width="344" height="120" src="assets/img/logos/nbcab.png" alt="Nordic Barrier Coating" style="--h:36.9px" decoding="async" fetchpriority="low"></li>
+          <li><img width="360" height="42" src="assets/img/logos/oreyeon.png" alt="Oreyeon" style="--h:21.3px" decoding="async" fetchpriority="low"></li>
+          <li><img width="248" height="60" src="assets/img/logos/lau.png" alt="Lebanese American University" style="--h:30px" decoding="async" fetchpriority="low"></li>
+          <li><img width="382" height="120" src="assets/img/logos/usj.png" alt="Université Saint-Joseph" style="--h:35.0px" decoding="async" fetchpriority="low"></li>
+          <li><img width="120" height="120" src="assets/img/logos/lu.png" alt="Lebanese University" style="--h:38px" decoding="async" fetchpriority="low"></li>
+          <li><img width="300" height="54" src="assets/img/logos/robro.png" alt="Robro Systems" style="--h:26.5px" decoding="async" fetchpriority="low"></li>
+          <li><img width="188" height="120" src="assets/img/logos/wildguard.png" alt="WildGuard" style="--h:56px" decoding="async" fetchpriority="low"></li>
+          <li><img width="334" height="46" src="assets/img/logos/harmattan.png" alt="Harmattan AI" style="--h:23.2px" decoding="async" fetchpriority="low"></li>
         </ul>
         <ul class="logos-list" aria-hidden="true">
-          <li><img src="assets/img/logos/ign.png" alt="" style="--h:42.4px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/lynred.png" alt="" style="--h:22.5px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/cea.png" alt="" style="--h:44px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/airbus.png" alt="" style="--h:26.9px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/ipgp.png" alt="" style="--h:40.0px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/psa.png" alt="" style="--h:24.2px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/contrinex.png" alt="" style="--h:30.4px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/axomind.png" alt="" style="--h:22.3px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/nbcab.png" alt="" style="--h:36.9px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/oreyeon.png" alt="" style="--h:21.3px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/lau.png" alt="" style="--h:30px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/usj.png" alt="" style="--h:35.0px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/lu.png" alt="" style="--h:38px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/robro.png" alt="" style="--h:26.5px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/wildguard.png" alt="" style="--h:56px" loading="lazy" decoding="async"></li>
-          <li><img src="assets/img/logos/harmattan.png" alt="" style="--h:23.2px" loading="lazy" decoding="async"></li>
+          <li><img width="260" height="120" src="assets/img/logos/ign.png" alt="" style="--h:42.4px" decoding="async" fetchpriority="low"></li>
+          <li><img width="354" height="46" src="assets/img/logos/lynred.png" alt="" style="--h:22.5px" decoding="async" fetchpriority="low"></li>
+          <li><img width="221" height="120" src="assets/img/logos/cea.png" alt="" style="--h:44px" decoding="async" fetchpriority="low"></li>
+          <li><img width="292" height="54" src="assets/img/logos/airbus.png" alt="" style="--h:26.9px" decoding="async" fetchpriority="low"></li>
+          <li><img width="292" height="120" src="assets/img/logos/ipgp.png" alt="" style="--h:40.0px" decoding="async" fetchpriority="low"></li>
+          <li><img width="320" height="48" src="assets/img/logos/psa.png" alt="" style="--h:24.2px" decoding="async" fetchpriority="low"></li>
+          <li><img width="252" height="60" src="assets/img/logos/contrinex.png" alt="" style="--h:30.4px" decoding="async" fetchpriority="low"></li>
+          <li><img width="346" height="44" src="assets/img/logos/axomind.png" alt="" style="--h:22.3px" decoding="async" fetchpriority="low"></li>
+          <li><img width="344" height="120" src="assets/img/logos/nbcab.png" alt="" style="--h:36.9px" decoding="async" fetchpriority="low"></li>
+          <li><img width="360" height="42" src="assets/img/logos/oreyeon.png" alt="" style="--h:21.3px" decoding="async" fetchpriority="low"></li>
+          <li><img width="248" height="60" src="assets/img/logos/lau.png" alt="" style="--h:30px" decoding="async" fetchpriority="low"></li>
+          <li><img width="382" height="120" src="assets/img/logos/usj.png" alt="" style="--h:35.0px" decoding="async" fetchpriority="low"></li>
+          <li><img width="120" height="120" src="assets/img/logos/lu.png" alt="" style="--h:38px" decoding="async" fetchpriority="low"></li>
+          <li><img width="300" height="54" src="assets/img/logos/robro.png" alt="" style="--h:26.5px" decoding="async" fetchpriority="low"></li>
+          <li><img width="188" height="120" src="assets/img/logos/wildguard.png" alt="" style="--h:56px" decoding="async" fetchpriority="low"></li>
+          <li><img width="334" height="46" src="assets/img/logos/harmattan.png" alt="" style="--h:23.2px" decoding="async" fetchpriority="low"></li>
         </ul>
         </div>
       </div>
@@ -224,12 +204,12 @@
           <a class="pcard pcard-feat reveal" href="projects.html#p2" data-tags="drones">
             <div class="pcard-media" data-cls="DTB70 car6 · tracker vs ground truth">
               <div class="vrot" data-max="11000" role="img" aria-label="Clips from the FPV tracking project: benchmark runs on UAV123 and DTB70 with the tracker’s box on the target, starting with small cars: one followed under an overhead sign, one a few pixels wide on a highway bridge, one past palms and buildings">
-                <video class="is-on" src="assets/video/fpv-uav123-car9.mp4" poster="assets/img/projects/fpv-uav123-car9-poster.jpg" muted playsinline preload="metadata"></video>
-                <video data-src="assets/video/fpv-uav123-car15.mp4" poster="assets/img/projects/fpv-uav123-car15-poster.jpg" muted playsinline preload="none"></video>
-                <video data-src="assets/video/fpv-uav123-car12.mp4" poster="assets/img/projects/fpv-uav123-car12-poster.jpg" muted playsinline preload="none"></video>
-                <video data-src="assets/video/fpv-dtb70-car6.mp4" poster="assets/img/projects/fpv-dtb70-car6-poster.jpg" muted playsinline preload="none" data-cls="DTB70 car6 · tracker vs ground truth"></video>
-                <video data-src="assets/video/fpv-uav123-boat.mp4" poster="assets/img/projects/fpv-uav123-boat-poster.jpg" muted playsinline preload="none" data-cls="UAV123 · a tiny boat"></video>
-                <video data-src="assets/video/fpv-uav123-uav.mp4" poster="assets/img/projects/fpv-uav123-uav-poster.jpg" muted playsinline preload="none" data-cls="UAV123 · a drone tracking a drone"></video>
+                <video class="is-on" data-src="assets/video/fpv-uav123-car9.mp4" data-poster="assets/img/projects/fpv-uav123-car9-poster-s.jpg" muted playsinline preload="none"></video>
+                <video data-src="assets/video/fpv-uav123-car15.mp4" data-poster="assets/img/projects/fpv-uav123-car15-poster-s.jpg" muted playsinline preload="none"></video>
+                <video data-src="assets/video/fpv-uav123-car12.mp4" data-poster="assets/img/projects/fpv-uav123-car12-poster-s.jpg" muted playsinline preload="none"></video>
+                <video data-src="assets/video/fpv-dtb70-car6.mp4" data-poster="assets/img/projects/fpv-dtb70-car6-poster-s.jpg" muted playsinline preload="none" data-cls="DTB70 car6 · tracker vs ground truth"></video>
+                <video data-src="assets/video/fpv-uav123-boat.mp4" data-poster="assets/img/projects/fpv-uav123-boat-poster-s.jpg" muted playsinline preload="none" data-cls="UAV123 · a tiny boat"></video>
+                <video data-src="assets/video/fpv-uav123-uav.mp4" data-poster="assets/img/projects/fpv-uav123-uav-poster-s.jpg" muted playsinline preload="none" data-cls="UAV123 · a drone tracking a drone"></video>
               </div>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
@@ -259,12 +239,12 @@
           <a class="pcard reveal" href="projects.html#p15" data-tags="thermal drones">
             <div class="pcard-media" data-cls="corrected and focused · no shutter">
               <div class="vrot" data-max="11000" role="img" aria-label="Thermal clips from a drone, from Lynred’s video of its ATI modules: corrected and shutterless images, then a person and a vehicle detected and tracked at night, a colour palette and fine detail">
-                <video class="is-on" src="assets/video/ati-corrected.mp4" poster="assets/img/projects/ati-corrected-poster.jpg" muted playsinline preload="metadata" data-cls="corrected and focused in the camera"></video>
-                <video data-src="assets/video/ati-shutterless.mp4" poster="assets/img/projects/ati-shutterless-poster.jpg" muted playsinline preload="none" data-cls="shutterless · never freezes"></video>
-                <video data-src="assets/video/ati-person.mp4" poster="assets/img/projects/ati-person-poster.jpg" muted playsinline preload="none" data-cls="night · a person detected"></video>
-                <video data-src="assets/video/ati-palette.mp4" poster="assets/img/projects/ati-palette-poster.jpg" muted playsinline preload="none" data-cls="night · colour palette"></video>
-                <video data-src="assets/video/ati-building.mp4" poster="assets/img/projects/ati-building-poster.jpg" muted playsinline preload="none" data-cls="night · fine detail"></video>
-                <video data-src="assets/video/ati-vehicle.mp4" poster="assets/img/projects/ati-vehicle-poster.jpg" muted playsinline preload="none" data-cls="night · a vehicle tracked"></video>
+                <video class="is-on" data-src="assets/video/ati-corrected.mp4" data-poster="assets/img/projects/ati-corrected-poster-s.jpg" muted playsinline preload="none" data-cls="corrected and focused in the camera"></video>
+                <video data-src="assets/video/ati-shutterless.mp4" data-poster="assets/img/projects/ati-shutterless-poster-s.jpg" muted playsinline preload="none" data-cls="shutterless · never freezes"></video>
+                <video data-src="assets/video/ati-person.mp4" data-poster="assets/img/projects/ati-person-poster-s.jpg" muted playsinline preload="none" data-cls="night · a person detected"></video>
+                <video data-src="assets/video/ati-palette.mp4" data-poster="assets/img/projects/ati-palette-poster-s.jpg" muted playsinline preload="none" data-cls="night · colour palette"></video>
+                <video data-src="assets/video/ati-building.mp4" data-poster="assets/img/projects/ati-building-poster-s.jpg" muted playsinline preload="none" data-cls="night · fine detail"></video>
+                <video data-src="assets/video/ati-vehicle.mp4" data-poster="assets/img/projects/ati-vehicle-poster-s.jpg" muted playsinline preload="none" data-cls="night · a vehicle tracked"></video>
               </div>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
@@ -278,10 +258,10 @@
           <a class="pcard reveal" href="projects.html#p4" data-tags="thermal">
             <div class="pcard-media">
               <div class="vrot" data-max="11000" role="img" aria-label="Handheld thermal clips from the field at dusk with detection and tracking boxes: a buck, a doe with a buck behind her, a deer half hidden in tall grass, and a buck at the edge of the brush">
-                <video class="is-on" src="assets/video/wg-buck.mp4" poster="assets/img/projects/wg-buck-poster.jpg" muted playsinline preload="metadata"></video>
-                <video data-src="assets/video/wg-doe.mp4" poster="assets/img/projects/wg-doe-poster.jpg" muted playsinline preload="none"></video>
-                <video data-src="assets/video/wg-brush.mp4" poster="assets/img/projects/wg-brush-poster.jpg" muted playsinline preload="none"></video>
-                <video data-src="assets/video/wg-edge.mp4" poster="assets/img/projects/wg-edge-poster.jpg" muted playsinline preload="none"></video>
+                <video class="is-on" data-src="assets/video/wg-buck.mp4" data-poster="assets/img/projects/wg-buck-poster-s.jpg" muted playsinline preload="none"></video>
+                <video data-src="assets/video/wg-doe.mp4" data-poster="assets/img/projects/wg-doe-poster-s.jpg" muted playsinline preload="none"></video>
+                <video data-src="assets/video/wg-brush.mp4" data-poster="assets/img/projects/wg-brush-poster-s.jpg" muted playsinline preload="none"></video>
+                <video data-src="assets/video/wg-edge.mp4" data-poster="assets/img/projects/wg-edge-poster-s.jpg" muted playsinline preload="none"></video>
               </div>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
@@ -358,10 +338,10 @@
           <a class="pcard reveal" href="projects.html#p8" data-tags="industrial 3d">
             <div class="pcard-media" data-cls="ToF · 320×240 · 3 use cases · C++">
               <div class="vrot" data-max="11000" role="img" aria-label="The 3D camera’s use cases running: a box measured on the depth image, a missing and an extra carton flagged in a crate, and a distance zone reacting to a racket">
-                <video class="is-on" src="assets/video/tof-sizing-large.mp4" poster="assets/img/projects/tof-sizing-large-poster.jpg" muted playsinline preload="metadata" data-cls="object sizing · a large box"></video>
-                <video data-src="assets/video/tof-underfill.mp4" poster="assets/img/projects/tof-underfill-poster.jpg" muted playsinline preload="none" data-cls="completeness · a carton missing"></video>
-                <video data-src="assets/video/tof-overfill.mp4" poster="assets/img/projects/tof-overfill-poster.jpg" muted playsinline preload="none" data-cls="completeness · a carton too many"></video>
-                <video data-src="assets/video/tof-zone-racket.mp4" poster="assets/img/projects/tof-zone-racket-poster.jpg" muted playsinline preload="none" data-cls="distances · a racket in zone 1"></video>
+                <video class="is-on" data-src="assets/video/tof-sizing-large.mp4" data-poster="assets/img/projects/tof-sizing-large-poster-s.jpg" muted playsinline preload="none" data-cls="object sizing · a large box"></video>
+                <video data-src="assets/video/tof-underfill.mp4" data-poster="assets/img/projects/tof-underfill-poster-s.jpg" muted playsinline preload="none" data-cls="completeness · a carton missing"></video>
+                <video data-src="assets/video/tof-overfill.mp4" data-poster="assets/img/projects/tof-overfill-poster-s.jpg" muted playsinline preload="none" data-cls="completeness · a carton too many"></video>
+                <video data-src="assets/video/tof-zone-racket.mp4" data-poster="assets/img/projects/tof-zone-racket-poster-s.jpg" muted playsinline preload="none" data-cls="distances · a racket in zone 1"></video>
               </div>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
@@ -391,9 +371,9 @@
           <a class="pcard reveal" href="projects.html#p10" data-tags="industrial">
             <div class="pcard-media" data-cls="push-up · vehicle detected · night">
               <div class="vrot" data-max="12000" role="img" aria-label="Time-lapses inside a dairy barn: a feed push-up at night, one by day, and the bunk going from empty to full">
-                <video class="is-on" src="assets/video/barn-pushup-night.mp4" poster="assets/img/projects/barn-pushup-night-poster.jpg" muted playsinline preload="metadata" data-cls="push-up · vehicle detected · night"></video>
-                <video data-src="assets/video/barn-pushup-day.mp4" poster="assets/img/projects/barn-pushup-day-poster.jpg" muted playsinline preload="none" data-cls="push-up · vehicle detected · day"></video>
-                <video data-src="assets/video/barn-transition.mp4" poster="assets/img/projects/barn-transition-poster.jpg" muted playsinline preload="none" data-cls="feed delivered · empty → high"></video>
+                <video class="is-on" data-src="assets/video/barn-pushup-night.mp4" data-poster="assets/img/projects/barn-pushup-night-poster-s.jpg" muted playsinline preload="none" data-cls="push-up · vehicle detected · night"></video>
+                <video data-src="assets/video/barn-pushup-day.mp4" data-poster="assets/img/projects/barn-pushup-day-poster-s.jpg" muted playsinline preload="none" data-cls="push-up · vehicle detected · day"></video>
+                <video data-src="assets/video/barn-transition.mp4" data-poster="assets/img/projects/barn-transition-poster-s.jpg" muted playsinline preload="none" data-cls="feed delivered · empty → high"></video>
               </div>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
@@ -406,7 +386,7 @@
           </a>
           <a class="pcard reveal" href="projects.html#p11" data-tags="industrial">
             <div class="pcard-media" data-cls="detect · track · count · CPU">
-              <video src="assets/video/count-feed.mp4" poster="assets/img/projects/count-feed-poster.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="Video: overhead view of a mall concourse, numbered boxes follow people across a green counting line"></video>
+              <video data-src="assets/video/count-feed.mp4" data-poster="assets/img/projects/count-feed-poster-s.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Video: overhead view of a mall concourse, numbered boxes follow people across a green counting line"></video>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
             <div class="pcard-body">
@@ -419,9 +399,9 @@
           <a class="pcard reveal" href="projects.html#p1" data-tags="industrial">
             <div class="pcard-media" data-cls="MDU · cameras · IMU · GPS · edge SoC">
               <div class="vrot" data-max="11000" role="img" aria-label="Clips from Oreyeon’s website: the patrol vehicle with the sensor pod driving on a wet runway, the car at speed down a runway, and a drive down a runway centreline over cracks and a pothole">
-                <video class="is-on" src="assets/video/mdu-real-patrol.mp4" poster="assets/img/projects/mdu-real-patrol-poster.jpg" muted playsinline preload="metadata" style="object-position: 50% 58%"></video>
-                <video data-src="assets/video/mdu-run-speed.mp4" poster="assets/img/projects/mdu-run-speed-poster.jpg" muted playsinline preload="none" style="object-position: 50% 52%"></video>
-                <video data-src="assets/video/mdu-pov-runway.mp4" poster="assets/img/projects/mdu-pov-runway-poster.jpg" muted playsinline preload="none"></video>
+                <video class="is-on" data-src="assets/video/mdu-real-patrol.mp4" data-poster="assets/img/projects/mdu-real-patrol-poster-s.jpg" muted playsinline preload="none" style="object-position: 50% 58%"></video>
+                <video data-src="assets/video/mdu-run-speed.mp4" data-poster="assets/img/projects/mdu-run-speed-poster-s.jpg" muted playsinline preload="none" style="object-position: 50% 52%"></video>
+                <video data-src="assets/video/mdu-pov-runway.mp4" data-poster="assets/img/projects/mdu-pov-runway-poster-s.jpg" muted playsinline preload="none"></video>
               </div>
               <span class="row-corner tl" aria-hidden="true"></span><span class="row-corner tr" aria-hidden="true"></span><span class="row-corner bl" aria-hidden="true"></span><span class="row-corner br" aria-hidden="true"></span>
             </div>
@@ -808,17 +788,15 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=1794671570"></script>
-  <script src="js/titles.js?v=1794671570"></script>
-  <script src="js/ambient.js?v=1794671570"></script>
-  <script src="js/work.js?v=1794671570"></script>
-  <script src="js/sims.js?v=1794671570"></script>
-  <script src="js/previews.js?v=1794671570"></script>
-  <script src="js/hero3d.js?v=1794671570"></script>
-  <script src="js/herowall.js?v=1794671570"></script>
-  <script src="js/motifs.js?v=1794671570"></script>
-  <script src="js/compare.js?v=1794671570"></script>
-  <script src="js/rotate.js?v=1794671570"></script>
-  <script src="js/pfilter.js?v=1794671570"></script>
+  <script src="js/main.js?v=1794740292"></script>
+  <script src="js/titles.js?v=1794740292"></script>
+  <script src="js/ambient.js?v=1794740292"></script>
+  <script src="js/work.js?v=1794740292"></script>
+  <script src="js/sims.js?v=1794740292"></script>
+  <script src="js/previews.js?v=1794740292"></script>
+  <script src="js/herowall.js?v=1794740292"></script>
+  <script src="js/compare.js?v=1794740292"></script>
+  <script src="js/rotate.js?v=1794740292"></script>
+  <script src="js/pfilter.js?v=1794740292"></script>
 </body>
 </html>
